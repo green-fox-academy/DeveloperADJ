@@ -1,6 +1,0 @@
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\bin\Debug\LoopsWorkshop.exe.config
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\bin\Debug\LoopsWorkshop.exe
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\bin\Debug\LoopsWorkshop.pdb
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\obj\Debug\LoopsWorkshop.csproj.CoreCompileInputs.cache
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\obj\Debug\LoopsWorkshop.exe
-C:\Users\Arno\source\repos\LoopsWorkshop\LoopsWorkshop\obj\Debug\LoopsWorkshop.pdb

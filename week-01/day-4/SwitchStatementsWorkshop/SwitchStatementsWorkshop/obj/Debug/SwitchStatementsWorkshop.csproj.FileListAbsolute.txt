@@ -1,6 +1,0 @@
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\bin\Debug\SwitchStatementsWorkshop.exe.config
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\bin\Debug\SwitchStatementsWorkshop.exe
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\bin\Debug\SwitchStatementsWorkshop.pdb
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\obj\Debug\SwitchStatementsWorkshop.csproj.CoreCompileInputs.cache
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\obj\Debug\SwitchStatementsWorkshop.exe
-C:\Users\Arno\source\repos\SwitchStatementsWorkshop\SwitchStatementsWorkshop\obj\Debug\SwitchStatementsWorkshop.pdb
