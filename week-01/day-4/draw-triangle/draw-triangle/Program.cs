@@ -18,12 +18,11 @@ namespace GreenFox
             Console.WriteLine("Please enter a number: ");
             int number = int.Parse(Console.ReadLine());
             string asterisk = "*";
-            string oneMoreAsterisk = "*";
 
             for (int i = 0; i < number; i++)
             {
                 Console.WriteLine(asterisk);
-                asterisk += oneMoreAsterisk;
+                asterisk +="*";
             }
 
 
