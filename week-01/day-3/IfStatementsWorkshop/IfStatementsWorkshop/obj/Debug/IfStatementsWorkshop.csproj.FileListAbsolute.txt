@@ -1,0 +1,6 @@
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\bin\Debug\IfStatementsWorkshop.exe.config
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\bin\Debug\IfStatementsWorkshop.exe
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\bin\Debug\IfStatementsWorkshop.pdb
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\obj\Debug\IfStatementsWorkshop.csproj.CoreCompileInputs.cache
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\obj\Debug\IfStatementsWorkshop.exe
+C:\Users\Arno\source\repos\IfStatementsWorkshop\IfStatementsWorkshop\obj\Debug\IfStatementsWorkshop.pdb

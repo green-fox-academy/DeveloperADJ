@@ -1,0 +1,7 @@
+C:\Users\Arno\source\repos\Booleans\Booleans\bin\Debug\Booleans.exe.config
+C:\Users\Arno\source\repos\Booleans\Booleans\bin\Debug\Booleans.exe
+C:\Users\Arno\source\repos\Booleans\Booleans\bin\Debug\Booleans.pdb
+C:\Users\Arno\source\repos\Booleans\Booleans\obj\Debug\Booleans.csprojResolveAssemblyReference.cache
+C:\Users\Arno\source\repos\Booleans\Booleans\obj\Debug\Booleans.csproj.CoreCompileInputs.cache
+C:\Users\Arno\source\repos\Booleans\Booleans\obj\Debug\Booleans.exe
+C:\Users\Arno\source\repos\Booleans\Booleans\obj\Debug\Booleans.pdb
