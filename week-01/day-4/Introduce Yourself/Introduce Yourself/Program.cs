@@ -16,13 +16,10 @@ namespace GreenFox
             //  John Doe
             //  31
             //  1.87
-            string name = "Arno";
-            int age = 28;
-            float height = 1.82f;
 
-            Console.WriteLine("Name: {0}", name);
-            Console.WriteLine("Age: {0}", age);
-            Console.WriteLine("Height: {0}m", height);
+            Console.WriteLine("Arno");
+            Console.WriteLine(28);
+            Console.WriteLine(1.87);
 
             Console.ReadLine();
 
