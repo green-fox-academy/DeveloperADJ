@@ -17,6 +17,15 @@ namespace GreenFox
             // % % % %
             //  % % % %
             //
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("% % % % % % % %");
+                Console.WriteLine(" % % % % % % % ");
+            }
+
+
+            Console.ReadLine();
         }
     }
 }
