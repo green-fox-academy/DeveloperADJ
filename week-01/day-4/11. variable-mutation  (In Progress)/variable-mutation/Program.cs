@@ -54,7 +54,9 @@ namespace GreenFox
 
             long h = 1357988018575474;
             // tell if it has 11 as a divisor (print as a boolean)
-            Console.WriteLine(h % 11 == 0);
+            bool boolean = h % 11 == 0;
+
+            Console.WriteLine(boolean);
 
             int i1 = 10;
             int i2 = 3;
