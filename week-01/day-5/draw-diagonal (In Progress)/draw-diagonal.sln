@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "draw-diagonal", "draw-diagonal\draw-diagonal.csproj", "{ECF5B157-E321-47B1-918E-762521BA6A94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECF5B157-E321-47B1-918E-762521BA6A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF5B157-E321-47B1-918E-762521BA6A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF5B157-E321-47B1-918E-762521BA6A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF5B157-E321-47B1-918E-762521BA6A94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C844D78D-C043-49A8-B535-D13F3758614B}
+	EndGlobalSection
+EndGlobal
