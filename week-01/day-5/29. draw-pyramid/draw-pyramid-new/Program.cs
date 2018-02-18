@@ -17,7 +17,7 @@ namespace GreenFox
             //
             // The pyramid should have as many lines as the number was
 
-            Console.WriteLine("Please enter a number: ");
+            Console.Write("Please enter a number: ");
             int numberOfAsterisks = int.Parse(Console.ReadLine());
             int numberOfWhitespaces = numberOfAsterisks;
             string asterisk = "*";
@@ -36,16 +36,8 @@ namespace GreenFox
                 Console.WriteLine(asterisk);
 
                 asterisk += "**";
-
             }
-
-
-
             Console.ReadLine();
-
-
-
-
 
         }
     }

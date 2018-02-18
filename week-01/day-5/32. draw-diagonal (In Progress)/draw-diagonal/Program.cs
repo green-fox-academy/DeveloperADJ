@@ -44,8 +44,10 @@ namespace GreenFox
                     between = "";
                     between += "%";
                     
+
                     for (int y = 0; y < userNumber -2; y++)
                     {
+                        between += "%";
                         between += " ";
                     }
 
@@ -65,7 +67,6 @@ namespace GreenFox
 
                 Console.WriteLine(bottom);
             }
-
 
             Console.ReadLine();
         }
