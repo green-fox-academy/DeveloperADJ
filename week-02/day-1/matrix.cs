@@ -15,25 +15,26 @@ namespace DiagonalMatrix
             //   0 0 0 1
             //
             // - Print this two dimensional array to the output
-            int userNumber = int.Parse(Console.ReadLine());
 
-            int[] matrix = new int[userNumber];
+            Console.WriteLine("How big would you like the matrix to be? Please enter an integer number: ");
+            int matrixSize = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < matrix.Length; i++)
+            int[,] matrix = new int[matrixSize, matrixSize];
+
+            for (int i = 0; i < matrixSize; i++)
             {
-                if (i % 5 == 0)
-                    matrix[i] = 1;
-                else
-                    matrix[i] = 0;
+                for (int j = 0; j < matrixSize; j++)
+                {
+                    if (i == j)
+                        matrix[i, j] = 1;
+                    else
+                        matrix[i, j] = 0;
+
+                    Console.Write(matrix[i,j]);
+                }
+                Console.WriteLine();
             }
 
-            for (int i = 0; i < matrix.Length; i++)
-            {
-                if ((i + 1) % 4 == 0)
-                    Console.WriteLine(matrix[i]);
-                else
-                    Console.Write(matrix[i]);
-            }
 
             Console.ReadLine();
         }
