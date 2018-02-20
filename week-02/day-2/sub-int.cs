@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GreenFox
 {
@@ -8,38 +6,84 @@ namespace GreenFox
     {
         static void Main(string[] args)
         {
-            //  Create a function that takes a number and a list of numbers as a parameter
-            //  Returns the indeces of the numbers in the list where the first number is part of
-            //  Returns an empty list if the number is not part any of the numbers in the list
+            //  Create a function that takes a string and a list of string as a parameter
+            //  Returns the index of the string in the list where the first string is part of
+            //  Only need to find the first occurence and return the index of that
+            //  Returns `-1` if the string is not part any of the strings in the list
 
-            //  Example:
-            Console.WriteLine(SubInt(1, new int[] { 1, 11, 34, 52, 61 }));
-            //  should print: `[0, 1, 4]`
-            Console.WriteLine(SubInt(9, new int[] { 1, 11, 34, 52, 61 }));
-            //  should print: '[]'
+            //  Example
+            string[] searchArr = { "this", "is", "what", "I'm", "searching", "in" };
+
+            Console.WriteLine(Substrlist("ching", searchArr));
+            //  should print: `4`
+            Console.WriteLine(Substrlist("not", searchArr));
+            //  should print: `-1`  
+
             Console.ReadLine();
         }
 
-        public static StringBuilder SubInt(int number, int[] inputList)
+        public static int Substrlist(string word, string[] arrayOfWords)
         {
-            StringBuilder outputList = new StringBuilder();
-            outputList.Append("[");
+            int indexOfString = -1;
 
-            for (int i = 0; i < inputList.Length; i++)
+            for (int i = 0; i < arrayOfWords.Length; i++)
             {
 
-                if (Convert.ToString(inputList[i]).Contains($"{number}"))
+                if (arrayOfWords[i].Contains(word))
                 {
-                    outputList.Append(i);
-                    outputList.Append(", ");
+                    indexOfString = i;
                 }
             }
 
-            outputList.Append("]");
-            return outputList;
+            
+
+            return indexOfString;
         }
 
 
+
+    }
+using System;
+
+namespace GreenFox
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //  Create a function that takes a string and a list of string as a parameter
+            //  Returns the index of the string in the list where the first string is part of
+            //  Only need to find the first occurence and return the index of that
+            //  Returns `-1` if the string is not part any of the strings in the list
+
+            //  Example
+            string[] searchArr = { "this", "is", "what", "I'm", "searching", "in" };
+
+            Console.WriteLine(Substrlist("ching", searchArr));
+            //  should print: `4`
+            Console.WriteLine(Substrlist("not", searchArr));
+            //  should print: `-1`  
+
+            Console.ReadLine();
+        }
+
+        public static int Substrlist(string word, string[] arrayOfWords)
+        {
+            int indexOfString = -1;
+
+            for (int i = 0; i < arrayOfWords.Length; i++)
+            {
+
+                if (arrayOfWords[i].Contains(word))
+                {
+                    indexOfString = i;
+                }
+            }
+
+            
+
+            return indexOfString;
+        }
 
 
 
