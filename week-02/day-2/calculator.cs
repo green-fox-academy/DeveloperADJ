@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Calculator
 {
@@ -23,50 +24,54 @@ namespace Calculator
             // Print the result to the prompt
             // Exit
 
-            Console.WriteLine("This calculator takes one operation and two operands\n");
-            Console.Write("Use which operation? (+, -, *, /, %): ");
-            string operation = Console.ReadLine();
-
-            Console.Write("Enter the value for the first operand: ");
-            double operand1 = double.Parse(Console.ReadLine());
-
-            Console.Write("Enter the value for the second operand: ");
-            double operand2 = double.Parse(Console.ReadLine());
-            
-            Console.WriteLine(Calculate(operation, operand1, operand2));
-            Console.ReadLine();
-
-
-            /*Console.WriteLine("Please type in the expression:");
-            string Console.ReadLine();*/
-
+            while (true)
+            {
+                Console.WriteLine("Please type in the expression:");
+                string userExpression = Console.ReadLine();
+                Console.WriteLine(Calculate(userExpression));
+            }
         }
 
-        public static double Calculate(string operation, double firstOperand, double secondOperand)
+        public static double Calculate(string expression)
         {
+            var operationsList = new List<string> {"+", "-", "*", "/", "%"};
 
             double result = 0;
 
-            switch (operation)
+            string selectedOperation = "";
+
+            for (int i = 0; i < expression.Length; i++)
+            {
+                if (expression.Contains(operationsList[i]))
+                {
+                    selectedOperation = operationsList[i];
+                }
+            }
+
+            var listOfValues = new List<double>();
+
+            string[] splitExpression = expression.Split(' ');
+
+            switch (selectedOperation)
             {
                 case "+":
-                    result = firstOperand + secondOperand;
+                    result = double.Parse(splitExpression[1]) + double.Parse(splitExpression[2]);
                     break;
 
                 case "-":
-                    result = firstOperand - secondOperand;
+                    result = double.Parse(splitExpression[1]) - double.Parse(splitExpression[2]);
                     break;
 
                 case "*":
-                    result = firstOperand * secondOperand;
+                    result = double.Parse(splitExpression[1]) * double.Parse(splitExpression[2]);
                     break;
 
                 case "/":
-                    result = firstOperand / secondOperand;
+                    result = double.Parse(splitExpression[1]) / double.Parse(splitExpression[2]);
                     break;
 
                 case "%":
-                    result = firstOperand % secondOperand;
+                    result = double.Parse(splitExpression[1]) % double.Parse(splitExpression[2]);
                     break;
 
                 default:
