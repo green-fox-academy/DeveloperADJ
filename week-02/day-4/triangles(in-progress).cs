@@ -15,7 +15,7 @@ namespace drawing
             var foxDraw = new FoxDraw(canvas);
 
             int angle = 0;
-           
+
 
             DrawTrianglesWithWidth(-50);
 
@@ -39,7 +39,7 @@ namespace drawing
                 foxDraw.DrawLine(point1, point2);
                 foxDraw.DrawLine(point2, startPoint);
 
-                for (int i = 1; i < 5; i++)
+                for (int i = 1; i < 21; i++)
                 {
 
                     int shift = triangleSize * i;
@@ -53,7 +53,7 @@ namespace drawing
                     //
 
                     //Shift the Y axis
-   
+
                 }
 
                 for (int i = 1; i < 5; i++)
