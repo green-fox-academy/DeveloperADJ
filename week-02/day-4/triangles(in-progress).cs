@@ -11,73 +11,72 @@ namespace drawing
         public MainWindow()
         {
             InitializeComponent();
+
             var foxDraw = new FoxDraw(canvas);
 
             int angle = 0;
 
+            DrawPyramidWithWidth(-50, 5);
 
-            DrawTrianglesWithWidth(-50, 12);
-
-            void DrawTrianglesWithWidth(int triangleSize, int amountOfBottomTriangles)
+            void DrawPyramidWithWidth(int triangleSize, int pyramidWidth)
             {
+                double centreX = ((canvas.Width / 2) - (triangleSize * pyramidWidth) / 2);
 
-                double centreX = ((canvas.Width / 2) - (triangleSize * amountOfBottomTriangles)/2);
+                //Triangle Points
 
-                //Where the triangle starts drawing
-                var leftPointOfTriangle = new Point(centreX, canvas.Height);
+                Dictionary<string, Point> TrianglePoints = new Dictionary<string, Point>();
 
-                //Right surface
+                var left = new Point(centreX, canvas.Height);
+                var top = new Point(left.X + triangleSize * Math.Cos(angle + Math.PI / 3), left.Y + triangleSize * Math.Sin(angle + Math.PI / 3));
+                var right = new Point(left.X + triangleSize * Math.Cos(angle), left.Y + triangleSize * Math.Sin(angle));
 
-                var topPointOfTriangle = new Point(leftPointOfTriangle.X + triangleSize * Math.Cos(angle + Math.PI / 3), leftPointOfTriangle.Y + triangleSize * Math.Sin(angle + Math.PI / 3));
-
-                //Left surface
-                
-                var rightPointOfTriangle = new Point(leftPointOfTriangle.X + triangleSize * Math.Cos(angle), leftPointOfTriangle.Y + triangleSize * Math.Sin(angle));
-
-                foxDraw.DrawLine(leftPointOfTriangle, rightPointOfTriangle);
-                foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
-                foxDraw.DrawLine(rightPointOfTriangle, topPointOfTriangle);
-
-
-                for (int i = 1; i < amountOfBottomTriangles; i++)
+                void resetXpositions()
                 {
-                    int shift = triangleSize;
-
-                    leftPointOfTriangle.X += shift;
-                    topPointOfTriangle.X += shift;
-                    rightPointOfTriangle.X += shift;
-
-                    //Shift the X axis
-                    foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
-                    foxDraw.DrawLine(topPointOfTriangle, rightPointOfTriangle);
-                    foxDraw.DrawLine(rightPointOfTriangle, leftPointOfTriangle);
-
+                    left.X = centreX;
+                    top.X = left.X + triangleSize * Math.Cos(angle + Math.PI / 3);
+                    right.X = left.X + triangleSize * Math.Cos(angle);
                 }
 
-                leftPointOfTriangle.Y += triangleSize;
-                topPointOfTriangle.Y += triangleSize;
-                rightPointOfTriangle.Y += triangleSize;
-
-                leftPointOfTriangle.Y += triangleSize;
-                topPointOfTriangle.Y += triangleSize;
-                rightPointOfTriangle.Y += triangleSize;
-
-
-                for (int i = 1; i < amountOfBottomTriangles; i++)
+                void drawOneTriangle()
                 {
-                    int shift = triangleSize;
-
-                    //Shift the X axis
-                    foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
-                    foxDraw.DrawLine(topPointOfTriangle, rightPointOfTriangle);
-                    foxDraw.DrawLine(rightPointOfTriangle, leftPointOfTriangle);
-
+                    foxDraw.DrawLine(left, top);
+                    foxDraw.DrawLine(top, right);
+                    foxDraw.DrawLine(right, left);
                 }
 
+                void shiftTriangleUp()
+                {
+                    left.Y += triangleSize;
+                    top.Y += triangleSize;
+                    right.Y += triangleSize;
+                }
 
+                void shiftTriangleRightBy(double multiplier)
+                {
+                    left.X += (triangleSize*multiplier);
+                    top.X += (triangleSize*multiplier);
+                    right.X += (triangleSize*multiplier);
+                }
 
+                void drawAmountOfTriangles(int number)
+                {
+                    for (int j = 1; j < number; j++)
+                    {
+                        shiftTriangleRightBy(1);
+                        drawOneTriangle();
+                    }
+                }
 
+                for (int i = 1; i < pyramidWidth; i++)
+                {
+                    shiftTriangleUp();
+                    resetXpositions();
+                    //shiftTriangleRightBy(1);
+
+                    drawAmountOfTriangles(pyramidWidth -i);
+                }
             }
         }
     }
 }
+
