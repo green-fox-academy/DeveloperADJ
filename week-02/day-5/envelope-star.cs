@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-
 namespace drawing
 {
 
@@ -32,49 +31,41 @@ namespace drawing
             Point bottomRight = new Point(totalWidth, totalHeight);
             Point bottomLeft = new Point(0, totalHeight);
 
-
+            
 
             //Lower left
-            DrawGrid("left-to-right", "top-to-bottom", middleLeft, middleCenterPoint, foxDraw, canvas);
+            DrawGrid(middleLeft, "to-right", middleCenterPoint, "to-bottom", foxDraw, canvas);
 
             //Top left
-            DrawGrid("left-to-right", "bottom-to-top", middleLeft, middleCenterPoint, foxDraw, canvas);
+            DrawGrid(middleLeft, "to-right", middleCenterPoint, "to-top", foxDraw, canvas);
 
             //Top right
-            DrawGrid("right-to-left", "bottom-to-top", middleRightPoint, middleCenterPoint, foxDraw, canvas);
+            DrawGrid(middleRightPoint, "to-left", middleCenterPoint, "to-top",  foxDraw, canvas);
 
             //lower right
-            DrawGrid("left-to-right", "bottom-to-top", middleCenterPoint, bottomCenter, foxDraw, canvas);
+            DrawGrid(middleCenterPoint, "to-right", bottomCenter, "to-top", foxDraw, canvas);
 
 
         }
 
-        public static void DrawGrid(string directionX, string directionY, Point startPointXaxis, Point startPointYaxis, FoxDraw foxDraw, Canvas canvas)
+        public static void DrawGrid(Point startPointXaxis, string directionX, Point startPointYaxis, string directionY, FoxDraw foxDraw, Canvas canvas)
         {
             double totalWidth = canvas.Width;
             double totalHeight = canvas.Height;
 
             int stepLength = 10;
 
-            int stepsLengthX;
-            int stepLengthY;
+            int stepsLengthX = stepLength;
+            int stepLengthY = stepLength;
 
-            if (directionX == "right-to-left")
+            if (directionX == "to-left")
             {
                 stepsLengthX = -stepLength;
             }
-            else
-            {
-                stepsLengthX = stepLength;
-            }
 
-            if (directionY == "bottom-to-top")
+            if (directionY == "to-top")
             {
                 stepLengthY = -stepLength;
-            }
-            else
-            {
-                stepLengthY = stepLength;
             }
 
             foxDraw.DrawLine(startPointXaxis, startPointYaxis);
