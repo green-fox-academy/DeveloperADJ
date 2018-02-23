@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
-
 namespace drawing
 {
     public partial class MainWindow : Window
@@ -17,61 +16,68 @@ namespace drawing
             int angle = 0;
 
 
-            DrawTrianglesWithWidth(-50);
+            DrawTrianglesWithWidth(-50, 12);
 
-            void DrawTrianglesWithWidth(int triangleSize)
+            void DrawTrianglesWithWidth(int triangleSize, int amountOfBottomTriangles)
             {
+
+                double centreX = ((canvas.Width / 2) - (triangleSize * amountOfBottomTriangles)/2);
+
                 //Where the triangle starts drawing
-                var startPoint = new Point((canvas.Width / 2) - triangleSize / 2, (canvas.Height / 2) - triangleSize / 2);
+                var leftPointOfTriangle = new Point(centreX, canvas.Height);
 
                 //Right surface
-                var point1X = startPoint.X + triangleSize * Math.Cos(angle + Math.PI / 3);
-                var point1Y = startPoint.Y + triangleSize * Math.Sin(angle + Math.PI / 3);
 
-                var point1 = new Point(point1X, point1Y);
+                var topPointOfTriangle = new Point(leftPointOfTriangle.X + triangleSize * Math.Cos(angle + Math.PI / 3), leftPointOfTriangle.Y + triangleSize * Math.Sin(angle + Math.PI / 3));
 
                 //Left surface
-                var point2X = startPoint.X + triangleSize * Math.Cos(angle);
-                var point2Y = startPoint.Y + triangleSize * Math.Sin(angle);
-                var point2 = new Point(point2X, point2Y);
+                
+                var rightPointOfTriangle = new Point(leftPointOfTriangle.X + triangleSize * Math.Cos(angle), leftPointOfTriangle.Y + triangleSize * Math.Sin(angle));
 
-                foxDraw.DrawLine(startPoint, point1);
-                foxDraw.DrawLine(point1, point2);
-                foxDraw.DrawLine(point2, startPoint);
+                foxDraw.DrawLine(leftPointOfTriangle, rightPointOfTriangle);
+                foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
+                foxDraw.DrawLine(rightPointOfTriangle, topPointOfTriangle);
 
-                for (int i = 1; i < 21; i++)
+
+                for (int i = 1; i < amountOfBottomTriangles; i++)
                 {
+                    int shift = triangleSize;
 
-                    int shift = triangleSize * i;
-
-                    //Create another loop //
+                    leftPointOfTriangle.X += shift;
+                    topPointOfTriangle.X += shift;
+                    rightPointOfTriangle.X += shift;
 
                     //Shift the X axis
-                    foxDraw.DrawLine(new Point(startPoint.X + shift, startPoint.Y), new Point(point1.X + shift, point1.Y));
-                    foxDraw.DrawLine(new Point(point1.X + shift, point1.Y), new Point(point2.X + shift, point2.Y));
-                    foxDraw.DrawLine(new Point(point2.X + shift, point2.Y), new Point(startPoint.X + shift, startPoint.Y));
-                    //
-
-                    //Shift the Y axis
+                    foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
+                    foxDraw.DrawLine(topPointOfTriangle, rightPointOfTriangle);
+                    foxDraw.DrawLine(rightPointOfTriangle, leftPointOfTriangle);
 
                 }
 
-                for (int i = 1; i < 5; i++)
+                leftPointOfTriangle.Y += triangleSize;
+                topPointOfTriangle.Y += triangleSize;
+                rightPointOfTriangle.Y += triangleSize;
+
+                leftPointOfTriangle.Y += triangleSize;
+                topPointOfTriangle.Y += triangleSize;
+                rightPointOfTriangle.Y += triangleSize;
+
+
+                for (int i = 1; i < amountOfBottomTriangles; i++)
                 {
+                    int shift = triangleSize;
 
-                    int shift = triangleSize * i;
-
-                    foxDraw.DrawLine(new Point(startPoint.X, startPoint.Y + shift), new Point(point1.X, point1.Y + shift));
-                    foxDraw.DrawLine(new Point(point1.X, point1.Y + shift), new Point(point2.X, point2.Y + shift));
-                    foxDraw.DrawLine(new Point(point2.X, point2.Y + shift), new Point(startPoint.X, startPoint.Y + shift));
+                    //Shift the X axis
+                    foxDraw.DrawLine(leftPointOfTriangle, topPointOfTriangle);
+                    foxDraw.DrawLine(topPointOfTriangle, rightPointOfTriangle);
+                    foxDraw.DrawLine(rightPointOfTriangle, leftPointOfTriangle);
 
                 }
+
+
 
 
             }
-
-
         }
-
     }
 }
