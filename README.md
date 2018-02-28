@@ -4,3 +4,8 @@ Day 1 <br />
 [Day 3](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-3)<br />
 Day 4 <br />
 Day 5 <br />
+
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
