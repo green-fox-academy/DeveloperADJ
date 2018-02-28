@@ -15,6 +15,3 @@
  * [Week 3](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-03)
    * [Day 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-03/day-1) </br>
    * [Day 2](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-03/day-2)</br>
-   * [Day 3]()</br>
-   * [Day 4]() </br>
-   * [Day 5]() </br>
