@@ -5,7 +5,7 @@ Day 1 <br />
 Day 4 <br />
 Day 5 <br />
 
- Markup : * Bullet list
-              * Nested bullet
+* Bullet list
+   * Nested bullet
                   * Sub-nested bullet etc
           * Bullet list item 2
