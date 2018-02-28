@@ -1,4 +1,2 @@
-#FirstWebsite
-
 This is my first website.
-# first-website-greenfox
+View it here: https://developeradj.github.io/
