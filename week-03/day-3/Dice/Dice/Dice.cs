@@ -51,7 +51,7 @@ namespace Dice
 
             for (int i = 0; i < Dices.Length; i++)
             {
-                Roll();
+                
                 while (Dices[i] != 6)
                 {
                     Reroll();
