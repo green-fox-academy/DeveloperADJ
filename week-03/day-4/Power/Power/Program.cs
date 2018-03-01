@@ -6,7 +6,7 @@ namespace Power
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(powerN(3, 3));
+            Console.WriteLine(powerN(3, 2));
             Console.ReadLine();
         }
 
