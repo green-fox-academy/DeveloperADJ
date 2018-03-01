@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bunny2.cs
+namespace Bunny2
 {
     class Program
     {
