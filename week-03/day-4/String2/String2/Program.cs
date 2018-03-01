@@ -1,16 +1,17 @@
 ﻿using System;
 
-namespace String
+namespace String2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(ReplaceXWithY("xoxoxoxooxoxoxo"));
-            Console.ReadLine();
+            string sentence = "xoxoxoxoxoxoxoxoxox";
+            Console.WriteLine(RemoveAllXes(sentence));
+            Console.ReadLine();   
         }
 
-        public static string ReplaceXWithY(string sentence)
+        public static string RemoveAllXes(string sentence)
         {
             if (sentence == "")
             {
@@ -20,11 +21,11 @@ namespace String
             {
                 if (sentence[0] == 'x')
                 {
-                    return 'y' + ReplaceXWithY(sentence.Substring(1));
+                    return "" + RemoveAllXes(sentence.Substring(1));
                 }
                 else
                 {
-                    return sentence[0] + ReplaceXWithY(sentence.Substring(1));
+                    return sentence[0] + RemoveAllXes(sentence.Substring(1));
                 }
             }
         }
