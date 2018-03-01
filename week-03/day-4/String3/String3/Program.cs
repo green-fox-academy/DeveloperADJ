@@ -6,7 +6,7 @@ namespace String2
     {
         static void Main(string[] args)
         {
-            string sentence = "xoxoxoxoxoxoxoxoxox";
+            string sentence = "Hello Everyone!";
             Console.WriteLine(RemoveAllXes(sentence));
             Console.ReadLine();
         }
@@ -19,13 +19,13 @@ namespace String2
             }
             else
             {
-                if (sentence[0] == 'x')
+                if (sentence[0] == ' ')
                 {
-                    return "" + RemoveAllXes(sentence.Substring(1));
+                    return " " + RemoveAllXes(sentence.Substring(1));
                 }
                 else
                 {
-                    return sentence[0] + RemoveAllXes(sentence.Substring(1));
+                    return sentence[0] + "*" + RemoveAllXes(sentence.Substring(1));
                 }
             }
         }
