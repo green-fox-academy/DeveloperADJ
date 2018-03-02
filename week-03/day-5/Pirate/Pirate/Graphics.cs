@@ -16,9 +16,6 @@ namespace Pirate
         public static string[] lost = File.ReadAllLines("lost.txt");
         public static string[] won = File.ReadAllLines("won.txt");
 
-
-
-
         public static void Print(string[] file)
         {
             foreach (var line in file)
@@ -33,6 +30,5 @@ namespace Pirate
             Console.ReadLine();
             Console.Clear();
         }
-
     }
 }
