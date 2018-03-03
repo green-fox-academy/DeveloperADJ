@@ -27,6 +27,7 @@ namespace RecursionSquaresNew
             FoxDraw foxDraw = new FoxDraw(myCanvas);
             foxDraw.StrokeColor(Colors.Black);
             foxDraw.FillColor(Color.FromArgb(0,0,0,0));
+            foxDraw.DrawRectangle(0,0,myCanvas.Width, myCanvas.Height);
             DrawCubes(0,0,myCanvas.Width,5,foxDraw);
         }
 
