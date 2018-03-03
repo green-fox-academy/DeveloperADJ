@@ -12,12 +12,14 @@ namespace Pirate
         public static string[] Villain = File.ReadAllLines("ascii-villain.txt");
         public static string[] YourShip = File.ReadAllLines("yourship.txt");
         public static string[] ShipStatus = File.ReadAllLines("Shipstatus.txt");
-        public static string[] ships = File.ReadAllLines("ships.txt");
-        public static string[] lost = File.ReadAllLines("lost.txt");
-        public static string[] won = File.ReadAllLines("won.txt");
+        public static string[] PlayerAttack = File.ReadAllLines("PlayerAttack.txt");
+        public static string[] EnemyAttack = File.ReadAllLines("EnemyAttack.txt");
+        public static string[] Lost = File.ReadAllLines("lost.txt");
+        public static string[] Won = File.ReadAllLines("won.txt");
 
         public static void Print(string[] file)
         {
+            Console.Clear();
             foreach (var line in file)
             {
                 Console.WriteLine(line);
@@ -27,7 +29,7 @@ namespace Pirate
         public static void ContinueAndClear()
         {
             Console.Write("Press enter to continue..");
-            Console.ReadLine();
+            Console.Read();
             Console.Clear();
         }
     }

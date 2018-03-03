@@ -96,7 +96,6 @@ namespace Pirate
                     Console.WriteLine($" Both pirates died.\n");
                     totalNumberOfPirates -= 2;
                 }
-
             }
         }
     }

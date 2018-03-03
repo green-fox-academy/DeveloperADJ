@@ -8,17 +8,24 @@ namespace Pirate
     {
         private List<Pirate> CrewList = new List<Pirate>();
 
-        string shipName;
+        public string shipName;
         public bool shipFilled = false;
         private Random RandomNumberGenerator = new Random();
         int aliveCrew = 0;
         int deadCrew = 0;
+        private Pirate captain;
+        private int life = 30;
 
+        public int GetLife()
+        {
+            return life;
+        }
 
-        public Ship(string shipName)
+        public Ship(string shipName, Pirate captain)
         {
             this.shipName = shipName;
-        }
+            this.captain = captain;
+        } 
 
         public void AddCrew(Pirate pirate)
         {
@@ -29,29 +36,31 @@ namespace Pirate
         {
             int AttackerRoll = DiceRoll();
             int DefenderRoll = enemy.DiceRoll();
-
-            Console.WriteLine($"{shipName} attacked {enemy.shipName}!\n");
-            Graphics.ContinueAndClear();
-
-            if (AttackerRoll > DefenderRoll)
+            
+            if (enemy.life < 1)
             {
-                Graphics.Print(Graphics.ships);
-                Console.WriteLine($"HIT {enemy.shipName}! {AttackerRoll} crew members were killed!\n");
-
-                for (int i = 0; i < AttackerRoll; i++)
-                {
-                    if (enemy.CrewList.Count < 0) return;
-                        enemy.CrewList[0].isDead = true;                    
-                }
-                enemy.CountCrew();
-
+                Graphics.Print(Graphics.Won);
+                Console.WriteLine(enemy.shipName + " was defeated!");
+                Graphics.ContinueAndClear();
             }
             else
             {
-                Graphics.Print(Graphics.ships);
-                Console.WriteLine("MISS");
-                enemy.CountCrew();
+                if (enemy.shipName == "Black Pearl")
+                {
+                    Graphics.Print(Graphics.PlayerAttack);   
+                }
+                else
+                {
+                    Graphics.Print(Graphics.EnemyAttack);
+                }
+                Console.WriteLine($"{shipName} attacks {enemy.shipName} with an Attack Roll of [{AttackerRoll}]!");
+                Console.Write($"{enemy.shipName} took {AttackerRoll} damage! He has {enemy.life} life left.");
+
+                Console.ReadLine();
+                Console.Clear();
+                enemy.life -= AttackerRoll;
             }
+
         }
 
         public int GetCrewAmount()
@@ -78,7 +87,6 @@ namespace Pirate
                 {
                     aliveCrew++;
                 }
-
             }
             Console.WriteLine($"[{shipName} Stats]\nCrew Alive: {aliveCrew}\nCrew Dead: {deadCrew}\n");
         }
@@ -91,7 +99,6 @@ namespace Pirate
 
                 int randomNumber = RandomNumberGenerator.Next(5, 10);
                 AddCrew(new Pirate($"Captain of the {shipName}", true));
-
 
                 for (int i = 0; i < randomNumber; i++)
                 {
