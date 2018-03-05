@@ -35,7 +35,6 @@ namespace HexagonRecursion
 
         public double DrawHexagon(Point center, double size, double depth)
         {
-
             double angle = 45;
 
             if (depth == 0)

@@ -27,8 +27,7 @@ namespace line_in_the_middle
             // draw a green vertical line to the canvas' middle.
             var greenLine = new FoxDraw(canvas);
 
-            greenLine.StrokeColor(Colors.Green);
-
+            greenLine.StrokeColor(Colors.Green
             Point startGreenLine = new Point(Width/2, 0);
             Point endGreenLine = new Point(Width/2, Height/2);
 
@@ -44,3 +43,4 @@ namespace line_in_the_middle
 
 }
 
+);

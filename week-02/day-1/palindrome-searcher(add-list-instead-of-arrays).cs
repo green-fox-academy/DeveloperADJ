@@ -19,7 +19,6 @@ namespace PalindromeSearcher
             "racecar"["racecar", "aceca", "cec"]
             ""[]
             */
-
             string inputSentence = "dog goat dad duck doodle never";
 
             SearchPalindrome(inputSentence);
@@ -30,21 +29,15 @@ namespace PalindromeSearcher
         public static string reverseString(string words)
         {
             string reverseWords = "";
-
             for (int i = words.Length-1; i >= 0; i--)
             {
-                
-                reverseWords += words[i];
-                
+                reverseWords += words[i];   
             }
-
             return reverseWords;
         }
 
         public static void SearchPalindrome(string sentence) {
-
             int arrayLength = 0;
-
             for (int start = 0; start < sentence.Length; start++)
             {
                 if (start <= sentence.Length)
