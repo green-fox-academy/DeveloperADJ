@@ -4,38 +4,30 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    class Student
+    class Student : Person
     {
-        string name;
-        int age;
-        string gender;
         string previousOrganization;
         int skippedDays;
 
-        public Student(string name, int age, string gender, string previousOrganization)
+        public Student(string name, int age, string gender, string previousOrganization = "The School of Life", int skippedDays = 0): base(name, age, gender)
         {
             this.name = name;
             this.age = age;
             this.gender = gender;
             this.previousOrganization = previousOrganization;
-            skippedDays = 0;
+            this.skippedDays = skippedDays;
         }
 
         public Student()
         {
-            name = "Jane Doe";
-            age = 30;
-            gender = "female";
-            previousOrganization = "The School of Life";
-            skippedDays = 0;
         }
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {name}, a age year old {gender}.");
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine($"Hi, I'm {name}, a {age} year old gender from {previousOrganization} who skipped {skippedDays} days from the course already.");
         }

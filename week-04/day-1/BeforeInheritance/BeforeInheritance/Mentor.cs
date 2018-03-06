@@ -4,35 +4,29 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    class Mentor
+    class Mentor : Person
     {
-        string name;
-        int age;
-        string gender;
         string level;
 
-        public Mentor(string name, int age, string gender, string level)
+        public Mentor(string name, int age, string gender, string level = "intermediate"): base(name, age, gender)
         {
             this.name = name;
             this.age = age;
             this.gender = gender;
+
             this.level = level;
         }
 
         public Mentor()
         {
-            name = "Jane Doe";
-            age = 30;
-            gender = "female";
-            level = "intermediate";
         }
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {name}, a {age} year old {gender} {level} mentor.");
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Educate brilliant junior software developers.");
         }

@@ -4,37 +4,31 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    class Sponsor
+    class Sponsor : Person
     {
-        string name;
-        int age;
-        string gender;
         string company;
         int hiredStudents;
 
-        public Sponsor(string name, int age, string gender, string company)
+        public Sponsor(string name = "Jane Doe", int age = 30, string gender = "female", string company = "Google", int hiredStudents = 0): base(name, age, gender)
         {
             this.name = name;
             this.age = age;
             this.gender = gender;
+
             this.company = company;
+            this.hiredStudents = hiredStudents;
         }
 
         public Sponsor()
         {
-            name = "Jane Doe";
-            age = 30;
-            gender = "female";
-            company = "Google";
-            hiredStudents = 0;
         }
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {name}, a {age} year old gender who represents {company} and hired {hiredStudents} students so far.");
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Hire brilliant junior software developers.");
         }

@@ -8,27 +8,23 @@ namespace BeforeInheritance
         static void Main(string[] args)
         {
             var people = new List<Person>();
-            var students = new List<Student>();
-            var mentors = new List<Mentor>();
-            var sponsors = new List<Sponsor>();
-
 
             var mark = new Person("Mark", 46, "male");
             people.Add(mark);
             var jane = new Person();
             people.Add(jane);
             var john = new Student("John Doe", 20, "male", "BME");
-            students.Add(john);
+            people.Add(john);
             var student = new Student();
-            students.Add(student);
+            people.Add(student);
             var gandhi = new Mentor("Gandhi", 148, "male", "senior");
-            mentors.Add(gandhi);
+            people.Add(gandhi);
             var mentor = new Mentor();
-            mentors.Add(mentor);
+            people.Add(mentor);
             var sponsor = new Sponsor();
-            sponsors.Add(sponsor);
+            people.Add(sponsor);
             var elon = new Sponsor("Elon Musk", 46, "male", "SpaceX");
-            sponsors.Add(elon);
+            people.Add(elon);
 
             student.SkipDays(3);
 
@@ -47,6 +43,12 @@ namespace BeforeInheritance
                 person.GetGoal();
             }
 
+            Cohort awesome = new Cohort("AWESOME");
+            awesome.AddStudent(student);
+            awesome.AddStudent(john);
+            awesome.AddMentor(mentor);
+            awesome.AddMentor(gandhi);
+            awesome.Info();
             Console.ReadLine();
         }
     }
