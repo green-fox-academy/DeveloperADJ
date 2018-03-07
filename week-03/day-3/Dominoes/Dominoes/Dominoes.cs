@@ -7,36 +7,38 @@ namespace Domino
     {
         public static void Main(string[] args)
         {
-            List<Domino> dominoes = InitializeDominoes();
+            var dominoes = InitializeDominoes();
             // You have the list of Dominoes
             // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
             // Create a function to write the dominous to the console in the following format
             // eg: [2, 4], [4, 3], [3, 5] ...
-            CompareDominoes(InitializeDominoes());
+
+            foreach (var item in MakeSnakeOfDominoes(dominoes))
+            {
+                Console.WriteLine($"{item.GetValues()[0]} {item.GetValues()[1]}");
+            }
+
             Console.ReadLine();
+
         }
 
-        public static void CompareDominoes(List<Domino> listOfDominoes)
+        public static List<Domino> MakeSnakeOfDominoes(List<Domino> dominoes)
         {
-            for (int i = 0; i < listOfDominoes.Count; i++)
-            {
-                Console.WriteLine(ArePairs(listOfDominoes, i)); 
-            }
-        }
+            List<Domino> Snake = new List<Domino>();
 
-        public static bool ArePairs(List<Domino> listOfDominoes, int i)
-        {
-            if (i+1 < listOfDominoes.Count)
-            {
-                int firstDominoRightNumber = listOfDominoes[i].GetValues()[1];
-                int secondDominoLeftNumber = listOfDominoes[i + 1].GetValues()[0];
+            Snake.Add(dominoes[0]);
 
-                return firstDominoRightNumber == secondDominoLeftNumber;
-            }
-            else
+            for (int i = 0; i < dominoes.Count-1; i++)
             {
-                return false;
-            } 
+                for (int j = 0; j < dominoes.Count; j++)
+                {
+                    if (Snake[i].GetValues()[1] == dominoes[j].GetValues()[0])
+                    {
+                        Snake.Add(dominoes[j]);
+                    }
+                }
+            }
+            return Snake;
         }
 
         public static List<Domino> InitializeDominoes()
