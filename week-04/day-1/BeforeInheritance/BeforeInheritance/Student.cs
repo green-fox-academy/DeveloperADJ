@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    class Student : Person
+    class Student : Person, ICloneable
     {
         string previousOrganization;
         int skippedDays;
@@ -24,7 +24,7 @@ namespace BeforeInheritance
 
         public override void Introduce()
         {
-            Console.WriteLine($"Hi, I'm {name}, a age year old {gender}.");
+            Console.WriteLine($"Hi, I'm {name}, a {age} year old {gender}.");
         }
 
         public override void GetGoal()
@@ -37,5 +37,9 @@ namespace BeforeInheritance
             skippedDays += numberOfDays;
         }
 
+        public object Clone()
+        {
+            return new Student(this.name, this.age, this.gender, this.previousOrganization, this.skippedDays);
+        }
     }
 }
