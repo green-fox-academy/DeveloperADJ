@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace FleetOfThings
 {
-    public class Fleet
+    public class Fleet: IComparable<Thing>
     {
-        public static List<Thing> Things;
+        public List<Thing> Things;
 
         public Fleet()
         {
@@ -20,6 +20,11 @@ namespace FleetOfThings
         public void Add(Thing thing)
         {
             Things.Add(thing);
+        }
+
+        public int CompareTo(Thing other)
+        {
+            return Things.;
         }
     }
 }

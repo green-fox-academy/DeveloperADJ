@@ -33,21 +33,7 @@ namespace FleetOfThings
             // 4. [x] Eat lunch
             // Hint: You have to create a Print method also
 
-
-            for (int i = 0; i < Fleet.Things.Count; i++)
-            {
-                Console.Write($"{i+1}. ");
-
-                if (Fleet.Things[i].Completed == true)
-                {
-                    Console.Write("[x] ");
-                }
-                else
-                {
-                    Console.Write("[ ] ");
-                }
-                Console.Write(Fleet.Things[i].Name + "\n");
-            }
+            fleet.Things.Sort();
             Console.ReadLine();
         }
     }
