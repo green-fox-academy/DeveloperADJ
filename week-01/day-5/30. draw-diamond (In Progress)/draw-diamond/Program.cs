@@ -6,69 +6,58 @@ namespace GreenFox
     {
         static void Main(string[] args)
         {
-            // Write a program that reads a number from the standard input, then draws a
-            // diamond like this:
-            //
-            //
-            //    *
-            //   ***
-            //  *****
-            // *******
-            //  *****
-            //   ***
-            //    *
-            //
-            // The diamond should have as many lines as the number was
+            Console.WriteLine("Please enter a number: ");
+            int userNumber = int.Parse(Console.ReadLine());
+            DrawTop(userNumber);
+            Console.ReadLine();
+        }
 
-            while (true)
+        private static void DrawTop(int userNumber)
+        {
+            string lineContent = string.Empty;
+
+            int counter = 0;
+
+            //Top half
+            for (int i = 0; i < userNumber/2 + 1; i++)
             {
+                lineContent = "";
 
-
-                Console.WriteLine("Please enter a number: ");
-                int numberOfAsterisks = int.Parse(Console.ReadLine());
-                int numberOfWhitespaces = numberOfAsterisks;
-                string asterisk = "*";
-                string whitespace = " ";
-
-                for (int i = 0; i < numberOfAsterisks; i++)
+                for (int k = userNumber - i; k > 0; k--)
                 {
-
-                    for (int x = 0; x < numberOfWhitespaces; x++)
-                    {
-                        Console.Write(whitespace);
-                    }
-
-                    numberOfWhitespaces -= 1;
-
-                    Console.WriteLine(asterisk);
-
-                    asterisk += "**";
-
+                    lineContent += " ";
                 }
 
-                numberOfWhitespaces += 1;
-
-                for (int y = 0; y < numberOfWhitespaces; y++)
+                for (int j = i; j > -1; j--)
                 {
-                    Console.Write(whitespace);
-
-                    numberOfAsterisks -= 1;
-
-                    for (int z = 0; z < numberOfAsterisks; z++)
+                    if (j == i)
                     {
-
+                        lineContent += "*";
                     }
-
-
+                    else
+                    {
+                        lineContent += "**";
+                    }
                 }
+                Console.WriteLine(lineContent);
 
-
-
-
-
-
+                counter = i;
             }
+           
+            for (int l = 0; l < counter; l++)
+            {
+                for (int m = l; m > -1; m--)
+                {
+                        Console.Write(" ");
+                }
 
+                for (int n = userNumber - l; n > 0; n--)
+                {
+                    Console.Write("*");
+                }
+                
+                Console.WriteLine();
+            }
         }
     }
 }
