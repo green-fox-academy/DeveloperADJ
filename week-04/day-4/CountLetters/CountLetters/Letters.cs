@@ -9,7 +9,7 @@ namespace CountLetters
 
         public Dictionary<string, int> CountInDictionary(string word)
         {
-            Dictionary<string, int> wordCounter = new Dictionary<string, int>();
+            var wordCounter = new Dictionary<string, int>();
 
             foreach (var ch in word)
             {
