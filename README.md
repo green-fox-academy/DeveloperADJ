@@ -36,6 +36,9 @@ Below you can find a list of corresponding assignments I have been working on du
    * [Day 4](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-04/day-4): OO + Testing</br>
    * [Day 5](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-04/day-5): Todo App</br>
    </br>
+   Coming soon..
+   =============
+   </br>
  * [Week 5]: Wanderer, The Game
    </br>
  * [Week 6]: C# Essentials
