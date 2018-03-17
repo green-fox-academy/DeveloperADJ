@@ -16,13 +16,8 @@ namespace Anagram
 
             firstList.Sort();
             secondList.Sort();
-
-            if (CharsToString(firstList) == CharsToString(secondList))
-            {
-                return true;
-            }
-
-            return false;
+            
+            return CharsToString(firstList) == CharsToString(secondList)
         }
 
         public List<char> WordToCharList(string word)
