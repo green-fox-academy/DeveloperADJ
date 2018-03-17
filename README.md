@@ -2,7 +2,7 @@
 Welcome to Arno's Green Fox Academy Page!
 ==========================================================================
 
-Hi, my name is Arno de Jonge. I am a Software Developer from Amsterdam, The Netherlands.
+Hi, my name is Arno de Jonge. I am an Audio Engineer/Software Developer from Amsterdam, The Netherlands.
 
 This is my class' syllabus: https://github.com/greenfox-academy/pebble-syllabus/wiki
 
