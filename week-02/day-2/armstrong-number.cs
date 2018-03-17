@@ -7,7 +7,6 @@ namespace GreenFox
     {
         static void Main(string[] args)
         {
-
             /*
             What is Armstrong number ?
             An Armstrong number is an n - digit number that is equal to the sum of the nth powers of its digits.
@@ -58,14 +57,9 @@ namespace GreenFox
             else
                 outputMessage = $"The number {raisedDigitsTotal} is not an Armstrong number.";
 
-
-
             outputMessage += "\n";
-
-
-
+            
             return outputMessage;
         }
-
     }
 }
