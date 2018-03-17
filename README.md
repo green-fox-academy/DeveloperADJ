@@ -1,3 +1,5 @@
+Hi, my name is Arno de Jonge.
+=============================
 Welcome to my Green Fox Academy/GitHub Page!
 ==========================================================================
 
