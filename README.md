@@ -6,7 +6,7 @@ Hi, my name is Arno de Jonge. I am a Software Developer from Amsterdam, The Neth
 
 This is my class' syllabus: https://github.com/greenfox-academy/pebble-syllabus
 
-Below you can find a list of corresponding assignments I have made during Green Fox Academy:
+Below you can find a list of corresponding assignments I have been working on during Green Fox Academy:
 
 * [Week 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01): HTML and CSS
    * [Day 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-1): Team building</br>
