@@ -33,5 +33,16 @@ Below you can find a list of assignments I have worked on during Green Fox Acade
    * [Day 3](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-04/day-3): Abstracts and Interfaces</br>
    * [Day 4](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-04/day-4): OO + Testing</br>
    * [Day 5](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-04/day-5): Todo App</br>
-
+   </br>
  * [Week 5](#): Wanderer, The Game
+   </br>
+ * [Week 6](#): C# Essentials
+   </br>
+ * [Week 7](#): ASP.Net Core Basics
+   </br>
+ * [Week 8](#): Data persistence
+   </br>
+ * [Week 9](#): REST
+   </br>
+ * [Week 10](#): Creative Practice Project
+
