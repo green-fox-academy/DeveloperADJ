@@ -17,7 +17,7 @@ namespace Tests
         [TestCase(29, 514229)]
         public void FibonacciIndexChecker(int index, int fibonacciNumber)
         {
-            var Fibonacci = new FibonacciGenerator();
+            var fibonacci = new FibonacciGenerator();
 
             Assert.AreEqual(fibonacciNumber, Fibonacci.FibonacciIndexChecker(index));
         }
