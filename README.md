@@ -1,4 +1,4 @@
-Hi, my name is Arno de Jonge, welcome to my Green Fox Academy/GitHub Page!
+Welcome to my Green Fox Academy/GitHub Page!
 ==========================================================================
 
 Here is a list of assignments I did during Green Fox Academy:
