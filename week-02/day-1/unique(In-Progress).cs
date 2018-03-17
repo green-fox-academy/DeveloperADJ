@@ -17,7 +17,6 @@ namespace GreenFox
 
             RemoveDuplicates(ints);
             Console.ReadLine();
-
         }
 
         public static int[] RemoveDuplicates(int[] arrayOfInts) {
@@ -26,13 +25,9 @@ namespace GreenFox
 
             for (int i = 0; i < arrayOfInts.Length; i++)
             {
-
                 Console.WriteLine(arrayOfInts[i]);
             }
-
             return filteredArray;
         }
-
-
     }
 }
