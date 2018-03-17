@@ -15,7 +15,7 @@ namespace Tests
         [TestCase(6, 8)]
         [TestCase(7, 13)]
         [TestCase(29, 514229)]
-        public void FibonacciIndexChecker(int index, int fibonacciNumber)
+        public void expectedFibonacciNumber(int index, int fibonacciNumber)
         {
             var fibonacci = new FibonacciGenerator();
 
