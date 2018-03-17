@@ -1,9 +1,10 @@
-Hi, my name is Arno de Jonge.
-=============================
-Welcome to my Green Fox Academy/GitHub Page!
+
+Welcome to Arno's Green Fox Academy/GitHub Page!
 ==========================================================================
 
-Here is a list of assignments I did during Green Fox Academy:
+Hi, my name is Arno de Jonge. I am a Software Developer from Amsterdam, The Netherlands.
+
+Below you can find a list of assignments I have worked on during Green Fox Academy:
 
 * [Week 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01): HTML and CSS
    * [Day 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-1): Team building</br>
