@@ -38,11 +38,11 @@ Below you can find a list of assignments I have worked on during Green Fox Acade
    </br>
  * [Week 6]: C# Essentials
    </br>
- * [Week 7](): ASP.Net Core Basics
+ * [Week 7]: ASP.Net Core Basics
    </br>
- * [Week 8](): Data persistence
+ * [Week 8]: Data persistence
    </br>
- * [Week 9](): REST
+ * [Week 9]: REST
    </br>
- * [Week 10](): Creative Practice Project
+ * [Week 10]: Creative Practice Project
 
