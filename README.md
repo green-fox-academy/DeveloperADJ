@@ -1,4 +1,4 @@
-* [Week 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01)
+* [Week 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01): HTML and CSS
    * [Day 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-1) </br>
    * [Day 2](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-2/) </br>
    * [Day 3](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-3) </br>
