@@ -1,5 +1,5 @@
 
-Welcome to Arno's Green Fox Academy/GitHub Page!
+Welcome to Arno's Green Fox Academy Page!
 ==========================================================================
 
 Hi, my name is Arno de Jonge. I am a Software Developer from Amsterdam, The Netherlands.
