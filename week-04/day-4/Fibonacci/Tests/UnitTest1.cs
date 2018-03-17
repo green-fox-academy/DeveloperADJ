@@ -19,7 +19,7 @@ namespace Tests
         {
             var fibonacci = new FibonacciGenerator();
 
-            Assert.AreEqual(fibonacciNumber, Fibonacci.FibonacciIndexChecker(index));
+            Assert.AreEqual(fibonacciNumber, fibonacci.FibonacciIndexChecker(index));
         }
     }
 }
