@@ -42,7 +42,7 @@ Below you can find a list of assignments I have worked on during Green Fox Acade
    </br>
  * [Week 8]: Data persistence
    </br>
- * [Week 9]: \REST
+ * [Week 9]: R E S T
    </br>
  * [Week 10]: Creative Practice Project
 
