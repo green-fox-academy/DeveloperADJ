@@ -14,8 +14,6 @@ namespace SimpleReplace
             // Please fix it for me!
             // Expected ouput: In a galaxy far far away
 
-
-
             Console.WriteLine(example);
             Console.ReadLine();
         }
