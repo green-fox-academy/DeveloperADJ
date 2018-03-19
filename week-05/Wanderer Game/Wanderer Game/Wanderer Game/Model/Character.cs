@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wanderer_Game
 {
-    abstract class Character
+    public abstract class Character
     {
         protected int currentHP;
         protected int maximumHP;
@@ -21,7 +21,7 @@ namespace Wanderer_Game
             this.level = level;
         }
 
-        public abstract void Move();
+        public abstract void Move(string direction);
         public abstract void Attack();
     }
 }

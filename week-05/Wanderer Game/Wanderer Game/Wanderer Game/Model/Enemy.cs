@@ -21,7 +21,7 @@ namespace Wanderer_Game.Controller
             throw new NotImplementedException();
         }
 
-        public override void Move()
+        public override void Move(string direction)
         {
             throw new NotImplementedException();
         }

@@ -8,17 +8,29 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GreenFox;
+using Wanderer_Game.Controller;
 
 namespace Wanderer_Game.View
 {
     public class Graphics
     {
-        static public void DrawEnvironment(FoxDraw foxDraw, Canvas canvas)
+        FoxDraw foxDraw;
+        Canvas canvas;
+        Player player;
+
+        public Graphics(FoxDraw foxDraw, Canvas canvas, Player player)
         {
-            DrawTiles(canvas, foxDraw);
+            this.foxDraw = foxDraw;
+            this.canvas = canvas;
+            this.player = player;
         }
 
-        static public void DrawTiles(Canvas canvas, FoxDraw foxDraw)
+        public void DrawEnvironment()
+        {
+            DrawTiles();
+        }
+
+        public void DrawTiles()
         {
             double xOffset = 0;
             double yOffset = 0;
@@ -27,7 +39,7 @@ namespace Wanderer_Game.View
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    DrawTile(canvas, foxDraw, new Point(0 + xOffset, 0 + yOffset), Tiles.tiles[i, j]);
+                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Tiles.tiles[i, j]);
                     xOffset += canvas.Width / 10;
                 }
                 xOffset = 0;
@@ -35,16 +47,18 @@ namespace Wanderer_Game.View
             }
         }
 
-        public static void DrawPlayer(FoxDraw foxDraw, Canvas canvas)
+        
+
+        public void DrawPlayer()
         {
             Image playerSprite = new Image();
-            playerSprite.Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.RelativeOrAbsolute));
+            playerSprite.Source = new BitmapImage(new Uri(player.GetImage(), UriKind.RelativeOrAbsolute));
             playerSprite.Width = canvas.Width / 10;
             playerSprite.Height = canvas.Height / 10;
-            foxDraw.AddImage(playerSprite, 0, 0);
+            foxDraw.AddImage(playerSprite, player.GetPosition().X, player.GetPosition().Y);
         }
 
-        static public void DrawTile(Canvas canvas, FoxDraw foxDraw, Point startPoint, int tileType)
+        public void DrawTile(Point startPoint, int tileType)
         {
             Image tileSprite = new Image();
 
@@ -59,7 +73,6 @@ namespace Wanderer_Game.View
 
             tileSprite.Width = canvas.Width / 10;
             tileSprite.Height = canvas.Height / 10;
-
             foxDraw.AddImage(tileSprite, startPoint.X, startPoint.Y);
         }
     }

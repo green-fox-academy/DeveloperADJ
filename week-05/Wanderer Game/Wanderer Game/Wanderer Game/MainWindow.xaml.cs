@@ -23,18 +23,53 @@ namespace Wanderer_Game
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Graphics graphics;
+        Player player;
+
         public MainWindow()
         {
             InitializeComponent();
             FoxDraw foxDraw = new FoxDraw(canvas);
+            player = new Player(canvas);
+            graphics = new Graphics(foxDraw, canvas, player);
 
-            var map = new Graphics();
+            graphics.DrawEnvironment();
+            graphics.DrawPlayer();
+        }
 
-            Graphics.DrawEnvironment(foxDraw, canvas);
-            Graphics.DrawPlayer(foxDraw, canvas);
+        private void WindowKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left)
+            {
+                player.Move("left");
+                Refresh();
+            }
 
-            Player player = new Player(10, 10, 5, 0, 100, 1);
-            
+            if (e.Key == Key.Right)
+            {
+                player.Move("right");
+                Refresh();
+            }
+
+            if (e.Key == Key.Up)
+            {
+                player.Move("up");
+                Refresh();
+            }
+
+            if (e.Key == Key.Down)
+            {
+                player.Move("down");
+                Refresh();
+            }
+        }
+
+        public void Refresh()
+        {
+            canvas.Children.Clear();
+            graphics.DrawEnvironment();
+            graphics.DrawPlayer();
         }
     }
 }

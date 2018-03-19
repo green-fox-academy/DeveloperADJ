@@ -103,15 +103,33 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\boss.png" />
-    <Resource Include="Assets\floor-map.png" />
-    <Resource Include="Assets\floor.png" />
-    <Resource Include="Assets\hero-down.png" />
-    <Resource Include="Assets\hero-left.png" />
-    <Resource Include="Assets\hero-right.png" />
-    <Resource Include="Assets\hero-up.png" />
-    <Resource Include="Assets\skeleton.png" />
-    <Resource Include="Assets\wall.png" />
+    <Resource Include="Assets\boss.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\floor-map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\floor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\hero-down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\hero-left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\hero-right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\hero-up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\skeleton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\wall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\map.txt">
