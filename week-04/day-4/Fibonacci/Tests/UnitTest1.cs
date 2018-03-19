@@ -15,11 +15,11 @@ namespace Tests
         [TestCase(6, 8)]
         [TestCase(7, 13)]
         [TestCase(29, 514229)]
-        public void FibonacciIndexChecker(int index, int fibonacciNumber)
+        public void expectedFibonacciNumber(int index, int fibonacciNumber)
         {
-            var Fibonacci = new FibonacciGenerator();
+            var fibonacci = new FibonacciGenerator();
 
-            Assert.AreEqual(fibonacciNumber, Fibonacci.FibonacciIndexChecker(index));
+            Assert.AreEqual(fibonacciNumber, fibonacci.FibonacciIndexChecker(index));
         }
     }
 }

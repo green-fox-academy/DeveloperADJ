@@ -29,7 +29,7 @@ namespace Pirate
         public static void ContinueAndClear()
         {
             Console.Write("Press enter to continue..");
-            Console.Read();
+            Console.ReadLine();
             Console.Clear();
         }
     }

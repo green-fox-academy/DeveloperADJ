@@ -2,13 +2,15 @@
 Welcome to Arno's Green Fox Academy Page!
 ==========================================================================
 
-Hi, my name is Arno de Jonge. I am a Software Developer from Amsterdam, The Netherlands.
+Hi, my name is Arno de Jonge. I am an Audio Engineer/Software Developer from Amsterdam, The Netherlands.
 
-Below you can find a list of assignments I have worked on during Green Fox Academy:
+This is my class' syllabus: https://github.com/greenfox-academy/pebble-syllabus/wiki
+
+Below you can find a list of corresponding assignments I have been working on during Green Fox Academy:
 
 * [Week 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01): HTML and CSS
    * [Day 1](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-1): Team building</br>
-   * [Day 2](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-2/): Introduction, internet basics, Your first website </br>
+   * [Day 2](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-2/): Introduction, internet basics, Your first website</br>
    * [Day 3](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-3): GIT, CLI, Pseudo, Computer basics </br>
    * [Day 4](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-4): Expressions and Control flow, Internet advanced </br>
    * [Day 5](https://github.com/greenfox-academy/DeveloperADJ/tree/master/week-01/day-5): Expressions and Control flow, Computer advanced </br>
