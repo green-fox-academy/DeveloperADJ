@@ -34,7 +34,7 @@ namespace Wanderer_Game
             player = new Player(canvas);
             graphics = new Graphics(foxDraw, canvas, player);
 
-            graphics.DrawEnvironment();
+            graphics.DrawLevel();
             graphics.DrawPlayer();
         }
 
@@ -68,7 +68,7 @@ namespace Wanderer_Game
         public void Refresh()
         {
             canvas.Children.Clear();
-            graphics.DrawEnvironment();
+            graphics.DrawLevel();
             graphics.DrawPlayer();
         }
     }

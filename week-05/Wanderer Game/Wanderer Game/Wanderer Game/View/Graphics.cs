@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GreenFox;
 using Wanderer_Game.Controller;
+using Wanderer_Game.Model;
 
 namespace Wanderer_Game.View
 {
@@ -17,37 +18,33 @@ namespace Wanderer_Game.View
         FoxDraw foxDraw;
         Canvas canvas;
         Player player;
+        double tileSize;
+
 
         public Graphics(FoxDraw foxDraw, Canvas canvas, Player player)
         {
             this.foxDraw = foxDraw;
             this.canvas = canvas;
             this.player = player;
+            this.tileSize = canvas.Width / 10;
         }
 
-        public void DrawEnvironment()
-        {
-            DrawTiles();
-        }
-
-        public void DrawTiles()
+        public void DrawLevel()
         {
             double xOffset = 0;
             double yOffset = 0;
 
-            for (int i = 0; i < 10; i++)
+            for (int y = 0; y < 10; y++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int x = 0; x < 10; x++)
                 {
-                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Tiles.tiles[i, j]);
-                    xOffset += canvas.Width / 10;
+                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Level.GetTileType(Level.one, y, x));
+                    xOffset += tileSize;
                 }
                 xOffset = 0;
-                yOffset += canvas.Height / 10;
+                yOffset += tileSize;
             }
         }
-
-        
 
         public void DrawPlayer()
         {
@@ -64,15 +61,15 @@ namespace Wanderer_Game.View
 
             if (tileType == 0)
             {
-                tileSprite.Source = new BitmapImage(new Uri("./Assets/floor.png", UriKind.RelativeOrAbsolute));
+                tileSprite.Source = new BitmapImage(new Uri(Assets.Images.floor, UriKind.RelativeOrAbsolute));
             }
             else
             {
-                tileSprite.Source = new BitmapImage(new Uri("./Assets/wall.png", UriKind.RelativeOrAbsolute));
+                tileSprite.Source = new BitmapImage(new Uri(Assets.Images.wall, UriKind.RelativeOrAbsolute));
             }
 
-            tileSprite.Width = canvas.Width / 10;
-            tileSprite.Height = canvas.Height / 10;
+            tileSprite.Width = tileSize;
+            tileSprite.Height = tileSize;
             foxDraw.AddImage(tileSprite, startPoint.X, startPoint.Y);
         }
     }

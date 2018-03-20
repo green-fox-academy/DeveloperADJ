@@ -54,9 +54,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Assets.cs" />
+    <Compile Include="Model\Floor.cs" />
+    <Compile Include="Model\Wall.cs" />
     <Compile Include="View\FoxDraw.cs" />
     <Compile Include="View\Graphics.cs" />
-    <Compile Include="View\Tiles.cs" />
+    <Compile Include="View\Level.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,7 +135,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\map.txt">
+    <Resource Include="Assets\level1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
