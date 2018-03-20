@@ -26,29 +26,31 @@ namespace Wanderer_Game
     {
         Graphics graphics;
         Player player;
+        Enemies enemies;
 
         public MainWindow()
         {
             InitializeComponent();
             FoxDraw foxDraw = new FoxDraw(canvas);
 
-            player = new Player(canvas, Assets.Images.heroDown);
-            Skeleton enemy = new Skeleton(canvas, Assets.Images.skeleton, 0, 7, 100, 100);
-            graphics = new Graphics(foxDraw, canvas);
+            enemies = new Enemies();
 
-            graphics.DrawLevel(Assets.TextFiles.level1);
-            graphics.DrawCharacter(enemy);
-            graphics.DrawCharacter(player);
+            graphics = new Graphics(canvas, foxDraw, enemies);
 
+            player = new Player(enemies, canvas, Images.heroDown);
             Characters.AddToList(player);
-            Characters.AddToList(enemy);
 
+            enemies.Add(new Enemy(player, canvas, Images.boss, 9, 9, true));
+            enemies.Add(new Enemy(player, canvas, Images.skeleton, 0, 5));
+            enemies.Add(new Enemy(player, canvas, Images.skeleton, 4, 3));
+            enemies.Add(new Enemy(player, canvas, Images.skeleton, 7, 8));
 
-            
+            graphics.Refresh();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.Key == Key.Left)
             {
                 player.Move("left");
@@ -72,8 +74,8 @@ namespace Wanderer_Game
                 player.Move("down");
                 graphics.Refresh();
             }
+
+            enemies.Move();
         }
-
-
     }
 }

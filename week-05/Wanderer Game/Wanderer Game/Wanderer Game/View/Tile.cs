@@ -8,11 +8,9 @@ using Wanderer_Game.Model;
 
 namespace Wanderer_Game.View
 {
-    class Level
+    class Tile
     {
         public static string[] tiles;
-
-        static char tileType;
 
         public static char GetTileType(string path, int y, int x)
         {
@@ -20,12 +18,10 @@ namespace Wanderer_Game.View
 
             try
             {
-                tileType = tiles[y][x];
-                return tileType;
+                return tiles[y][x];
             }
             catch (Exception)
             {
-
                 return '1';
             }
         }

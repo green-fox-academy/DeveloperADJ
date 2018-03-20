@@ -54,14 +54,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Assets.cs" />
+    <Compile Include="Model\Enemies.cs" />
+    <Compile Include="Model\Images.cs" />
     <Compile Include="Model\Characters.cs" />
     <Compile Include="Model\Floor.cs" />
-    <Compile Include="Model\GameSetup.cs" />
+    <Compile Include="Model\Levels.cs" />
     <Compile Include="Model\Wall.cs" />
     <Compile Include="View\FoxDraw.cs" />
     <Compile Include="View\Graphics.cs" />
-    <Compile Include="View\Level.cs" />
+    <Compile Include="View\Tile.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,7 +72,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Character.cs" />
-    <Compile Include="Model\Skeleton.cs" />
+    <Compile Include="Model\Enemy.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -108,36 +109,36 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\boss.png">
+    <Resource Include="Assets\Images\boss.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\floor-map.png">
+    <Resource Include="Assets\Images\floor-map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\floor.png">
+    <Resource Include="Assets\Images\floor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\hero-down.png">
+    <Resource Include="Assets\Images\hero-down.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\hero-left.png">
+    <Resource Include="Assets\Images\hero-left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\hero-right.png">
+    <Resource Include="Assets\Images\hero-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\hero-up.png">
+    <Resource Include="Assets\Images\hero-up.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\skeleton.png">
+    <Resource Include="Assets\Images\skeleton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\wall.png">
+    <Resource Include="Assets\Images\wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\level1.txt">
+    <Resource Include="Assets\Levels\level1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

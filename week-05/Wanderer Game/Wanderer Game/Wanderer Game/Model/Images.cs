@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Wanderer_Game.Model
 {
-    public static class Assets
+    public static class Images
     {
 
-        static private string assetsFolder = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\";
+        static private string assetsFolder = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\";
 
-        public static class Images {
             public static string boss = assetsFolder + "boss.png";
             public static string floor = assetsFolder + "floor.png";
             public static string heroDown = assetsFolder + "hero-down.png";
@@ -20,11 +19,5 @@ namespace Wanderer_Game.Model
             public static string heroUp = assetsFolder + "hero-up.png";
             public static string skeleton = assetsFolder + "skeleton.png";
             public static string wall = assetsFolder + "wall.png";
-        }
-
-        public static class TextFiles {
-            public static string level1 = assetsFolder + "level1.txt";
-        }
-
     }
 }

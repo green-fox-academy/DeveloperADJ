@@ -17,15 +17,13 @@ namespace Wanderer_Game.View
     {
         FoxDraw foxDraw;
         Canvas canvas;
-        private static double tileSize;
-        private static double canvasSize;
+        Enemies enemies;
 
-        public Graphics(FoxDraw foxDraw, Canvas canvas)
+        public Graphics(Canvas canvas, FoxDraw foxDraw, Enemies enemies)
         {
-            this.foxDraw = foxDraw;
             this.canvas = canvas;
-            tileSize = canvas.Width / 10;
-            canvasSize = canvas.Width;
+            this.foxDraw = foxDraw;
+            this.enemies = enemies;
         }
 
         public void DrawLevel(string level)
@@ -37,41 +35,36 @@ namespace Wanderer_Game.View
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Level.GetTileType(level, y, x));
-                    xOffset += tileSize;
+                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Tile.GetTileType(Levels.level1, y, x));
+                    xOffset += canvas.Width / 10;
                 }
                 xOffset = 0;
-                yOffset += tileSize;
+                yOffset += canvas.Width / 10;
             }
         }
 
         public void Refresh()
         {
             canvas.Children.Clear();
-            DrawLevel(Assets.TextFiles.level1);
+            DrawLevel(Levels.level1);
 
             foreach (var character in Characters.GetList())
             {
                 DrawCharacter(character);
             }
-        }
 
-        public static double GetTileSize()
-        {
-            return tileSize;
-        }
-
-        internal static double GetCanvasSize()
-        {
-            return canvasSize;
+            foreach (var enemy in enemies.GetList())
+            {
+                DrawCharacter(enemy);
+            }
         }
 
         public void DrawCharacter(Character character)
         {
             Image characterImage = new Image();
             characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
-            characterImage.Width = tileSize;
-            characterImage.Height = tileSize;
+            characterImage.Width = canvas.Width / 10;
+            characterImage.Height = canvas.Width / 10;
             foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y);
         }
 
@@ -81,15 +74,15 @@ namespace Wanderer_Game.View
 
             if (tileType == '0')
             {
-                tileImage.Source = new BitmapImage(new Uri(Assets.Images.floor, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Images.floor, UriKind.RelativeOrAbsolute));
             }
             else
             {
-                tileImage.Source = new BitmapImage(new Uri(Assets.Images.wall, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Images.wall, UriKind.RelativeOrAbsolute));
             }
 
-            tileImage.Width = tileSize;
-            tileImage.Height = tileSize;
+            tileImage.Width = canvas.Width / 10;
+            tileImage.Height = canvas.Width / 10;
             foxDraw.AddImage(tileImage, startPoint.X, startPoint.Y);
         }
     }
