@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GreenFox;
 using Wanderer_Game.Controller;
+using Wanderer_Game.Model;
 using Wanderer_Game.View;
 
 namespace Wanderer_Game
@@ -23,7 +24,6 @@ namespace Wanderer_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-
         Graphics graphics;
         Player player;
 
@@ -31,11 +31,20 @@ namespace Wanderer_Game
         {
             InitializeComponent();
             FoxDraw foxDraw = new FoxDraw(canvas);
-            player = new Player(canvas);
-            graphics = new Graphics(foxDraw, canvas, player);
 
-            graphics.DrawLevel();
-            graphics.DrawPlayer();
+            player = new Player(canvas, Assets.Images.heroDown);
+            Skeleton enemy = new Skeleton(canvas, Assets.Images.skeleton, 0, 7, 100, 100);
+            graphics = new Graphics(foxDraw, canvas);
+
+            graphics.DrawLevel(Assets.TextFiles.level1);
+            graphics.DrawCharacter(enemy);
+            graphics.DrawCharacter(player);
+
+            Characters.AddToList(player);
+            Characters.AddToList(enemy);
+
+
+            
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -43,33 +52,28 @@ namespace Wanderer_Game
             if (e.Key == Key.Left)
             {
                 player.Move("left");
-                Refresh();
+                graphics.Refresh();
             }
 
             if (e.Key == Key.Right)
             {
                 player.Move("right");
-                Refresh();
+                graphics.Refresh();
             }
 
             if (e.Key == Key.Up)
             {
                 player.Move("up");
-                Refresh();
+                graphics.Refresh();
             }
 
             if (e.Key == Key.Down)
             {
                 player.Move("down");
-                Refresh();
+                graphics.Refresh();
             }
         }
 
-        public void Refresh()
-        {
-            canvas.Children.Clear();
-            graphics.DrawLevel();
-            graphics.DrawPlayer();
-        }
+
     }
 }

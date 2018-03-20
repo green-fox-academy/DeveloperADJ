@@ -10,33 +10,24 @@ namespace Wanderer_Game.View
 {
     class Level
     {
-        //public static int[,] tiles = {
-        //    {0,0,0,1,0,1,0,0,0,0},
-        //    {0,0,0,1,0,1,0,1,1,0},
-        //    {0,1,1,1,0,1,0,1,1,0},
-        //    {0,0,0,0,0,0,0,0,0,0},
-        //    {1,1,1,1,0,1,1,1,1,0},
-        //    {0,1,0,1,0,0,0,0,1,0},
-        //    {0,1,0,1,0,1,1,0,1,0},
-        //    {0,0,0,0,0,1,1,0,1,0},
-        //    {0,1,1,1,0,0,0,0,1,0},
-        //    {0,0,0,1,0,1,1,0,1,0}
-        //};
-
         public static string[] tiles;
 
-        void FileToMultiDimensionalArray()
-        {
+        static char tileType;
 
-        }
-
-        public static int GetTileType(string path, int i, int j)
+        public static char GetTileType(string path, int y, int x)
         {
             tiles = File.ReadAllLines(path);
 
-            return tiles[i][j];
-        }
+            try
+            {
+                tileType = tiles[y][x];
+                return tileType;
+            }
+            catch (Exception)
+            {
 
-        public static string one = Assets.TextFiles.level1;
+                return '1';
+            }
+        }
     }
 }

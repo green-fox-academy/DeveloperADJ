@@ -17,19 +17,18 @@ namespace Wanderer_Game.View
     {
         FoxDraw foxDraw;
         Canvas canvas;
-        Player player;
-        double tileSize;
+        private static double tileSize;
+        private static double canvasSize;
 
-
-        public Graphics(FoxDraw foxDraw, Canvas canvas, Player player)
+        public Graphics(FoxDraw foxDraw, Canvas canvas)
         {
             this.foxDraw = foxDraw;
             this.canvas = canvas;
-            this.player = player;
-            this.tileSize = canvas.Width / 10;
+            tileSize = canvas.Width / 10;
+            canvasSize = canvas.Width;
         }
 
-        public void DrawLevel()
+        public void DrawLevel(string level)
         {
             double xOffset = 0;
             double yOffset = 0;
@@ -38,7 +37,7 @@ namespace Wanderer_Game.View
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Level.GetTileType(Level.one, y, x));
+                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Level.GetTileType(level, y, x));
                     xOffset += tileSize;
                 }
                 xOffset = 0;
@@ -46,31 +45,52 @@ namespace Wanderer_Game.View
             }
         }
 
-        public void DrawPlayer()
+        public void Refresh()
         {
-            Image playerSprite = new Image();
-            playerSprite.Source = new BitmapImage(new Uri(player.GetImage(), UriKind.RelativeOrAbsolute));
-            playerSprite.Width = canvas.Width / 10;
-            playerSprite.Height = canvas.Height / 10;
-            foxDraw.AddImage(playerSprite, player.GetPosition().X, player.GetPosition().Y);
+            canvas.Children.Clear();
+            DrawLevel(Assets.TextFiles.level1);
+
+            foreach (var character in Characters.GetList())
+            {
+                DrawCharacter(character);
+            }
         }
 
-        public void DrawTile(Point startPoint, int tileType)
+        public static double GetTileSize()
         {
-            Image tileSprite = new Image();
+            return tileSize;
+        }
 
-            if (tileType == 0)
+        internal static double GetCanvasSize()
+        {
+            return canvasSize;
+        }
+
+        public void DrawCharacter(Character character)
+        {
+            Image characterImage = new Image();
+            characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
+            characterImage.Width = tileSize;
+            characterImage.Height = tileSize;
+            foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y);
+        }
+
+        public void DrawTile(Point startPoint, char tileType)
+        {
+            Image tileImage = new Image();
+
+            if (tileType == '0')
             {
-                tileSprite.Source = new BitmapImage(new Uri(Assets.Images.floor, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Assets.Images.floor, UriKind.RelativeOrAbsolute));
             }
             else
             {
-                tileSprite.Source = new BitmapImage(new Uri(Assets.Images.wall, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Assets.Images.wall, UriKind.RelativeOrAbsolute));
             }
 
-            tileSprite.Width = tileSize;
-            tileSprite.Height = tileSize;
-            foxDraw.AddImage(tileSprite, startPoint.X, startPoint.Y);
+            tileImage.Width = tileSize;
+            tileImage.Height = tileSize;
+            foxDraw.AddImage(tileImage, startPoint.X, startPoint.Y);
         }
     }
 }
