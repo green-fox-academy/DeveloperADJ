@@ -9,18 +9,19 @@ using Wanderer_Game.Controller;
 
 namespace Wanderer_Game.Model
 {
-    public class Text
+    public class Status
     {
         Canvas canvas;
-        public TextBlock text;
+        public TextBlock content;
 
-        public Text(Canvas canvas, Player player)
+        public Status(Canvas canvas)
         {
             this.canvas = canvas;
-            text = new TextBlock
+            content = new TextBlock
             {
                 Text = "",
-                Foreground = Brushes.White
+                Foreground = Brushes.White,
+                FontSize = 15
             };
         }
     }

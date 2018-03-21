@@ -13,39 +13,19 @@ namespace Wanderer_Game.Controller
     {
         Player player;
 
-        public Enemy(Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int attack = 2, int defense = 0) : base(canvas, image, gridPositionX, gridPositionY, attack, defense)
+        public Enemy(string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 10, int maxHP = 10, int attack = 2, int defense = 0) : base(name, canvas, image, gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
         {
+            this.name = name;
             this.player = player;
             this.canvas = canvas;
             this.image = isBoss ? Images.boss : Images.skeleton;
             this.gridPositionX = gridPositionX;
             this.gridPositionY = gridPositionY;
+            this.currentHP = currentHP;
+            this.maxHP = maxHP;
             this.attack = attack;
             this.defense = defense;
         }
-
-        //public void Fight()
-        //{
-        //    for (int i = 0; i < enemies.GetList().Count; i++)
-        //    {
-        //        if (enemies.GetList()[i].GetPosition() == this.GetPosition())
-        //        {
-        //            enemies.GetList().RemoveAt(i);
-        //        }
-        //    }
-        //}
-
-        //public bool EnemyPresent()
-        //{
-        //    for (int i = 0; i < enemies.GetList().Count; i++)
-        //    {
-        //        if (enemies.GetList()[i].GetPosition() == this.GetPosition())
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
 
         public void Move(int number)
         {

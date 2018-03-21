@@ -18,10 +18,10 @@ namespace Wanderer_Game.View
         FoxDraw foxDraw;
         Canvas canvas;
         Enemies enemies;
-        Text Stats;
+        Status Stats;
         Player player;
 
-        public Graphics(Canvas canvas, FoxDraw foxDraw, Enemies enemies, Text Stats, Player player)
+        public Graphics(Canvas canvas, FoxDraw foxDraw, Enemies enemies, Status Stats, Player player)
         {
             this.canvas = canvas;
             this.foxDraw = foxDraw;
@@ -50,19 +50,22 @@ namespace Wanderer_Game.View
         public void Refresh()
         {
             canvas.Children.Clear();
-            DrawLevel(Levels.level1);
 
-            foreach (var character in Characters.GetList())
+            if (!player.isDead)
             {
-                DrawCharacter(character);
-            }
+                DrawLevel(Levels.level1);
 
-            foreach (var enemy in enemies.GetList())
-            {
-                DrawCharacter(enemy);
-            }
+                foreach (var character in Characters.GetList())
+                {
+                    DrawCharacter(character);
+                }
 
-            DrawStats();
+                foreach (var enemy in enemies.GetList())
+                {
+                    DrawCharacter(enemy);
+                }
+            }
+                DrawStats();
         }
 
         public void DrawCharacter(Character character)
@@ -94,9 +97,8 @@ namespace Wanderer_Game.View
 
         public void DrawStats()
         {
-            Stats.text.Text = $"Hero (Level {player.level}) HP: {player.currentHP}/{player.maxHP} | DP: {player.defense} | SP: {player.attack}";
-            canvas.Children.Add(Stats.text);
-            Canvas.SetTop(Stats.text, canvas.Width);
+            canvas.Children.Add(Stats.content);
+            Canvas.SetTop(Stats.content, canvas.Width);
         }
 
     }

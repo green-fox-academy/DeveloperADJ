@@ -60,7 +60,7 @@
     <Compile Include="Model\Characters.cs" />
     <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\Levels.cs" />
-    <Compile Include="Model\Text.cs" />
+    <Compile Include="Model\Stats.cs" />
     <Compile Include="Model\Wall.cs" />
     <Compile Include="View\FoxDraw.cs" />
     <Compile Include="View\Graphics.cs" />

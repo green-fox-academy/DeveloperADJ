@@ -22,11 +22,17 @@ namespace Wanderer_Game
 
         protected Canvas canvas;
 
+        public int currentHP;
+        public int maxHP;
+
         public int attack;
         public int defense;
+        public string name;
 
-        public Character(Canvas canvas, string image, int gridPositionX, int gridPositionY, int attack, int defense)
+        public Character(string name, Canvas canvas, string image, int gridPositionX, int gridPositionY, int currentHP, int maximumHP, int attack, int defense)
         {
+            this.name = name;
+
             this.positionX = gridPositionX * (canvas.Width / 10);
             this.positionY = gridPositionY * (canvas.Width / 10);
 
