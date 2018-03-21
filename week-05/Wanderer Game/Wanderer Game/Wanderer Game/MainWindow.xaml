@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wanderer_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800" KeyDown="WindowKeyDown">
+        Title="MainWindow" KeyDown="WindowKeyDown">
     <Grid>
-        <Canvas Name="canvas" Height="800" Width="800"/>
+        <Canvas Background="Black" Name="canvas"/>
     </Grid>
 </Window>

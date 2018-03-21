@@ -13,13 +13,15 @@ namespace Wanderer_Game.Controller
     {
         Player player;
 
-        public Enemy(Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false) : base(canvas, image, gridPositionX, gridPositionY)
+        public Enemy(Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int attack = 2, int defense = 0) : base(canvas, image, gridPositionX, gridPositionY, attack, defense)
         {
             this.player = player;
             this.canvas = canvas;
             this.image = isBoss ? Images.boss : Images.skeleton;
             this.gridPositionX = gridPositionX;
             this.gridPositionY = gridPositionY;
+            this.attack = attack;
+            this.defense = defense;
         }
 
         //public void Fight()

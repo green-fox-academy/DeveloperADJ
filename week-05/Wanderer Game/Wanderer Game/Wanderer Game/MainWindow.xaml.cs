@@ -27,18 +27,25 @@ namespace Wanderer_Game
         Graphics graphics;
         Player player;
         Enemies enemies;
+        GameSetup gameSetup;
+        Text text;
 
         public MainWindow()
         {
             InitializeComponent();
             FoxDraw foxDraw = new FoxDraw(canvas);
 
+            gameSetup = new GameSetup(canvas, 300);
+
             enemies = new Enemies();
-
-            graphics = new Graphics(canvas, foxDraw, enemies);
-
             player = new Player(enemies, canvas, Images.heroDown);
+
+            text = new Text(canvas, player);
+
+            graphics = new Graphics(canvas, foxDraw, enemies, text, player);
+
             Characters.AddToList(player);
+
 
             enemies.Add(new Enemy(player, canvas, Images.boss, 9, 9, true));
             enemies.Add(new Enemy(player, canvas, Images.skeleton, 0, 5));
