@@ -92,17 +92,21 @@ namespace Wanderer_Game
             {
                 if (e.Key == Key.Space)
                 {
-                    if (!player.isDead && player.isInBattle)
+                    player.Spacebar();
+
+                    if (player.targetEnemy.currentHP < 1)
                     {
-                        player.isInBattle = false;
+                        graphics.Refresh();
                         HUD.playerStatus.Text = player.GetStatus();
-                    }
-                    else
-                    {
-                        HUD.playerStatus.Text = "GAME OVER\nStats:\n " + player.GetStatus();
+                        HUD.playerBattle.Text = "";
+                        HUD.enemyBattle.Text = "";
+                        HUD.enemyStatus.Text = "";
                     }
 
-                    graphics.Refresh();
+                    if (player.CurrentHP < 1)
+                    {
+                        graphics.GameOverScreen();
+                    }
                 }
             }
         }

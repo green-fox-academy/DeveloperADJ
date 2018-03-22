@@ -83,7 +83,7 @@ namespace Wanderer_Game.View
             }
         }
 
-        private void GameOverScreen()
+        public void GameOverScreen()
         {
             canvas.Children.Clear();
             DisplayGameOverScreen();
@@ -142,7 +142,6 @@ namespace Wanderer_Game.View
 
             Canvas.SetTop(hud.playerStatus, canvas.Width);
             Canvas.SetTop(hud.enemyStatus, canvas.Width);
-
             Canvas.SetLeft(hud.enemyStatus, canvas.Width / 2);
         }
 
@@ -150,11 +149,15 @@ namespace Wanderer_Game.View
 
         public void DisplayBattleLog()
         {
+            double fontSize = hud.enemyBattle.FontSize;
+
             canvas.Children.Add(hud.playerBattle);
             canvas.Children.Add(hud.enemyBattle);
 
-            Canvas.SetTop(hud.playerBattle, canvas.Width);
-            Canvas.SetTop(hud.enemyBattle, canvas.Width);
+            Canvas.SetTop(hud.playerBattle, canvas.Width + fontSize*2);
+
+            Canvas.SetTop(hud.enemyBattle, canvas.Width + fontSize*3);
+            Canvas.SetLeft(hud.enemyBattle, canvas.Width/2);
         }
 
         public void BattleScreen()
