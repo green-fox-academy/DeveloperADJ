@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace Wanderer_Game.Model
+{
+    public class NorbiText
+    {
+
+        public static TextBlock text = new TextBlock
+        {
+            Text = "HELLO NORBI"
+        };
+
+
+
+
+    }
+}

@@ -19,5 +19,7 @@ namespace Wanderer_Game.Model
             public static string heroUp = assetsFolder + "hero-up.png";
             public static string skeleton = assetsFolder + "skeleton.png";
             public static string wall = assetsFolder + "wall.png";
+            public static string battleScreen = assetsFolder + "battle-screen.png";
+
     }
 }

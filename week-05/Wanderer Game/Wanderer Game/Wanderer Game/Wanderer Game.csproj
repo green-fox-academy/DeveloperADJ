@@ -58,10 +58,8 @@
     <Compile Include="Model\GameSetup.cs" />
     <Compile Include="Model\Images.cs" />
     <Compile Include="Model\Characters.cs" />
-    <Compile Include="Model\Floor.cs" />
     <Compile Include="Model\Levels.cs" />
-    <Compile Include="Model\Stats.cs" />
-    <Compile Include="Model\Wall.cs" />
+    <Compile Include="Model\HUD.cs" />
     <Compile Include="View\FoxDraw.cs" />
     <Compile Include="View\Graphics.cs" />
     <Compile Include="View\Tile.cs" />
@@ -143,6 +141,9 @@
     <Resource Include="Assets\Levels\level1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\battle-screen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
