@@ -84,6 +84,7 @@ namespace Wanderer_Game.View
             else
             {
                 GameOverScreen();
+                Sound.PlaySoundEffect(Sounds.gameOver);
             }
         }
 

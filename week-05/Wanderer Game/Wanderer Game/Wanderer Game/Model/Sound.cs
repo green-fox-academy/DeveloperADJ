@@ -12,17 +12,18 @@ namespace Wanderer_Game.Model
     {
         static MediaPlayer musicPlayer = new MediaPlayer();
         
-        static SoundPlayer AttackSoundPlayer = new SoundPlayer(@"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\386862__freezefast65__8-bit-explosion.wav");
+        static MediaPlayer effectsPlayer = new MediaPlayer();
 
-        public static void PlayMusic()
+        public static void PlayMusic(string musicFile)
         {
-            musicPlayer.Open(new Uri(@"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\273539__tristan-lohengrin__8bit-introduction.wav"));
+            musicPlayer.Open(new Uri(musicFile));
             musicPlayer.Play();
         }
 
-        public static void PlaySoundEffect()
+        public static void PlaySoundEffect(string soundFile)
         {
-            AttackSoundPlayer.Play();
+            effectsPlayer.Open(new Uri(soundFile));
+            effectsPlayer.Play();
         }
 
     }

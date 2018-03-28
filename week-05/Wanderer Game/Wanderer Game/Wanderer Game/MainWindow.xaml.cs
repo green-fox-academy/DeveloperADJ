@@ -49,8 +49,9 @@ namespace Wanderer_Game
             enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
+
             graphics.Refresh();
-            Sound.PlayMusic();
+            Sound.PlayMusic(Sounds.mapMusic);
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -93,7 +94,6 @@ namespace Wanderer_Game
                 if (e.Key == Key.Q)
                 {
                     player.PerformBasicAttack();
-                    Sound.PlaySoundEffect();
                     if (player.targetEnemy.currentHP < 1)
                     {   
                         graphics.RefreshWithDelay(2000);
@@ -107,25 +107,7 @@ namespace Wanderer_Game
                     if (player.CurrentHealth < 1)
                     {
                         graphics.GameOverScreen();
-                    }
-                }
-
-                if (e.Key == Key.W)
-                {
-                    player.PerformBasicAttack();
-
-                    if (player.targetEnemy.currentHP < 1)
-                    {
-                        graphics.Refresh();
-                        headsUpDisplay.playerStatus.Text = player.GetPlayerStats();
-                        headsUpDisplay.playerBattle.Text = "";
-                        headsUpDisplay.enemyBattle.Text = "";
-                        headsUpDisplay.enemyStatus.Text = "";
-                    }
-
-                    if (player.CurrentHealth < 1)
-                    {
-                        graphics.GameOverScreen();
+                        Sound.PlayMusic(Sounds.gameOver);
                     }
                 }
             }

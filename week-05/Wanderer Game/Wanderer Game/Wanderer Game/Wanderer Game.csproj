@@ -55,12 +55,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Enemies.cs" />
+    <Compile Include="Model\GameLogic.cs" />
     <Compile Include="Model\GameSetup.cs" />
     <Compile Include="Model\Images.cs" />
     <Compile Include="Model\Characters.cs" />
     <Compile Include="Model\Levels.cs" />
     <Compile Include="Model\HUD.cs" />
     <Compile Include="Model\Sound.cs" />
+    <Compile Include="Model\Sounds.cs" />
     <Compile Include="View\FoxDraw.cs" />
     <Compile Include="View\Graphics.cs" />
     <Compile Include="View\Tile.cs" />
@@ -149,6 +151,9 @@
   <ItemGroup>
     <Content Include="Assets\Sound\273539__tristan-lohengrin__8bit-introduction.wav" />
     <Content Include="Assets\Sound\386862__freezefast65__8-bit-explosion.wav" />
+    <Content Include="Assets\Sound\98382__the-baron__17-evil-laugh.wav" />
+    <Content Include="Assets\Sound\Battle-Music.wav" />
+    <Content Include="Assets\Sound\Boss-music.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

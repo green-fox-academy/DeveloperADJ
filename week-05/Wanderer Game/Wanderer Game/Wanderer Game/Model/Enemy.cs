@@ -12,7 +12,7 @@ namespace Wanderer_Game.Controller
     public class Enemy : Character
     {
         Player player;
-        public bool isBoss;
+        public bool isBoss = false;
         public Enemy(string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 10, int maxHP = 10, int attack = 2, int defense = 0) : base(name, canvas, image, gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
         {
             this.name = name;
@@ -20,7 +20,7 @@ namespace Wanderer_Game.Controller
             this.canvas = canvas;
             this.image = isBoss ? Images.boss : Images.skeleton;
             this.gridPositionX = gridPositionX;
-            this.gridPositionY = gridPositionY;
+            this.gridPositionY = gridPositionY; 
             this.currentHP = currentHP;
             this.maxHP = maxHP;
             this.attack = attack;

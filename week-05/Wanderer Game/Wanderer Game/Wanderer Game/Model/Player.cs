@@ -18,7 +18,10 @@ namespace Wanderer_Game.Controller
 
         public int level;
         public bool isDead;
-        public bool isInBattle;
+        public bool isInBattle = false;
+        public bool IsInBattle { get { return isInBattle; } set {
+
+            } }
         public bool spaceIsPressed;
         public Enemy targetEnemy;
         public HeadsUpDisplay headsUpDisplay;
@@ -69,6 +72,8 @@ namespace Wanderer_Game.Controller
         public void EnterBattle()
         {
             SetIsInBattle(true);
+
+            
             TargetTheEnemy();
         }
 
@@ -81,6 +86,15 @@ namespace Wanderer_Game.Controller
                     targetEnemy = enemies.GetList()[i];
                 }
             }
+
+            if (targetEnemy.isBoss == true)
+            {
+                Sound.PlayMusic(Sounds.bossBattleMusic);
+            }
+            else
+            {
+                Sound.PlayMusic(Sounds.battleMusic);
+            }
         }
 
         public async void EnemyTurn(int milliSeconds)
@@ -90,6 +104,7 @@ namespace Wanderer_Game.Controller
             if (targetEnemy.currentHP > 0)
             {
                 TakeDamageFrom(targetEnemy);
+                Sound.PlaySoundEffect(Sounds.attack);
                 headsUpDisplay.enemyBattle.Text += $"\n{targetEnemy.name} deals {targetEnemy.attack} DMG!\n";
             }
             waitingForEnemy = false;
@@ -99,7 +114,7 @@ namespace Wanderer_Game.Controller
         {
             if (!waitingForEnemy)
             {
-                PlayerTurn();
+                PlayerTurn(); 
 
                 EnemyTurn(1000);
 
@@ -122,6 +137,15 @@ namespace Wanderer_Game.Controller
         private void SetIsInBattle(bool state)
         {
             isInBattle = state;
+
+            if (IsInBattle)
+            {
+                Sound.PlayMusic(Sounds.battleMusic);
+            }
+            else
+            {
+                Sound.PlayMusic(Sounds.mapMusic);
+            }
         }
 
         internal void PerformBasicAttack()
@@ -130,6 +154,7 @@ namespace Wanderer_Game.Controller
             {
                 headsUpDisplay.playerStatus.Text = GetPlayerStats();
                 PerformAttackRound();
+                Sound.PlaySoundEffect(Sounds.attack);
             }
             else
             {
