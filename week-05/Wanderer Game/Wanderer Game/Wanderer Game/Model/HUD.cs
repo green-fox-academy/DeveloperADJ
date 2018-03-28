@@ -10,7 +10,7 @@ using Wanderer_Game.Controller;
 
 namespace Wanderer_Game.Model
 {
-    public class HUD
+    public class HeadsUpDisplay
     {
         Canvas canvas;
         public TextBlock playerStatus;
@@ -19,7 +19,7 @@ namespace Wanderer_Game.Model
         public TextBlock enemyBattle;
         internal UIElement gameOver;
 
-        public HUD(Canvas canvas)
+        public HeadsUpDisplay(Canvas canvas)
         {
             this.canvas = canvas;
             playerStatus = new TextBlock

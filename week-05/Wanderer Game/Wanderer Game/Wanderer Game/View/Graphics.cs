@@ -18,16 +18,16 @@ namespace Wanderer_Game.View
         FoxDraw foxDraw;
         Canvas canvas;
         Enemies enemies;
-        HUD hud;
+        HeadsUpDisplay headsUpDisplay;
         Player player;
         double tileSize;
 
-        public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HUD hud, Player player)
+        public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HeadsUpDisplay hud, Player player)
         {
             this.canvas = canvas;
             this.foxDraw = foxDraw;
             this.enemies = enemies;
-            this.hud = hud;
+            this.headsUpDisplay = hud;
             this.player = player;
             tileSize = canvas.Width / 10;
         }
@@ -91,9 +91,9 @@ namespace Wanderer_Game.View
 
         private void DisplayGameOverScreen()
         {
-            canvas.Children.Add(hud.gameOver);
-            Canvas.SetTop(hud.gameOver, canvas.Width / 2);
-            Canvas.SetLeft(hud.gameOver, canvas.Width / 2 - canvas.Width / 4);
+            canvas.Children.Add(headsUpDisplay.gameOver);
+            Canvas.SetTop(headsUpDisplay.gameOver, canvas.Width / 2);
+            Canvas.SetLeft(headsUpDisplay.gameOver, canvas.Width / 2 - canvas.Width / 4);
 
         }
 
@@ -137,27 +137,27 @@ namespace Wanderer_Game.View
 
         public void DisplayStatus()
         {
-            canvas.Children.Add(hud.playerStatus);
-            canvas.Children.Add(hud.enemyStatus);
+            canvas.Children.Add(headsUpDisplay.playerStatus);
+            canvas.Children.Add(headsUpDisplay.enemyStatus);
 
-            Canvas.SetTop(hud.playerStatus, canvas.Width);
-            Canvas.SetTop(hud.enemyStatus, canvas.Width);
-            Canvas.SetLeft(hud.enemyStatus, canvas.Width / 2);
+            Canvas.SetTop(headsUpDisplay.playerStatus, canvas.Width);
+            Canvas.SetTop(headsUpDisplay.enemyStatus, canvas.Width);
+            Canvas.SetLeft(headsUpDisplay.enemyStatus, canvas.Width / 2);
         }
 
 
 
         public void DisplayBattleLog()
         {
-            double fontSize = hud.enemyBattle.FontSize;
+            double fontSize = headsUpDisplay.enemyBattle.FontSize;
 
-            canvas.Children.Add(hud.playerBattle);
-            canvas.Children.Add(hud.enemyBattle);
+            canvas.Children.Add(headsUpDisplay.playerBattle);
+            canvas.Children.Add(headsUpDisplay.enemyBattle);
 
-            Canvas.SetTop(hud.playerBattle, canvas.Width + fontSize*2);
+            Canvas.SetTop(headsUpDisplay.playerBattle, canvas.Width + fontSize*2);
 
-            Canvas.SetTop(hud.enemyBattle, canvas.Width + fontSize*3);
-            Canvas.SetLeft(hud.enemyBattle, canvas.Width/2);
+            Canvas.SetTop(headsUpDisplay.enemyBattle, canvas.Width + fontSize*3);
+            Canvas.SetLeft(headsUpDisplay.enemyBattle, canvas.Width/2);
         }
 
         public void BattleScreen()

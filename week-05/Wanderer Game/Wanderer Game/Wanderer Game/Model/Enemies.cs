@@ -10,6 +10,7 @@ namespace Wanderer_Game.Model
     public class Enemies
     {
         static List<Enemy> enemies = new List<Enemy>();
+        Random random = new Random();
 
         public void Add(Enemy enemy)
         {
@@ -20,7 +21,6 @@ namespace Wanderer_Game.Model
         {
             foreach (var enemy in enemies)
             {
-                Random random = new Random();
                 int randomNumber = random.Next(0,4);
                 enemy.Move(randomNumber);
             }

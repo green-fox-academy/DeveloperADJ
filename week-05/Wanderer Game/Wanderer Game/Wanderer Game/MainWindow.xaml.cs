@@ -28,7 +28,7 @@ namespace Wanderer_Game
         public Player player;
         Enemies enemies;
         GameSetup gameSetup;
-        HUD HUD;
+        HeadsUpDisplay HUD;
 
         int turnCount = 0;
 
@@ -39,7 +39,7 @@ namespace Wanderer_Game
 
             gameSetup = new GameSetup(canvas, 500);
             enemies = new Enemies();
-            HUD = new HUD(canvas);
+            HUD = new HeadsUpDisplay(canvas);
             player = new Player("Hero", HUD, enemies, canvas, Images.heroDown);
             graphics = new Draw(canvas, foxDraw, enemies, HUD, player);
 
@@ -90,9 +90,9 @@ namespace Wanderer_Game
             }
             else
             {
-                if (e.Key == Key.Space)
+                if (e.Key == Key.Q)
                 {
-                    player.Spacebar();
+                    player.PerformBasicAttack();
 
                     if (player.targetEnemy.currentHP < 1)
                     {
@@ -103,7 +103,26 @@ namespace Wanderer_Game
                         HUD.enemyStatus.Text = "";
                     }
 
-                    if (player.CurrentHP < 1)
+                    if (player.CurrentHealth < 1)
+                    {
+                        graphics.GameOverScreen();
+                    }
+                }
+
+                if (e.Key == Key.W)
+                {
+                    player.PerformBasicAttack();
+
+                    if (player.targetEnemy.currentHP < 1)
+                    {
+                        graphics.Refresh();
+                        HUD.playerStatus.Text = player.GetStatus();
+                        HUD.playerBattle.Text = "";
+                        HUD.enemyBattle.Text = "";
+                        HUD.enemyStatus.Text = "";
+                    }
+
+                    if (player.CurrentHealth < 1)
                     {
                         graphics.GameOverScreen();
                     }
