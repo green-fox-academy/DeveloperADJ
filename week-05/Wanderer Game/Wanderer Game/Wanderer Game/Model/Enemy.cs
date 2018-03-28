@@ -13,7 +13,7 @@ namespace Wanderer_Game.Controller
     {
         Player player;
         public bool isBoss = false;
-        public Enemy(string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 10, int maxHP = 10, int attack = 2, int defense = 0) : base(name, canvas, isBoss ? Images.boss : Images.skeleton, gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
+        public Enemy(string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 10, int maxHP = 10, int attack = 2, int defense = 0) : base(name, canvas, isBoss ? Images.boss[0] : Images.enemy[0], gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
         {
             this.name = name;
             this.player = player;
@@ -31,6 +31,7 @@ namespace Wanderer_Game.Controller
         {
             return $"\n{name}\n HP: {currentHealth}/{maximumHealth} | DP: {defense} | SP: {attack}\n";
         }
+
 
         public void Move(int number)
         {

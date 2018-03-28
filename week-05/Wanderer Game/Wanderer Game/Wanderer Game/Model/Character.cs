@@ -49,6 +49,11 @@ namespace Wanderer_Game
             this.defense = defense;
         }
 
+        public void SetImage(string file)
+        {
+            image = file;
+        }
+
         public Point GetPosition()
         {
             return new Point(positionX, positionY);

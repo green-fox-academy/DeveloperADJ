@@ -9,7 +9,7 @@ namespace Wanderer_Game.Model
 {
     public class Enemies
     {
-        static List<Enemy> enemies = new List<Enemy>();
+        public static List<Enemy> enemies = new List<Enemy>();
         Random random = new Random();
 
         public void Add(Enemy enemy)

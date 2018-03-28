@@ -46,7 +46,7 @@ namespace Wanderer_Game
 
             Characters.AddToList(player);
 
-            enemies.Add(new Enemy("Boss", player, canvas, Images.boss, 9, 9, true, 20, 20, 10));
+            enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
             enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
@@ -56,6 +56,7 @@ namespace Wanderer_Game
             graphics.Refresh();
             Sound.PlayMusic(Sounds.mapMusic);
             animator.AnimatePlayer();
+            animator.AnimateEnemy();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -63,7 +64,7 @@ namespace Wanderer_Game
             if (!player.isInBattle)
             {
                 turnCount++;
-
+                Sound.PlaySoundEffect(Sounds.walk);
                 player.wasMoving = true;
                 if (e.Key == Key.Left)
                 {
@@ -124,7 +125,8 @@ namespace Wanderer_Game
                     if (player.CurrentHealth < 1)
                     {
                         graphics.GameOverScreen();
-                        Sound.PlayMusic(Sounds.gameOver);
+                        Sound.PlaySoundEffect(Sounds.gameOver);
+                        Sound.PlayMusic(Sounds.gameOverMusic);
                     }
                 }
             }

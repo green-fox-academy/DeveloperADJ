@@ -22,6 +22,7 @@ namespace Wanderer_Game.View
         Player player;
         double tileSize;
 
+
         public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HeadsUpDisplay hud, Player player)
         {
             this.canvas = canvas;
@@ -71,12 +72,11 @@ namespace Wanderer_Game.View
                 }
                 else
                 {
-
-                    Character(player);
+                    Player(player);
 
                     foreach (var enemy in enemies.GetList())
                     {
-                        Character(enemy);
+                        Enemy(enemy);
                     }
                 }
                 DisplayStatus();
@@ -103,13 +103,23 @@ namespace Wanderer_Game.View
 
         }
 
-        public void Character(Character character)
+        public void Player(Character character)
         {
             Image characterImage = new Image();
             characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
             characterImage.Width = canvas.Width / 10;
             characterImage.Height = canvas.Width / 10;
             foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y);
+        }
+
+        public void Enemy(Enemy enemy)
+        {
+            Image characterImage = new Image();
+            characterImage.Source = new BitmapImage(new Uri(enemy.GetImage(), UriKind.RelativeOrAbsolute));
+
+            characterImage.Width = canvas.Width / 10;
+            characterImage.Height = canvas.Width / 10;
+            foxDraw.AddImage(characterImage, enemy.GetPosition().X, enemy.GetPosition().Y);
         }
 
         public void Tile(Point startPoint, char tileType)

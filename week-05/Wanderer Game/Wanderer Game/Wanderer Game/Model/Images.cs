@@ -11,7 +11,6 @@ namespace Wanderer_Game.Model
 
         static private string assetsFolder = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\";
 
-            public static string boss = assetsFolder + "boss.png";
             public static string floor = assetsFolder + "floor.png";
             public static string heroDown = assetsFolder + "hero-down.png";
             public static string heroLeft = assetsFolder + "hero-left.png";
@@ -64,6 +63,17 @@ namespace Wanderer_Game.Model
             @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\PlayerBattle\frame_3_delay-0.16s.gif",
             @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\PlayerBattle\frame_4_delay-0.16s.gif",
             @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\PlayerBattle\frame_5_delay-0.16s.gif",
+        };
+
+        public static string[] enemy = new string[] {
+            @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\Skeleton\frame_0_delay-0.17s.gif",
+            @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\Skeleton\frame_1_delay-0.17s.gif",
+            @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\Skeleton\frame_2_delay-0.17s.gif",
+            @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\Skeleton\frame_3_delay-0.17s.gif",
+        };
+
+        public static string[] boss = new string[] {
+            @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Images\boss.png"
         };
     }
 }

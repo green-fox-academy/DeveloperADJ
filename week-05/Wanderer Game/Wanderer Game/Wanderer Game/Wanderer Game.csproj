@@ -150,9 +150,23 @@
     <Resource Include="Assets\Images\battle-screen.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Images\Goblin\frame_0_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Goblin\frame_1_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Goblin\frame_2_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Goblin\frame_3_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Skeleton\frame_0_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Skeleton\frame_1_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Skeleton\frame_2_delay-0.17s.gif" />
+    <Resource Include="Assets\Images\Skeleton\frame_3_delay-0.17s.gif" />
+    <Content Include="Assets\Sound\01 - Ruined World.wav" />
+    <Content Include="Assets\Sound\05 - Zeal Palace.wav" />
+    <Content Include="Assets\Sound\11 - Black Omen.mp3" />
+    <Content Include="Assets\Sound\17 - Boss Battle 2.wav" />
     <Content Include="Assets\Sound\Ayla Kiss.wav" />
+    <Content Include="Assets\Sound\Collision.wav" />
     <Content Include="Assets\Sound\Crono Attack 1.wav" />
     <Content Include="Assets\Sound\Enemy Hit [High quality].wav" />
+    <Content Include="Assets\Sound\Evil Laugh.wav" />
     <Content Include="Assets\Sound\X Strike.wav" />
     <Resource Include="Assets\Images\PlayerDown\frame_0_delay-0.16s.gif" />
     <Resource Include="Assets\Images\PlayerDown\frame_1_delay-0.16s.gif" />
@@ -190,7 +204,6 @@
     <Content Include="Assets\Sound\18 - Boss Battle 1.wav" />
     <Content Include="Assets\Sound\273539__tristan-lohengrin__8bit-introduction.wav" />
     <Content Include="Assets\Sound\386862__freezefast65__8-bit-explosion.wav" />
-    <Content Include="Assets\Sound\98382__the-baron__17-evil-laugh.wav" />
     <Content Include="Assets\Sound\Battle-Music.wav" />
     <Content Include="Assets\Sound\Boss-music.wav" />
     <Content Include="Assets\Sound\Heal.wav" />

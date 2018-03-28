@@ -49,6 +49,47 @@ namespace Wanderer_Game.Model
 
             AnimatePlayer();
         }
+
+        public async void AnimateEnemy()
+        {
+            int timeBetweenFrames = 150;
+
+
+            for (int i = 0; i < Enemies.enemies.Count; i++)
+            {
+                if (!Enemies.enemies[i].isBoss)
+                {
+                    try
+                    {
+                        await Task.Delay(timeBetweenFrames);
+                        Enemies.enemies[i].SetImage(Images.enemy[0]);
+                        graphics.Refresh();
+
+                        await Task.Delay(timeBetweenFrames);
+                        Enemies.enemies[i].SetImage(Images.enemy[1]);
+                        graphics.Refresh();
+
+                        await Task.Delay(timeBetweenFrames);
+                        Enemies.enemies[i].SetImage(Images.enemy[2]);
+                        graphics.Refresh();
+
+                        await Task.Delay(timeBetweenFrames);
+                        Enemies.enemies[i].SetImage(Images.enemy[3]);
+                        graphics.Refresh();
+                    }
+                    catch { }
+
+                }
+                else
+                {
+                    await Task.Delay(timeBetweenFrames);
+                    Enemies.enemies[i].SetImage(Images.boss[0]);
+                    graphics.Refresh();
+                }
+            }
+
+            AnimateEnemy();
+        }
     }
 }
 
