@@ -29,6 +29,7 @@ namespace Wanderer_Game
         Enemies enemies;
         GameSetup gameSetup;
         HeadsUpDisplay headsUpDisplay;
+        Animator animator;
 
         int turnCount = 0;
 
@@ -50,29 +51,11 @@ namespace Wanderer_Game
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
 
+            animator = new Animator(player, graphics);
+
             graphics.Refresh();
             Sound.PlayMusic(Sounds.mapMusic);
-            SpriteAnimation();
-        }
-        bool turner = true;
-        public async void SpriteAnimation()
-        {
-            
-
-            await Task.Delay(500);
-            if (turner)
-            {
-                player.SetImage(Images.heroLeft);
-                turner = false;
-                graphics.Refresh();
-            }
-            else
-            {
-                player.SetImage(Images.heroRight);
-                turner = true;
-                graphics.Refresh();
-            }
-            SpriteAnimation();
+            animator.SpriteAnimation();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
