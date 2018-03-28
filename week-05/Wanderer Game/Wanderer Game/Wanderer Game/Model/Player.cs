@@ -19,9 +19,6 @@ namespace Wanderer_Game.Controller
         public int level;
         public bool isDead;
         public bool isInBattle = false;
-        public bool IsInBattle { get { return isInBattle; } set {
-
-            } }
         public bool spaceIsPressed;
         public Enemy targetEnemy;
         public HeadsUpDisplay headsUpDisplay;
@@ -31,33 +28,27 @@ namespace Wanderer_Game.Controller
         {
             get
             {
-                return currentHP;
+                return currentHealth;
             }
             set
             {
-                currentHP = value;
-                if (currentHP < 1)
+                currentHealth = value;
+                if (currentHealth < 1)
                 {
                     isDead = true;
                 }
             }
         }
 
-        public Player(string name, HeadsUpDisplay hud, Enemies enemies, Canvas canvas, string image, int currentHP = 20, int maxHP = 20, int level = 1, int gridPositionX = 0, int gridPositionY = 0, int attack = 5, int defense = 2, bool isDead = false) : base(name, canvas, image, gridPositionX, gridPositionY, currentHP = 20, maxHP = 20, attack, defense)
+        public Player(HeadsUpDisplay hud, Enemies enemies, Canvas canvas, int level = 1, bool isDead = false) : base("Hero", canvas, Images.heroDown, 0, 0, 20 + Dice.HealthRoll(), 20 + Dice.HealthRoll(), 5 + Dice.AttackPowerRoll(), 2 + Dice.DefensePowerRoll())
         {
-            this.name = name;
             this.enemies = enemies;
             this.canvas = canvas;
-            this.image = image;
-            this.currentHP = currentHP;
-            this.maxHP = maxHP;
             this.level = level;
             this.isDead = isDead;
-            this.headsUpDisplay = hud;
+            headsUpDisplay = hud;
             isInBattle = false;
             spaceIsPressed = false;
-
-            hud.playerStatus.Text = $"{name} (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}\n";
         }
 
         public void CheckForEnemy()
@@ -87,6 +78,8 @@ namespace Wanderer_Game.Controller
                 }
             }
 
+            headsUpDisplay.enemyStatus.Text = targetEnemy.GetStats();
+
             if (targetEnemy.isBoss == true)
             {
                 Sound.PlayMusic(Sounds.bossBattleMusic);
@@ -101,7 +94,7 @@ namespace Wanderer_Game.Controller
         {
             waitingForEnemy = true;
             await Task.Delay(milliSeconds);
-            if (targetEnemy.currentHP > 0)
+            if (targetEnemy.currentHealth > 0)
             {
                 TakeDamageFrom(targetEnemy);
                 Sound.PlaySoundEffect(Sounds.attack);
@@ -110,21 +103,21 @@ namespace Wanderer_Game.Controller
             waitingForEnemy = false;
         }
 
-        public void PerformAttackRound()
+        public void PerformAttackRound(string skill)
         {
             if (!waitingForEnemy)
             {
-                PlayerTurn(); 
+                PlayerChoosesCommand(skill); 
 
                 EnemyTurn(1000);
 
-                if (currentHP < 1)
+                if (currentHealth < 1)
                 {
                     GameOver();
-                    isInBattle = false;
+                    SetIsInBattle(false);
                     isDead = true;
                 }
-                else if (targetEnemy.currentHP < 1)
+                else if (targetEnemy.currentHealth < 1)
                 {
                     Kill(targetEnemy);
                     LevelUp();
@@ -138,7 +131,7 @@ namespace Wanderer_Game.Controller
         {
             isInBattle = state;
 
-            if (IsInBattle)
+            if (isInBattle)
             {
                 Sound.PlayMusic(Sounds.battleMusic);
             }
@@ -148,17 +141,17 @@ namespace Wanderer_Game.Controller
             }
         }
 
-        internal void PerformBasicAttack()
+        internal void ExecuteCommand(string skill)
         {
             if (!isDead && isInBattle)
             {
-                headsUpDisplay.playerStatus.Text = GetPlayerStats();
-                PerformAttackRound();
+                headsUpDisplay.playerStatus.Text = GetStats();
+                PerformAttackRound(skill);
                 Sound.PlaySoundEffect(Sounds.attack);
             }
             else
             {
-                headsUpDisplay.playerStatus.Text = "GAME OVER\nStats:\n " + GetPlayerStats();
+                headsUpDisplay.playerStatus.Text = "GAME OVER\nStats:\n " + GetStats();
             }
         }
 
@@ -166,12 +159,13 @@ namespace Wanderer_Game.Controller
         {
             if (!isDead && isInBattle)
             {
-                headsUpDisplay.playerStatus.Text = GetPlayerStats();
-                PerformAttackRound();
+                headsUpDisplay.playerStatus.Text = GetStats();
+                PerformAttackRound("Heal");
+                Sound.PlaySoundEffect(Sounds.attack);
             }
             else
             {
-                headsUpDisplay.playerStatus.Text = "GAME OVER\nStats:\n " + GetPlayerStats();
+                headsUpDisplay.playerStatus.Text = "GAME OVER\nStats:\n " + GetStats();
             }
         }
 
@@ -188,24 +182,52 @@ namespace Wanderer_Game.Controller
 
         private void TakeDamageFrom(Enemy enemy)
         {
-            currentHP -= enemy.attack;
-            SetStatusTextTo(GetPlayerStats());
+            currentHealth -= enemy.attack;
+            SetStatusTextTo(GetStats());
         }
 
-        private void PlayerTurn()
+        private void PlayerChoosesCommand(string skill)
         {
-            DealDamageToEnemy(attack);
-            headsUpDisplay.playerBattle.Text += $"\n{name} deals {attack} DMG!\n";
+            if (skill == "BasicAttack")
+            {
+                BasicAttack();
+                headsUpDisplay.enemyStatus.Text = targetEnemy.GetStats();
+            }
+            else if (skill == "Heal")
+            {
+                Heal();
+            }
+        }
+
+        private void BasicAttack()
+        {
+            int actualAttackDamage = attack;
+            DealDamageToEnemy(actualAttackDamage);
+            headsUpDisplay.playerBattle.Text += $"\n{name} deals {actualAttackDamage} DMG!\n";
+        }
+
+        private void Heal()
+        {
+            int healAmount = 5;
+            if (healAmount + currentHealth > maximumHealth)
+            {
+                currentHealth = maximumHealth;
+            }
+            else
+            {
+                currentHealth += healAmount;
+            }
+            headsUpDisplay.playerBattle.Text += $"\n{name} heals for {healAmount} HP!\n";
         }
 
         private void DealDamageToEnemy(int amountOfDamage)
         {
-            targetEnemy.currentHP -= amountOfDamage;
+            targetEnemy.currentHealth -= amountOfDamage;
         }
 
-        public string GetPlayerStats()
+        public string GetStats()
         {
-            return $"\nHero (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}\n";
+            return $"\nHero\nLevel {level}| HP: {currentHealth}/{maximumHealth} | DP: {defense} | SP: {attack}\n(Q): Attack, (W): Heal";
         }
 
         public bool EnemyPresent()
@@ -224,7 +246,7 @@ namespace Wanderer_Game.Controller
         {
             CheckForEnemy();
 
-            SetStatusTextTo(GetPlayerStats());
+            SetStatusTextTo(GetStats());
 
             if (direction.Equals("up"))
             {
@@ -273,7 +295,7 @@ namespace Wanderer_Game.Controller
             int spIncrease = randomHP.Next(1, 7);
 
             level++;
-            maxHP += hpIncrease;
+            maximumHealth += hpIncrease;
             defense += dpIncrease;
             attack += spIncrease;
         }

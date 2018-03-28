@@ -61,6 +61,7 @@
     <Compile Include="Model\Characters.cs" />
     <Compile Include="Model\Levels.cs" />
     <Compile Include="Model\HUD.cs" />
+    <Compile Include="Model\Dice.cs" />
     <Compile Include="Model\Sound.cs" />
     <Compile Include="Model\Sounds.cs" />
     <Compile Include="View\FoxDraw.cs" />

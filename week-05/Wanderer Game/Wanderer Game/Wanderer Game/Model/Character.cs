@@ -22,14 +22,14 @@ namespace Wanderer_Game
 
         protected Canvas canvas;
 
-        public int currentHP;
-        public int maxHP;
+        public int currentHealth;
+        public int maximumHealth;
 
         public int attack;
         public int defense;
         public string name;
 
-        public Character(string name, Canvas canvas, string image, int gridPositionX, int gridPositionY, int currentHP, int maximumHP, int attack, int defense)
+        public Character(string name, Canvas canvas, string image, int gridPositionX, int gridPositionY, int currentHealth, int maximumHealth, int attack, int defense)
         {
             this.name = name;
             this.canvas = canvas;
@@ -40,7 +40,9 @@ namespace Wanderer_Game
             this.gridPositionX = gridPositionX;
             this.gridPositionY = gridPositionY;
 
-           
+            this.currentHealth = currentHealth;
+            this.maximumHealth = maximumHealth;
+
             this.image = image;
 
             this.attack = attack;

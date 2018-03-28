@@ -52,6 +52,7 @@ namespace Wanderer_Game.View
         public async void RefreshWithDelay(int milliSeconds)
         {
             await Task.Delay(milliSeconds);
+            headsUpDisplay.ResetBattleLog();
             Refresh();
         }
 
@@ -168,6 +169,7 @@ namespace Wanderer_Game.View
         public void BattleScreen()
         {
             canvas.Children.Clear();
+            headsUpDisplay.playerStatus.Text = player.GetStats();
             DrawImage(Images.battleScreen, 0, -canvas.Width / 6, canvas.Width, canvas.Width);
             DrawImage(Images.heroRight, canvas.Width / 2 - (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
             DrawImage(player.targetEnemy.GetImage(), canvas.Width / 2 + (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);

@@ -40,12 +40,12 @@ namespace Wanderer_Game
             gameSetup = new GameSetup(canvas, 500);
             enemies = new Enemies();
             headsUpDisplay = new HeadsUpDisplay(canvas);
-            player = new Player("Hero", headsUpDisplay, enemies, canvas, Images.heroDown);
+            player = new Player(headsUpDisplay, enemies, canvas);
             graphics = new Draw(canvas, foxDraw, enemies, headsUpDisplay, player);
 
             Characters.AddToList(player);
 
-            enemies.Add(new Enemy("Boss", player, canvas, Images.boss, 9, 9, true, 50, 2, 10));
+            enemies.Add(new Enemy("Boss", player, canvas, Images.boss, 9, 9, true, 20, 20, 10));
             enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
@@ -93,15 +93,27 @@ namespace Wanderer_Game
             {
                 if (e.Key == Key.Q)
                 {
-                    player.PerformBasicAttack();
-                    if (player.targetEnemy.currentHP < 1)
+                    player.ExecuteCommand("BasicAttack");
+                    if (player.targetEnemy.currentHealth < 1)
                     {   
                         graphics.RefreshWithDelay(2000);
+                        headsUpDisplay.playerStatus.Text = player.GetStats();
+                    }
 
-                        headsUpDisplay.playerStatus.Text = player.GetPlayerStats();
-                        headsUpDisplay.playerBattle.Text = "";
-                        headsUpDisplay.enemyBattle.Text = "";
-                        headsUpDisplay.enemyStatus.Text = "";
+                    if (player.CurrentHealth < 1)
+                    {
+                        graphics.GameOverScreen();
+                        Sound.PlayMusic(Sounds.gameOver);
+                    }
+                }
+
+                if (e.Key == Key.W)
+                {
+                    player.ExecuteCommand("Heal");
+                    if (player.targetEnemy.currentHealth < 1)
+                    {
+                        graphics.RefreshWithDelay(2000);
+                        headsUpDisplay.playerStatus.Text = player.GetStats();
                     }
 
                     if (player.CurrentHealth < 1)

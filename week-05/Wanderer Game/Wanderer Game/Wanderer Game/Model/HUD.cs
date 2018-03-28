@@ -38,14 +38,14 @@ namespace Wanderer_Game.Model
 
             playerBattle = new TextBlock
             {
-                Text = "",
+                Text = "\n\n",
                 Foreground = Brushes.Green,
                 FontSize = 15
             };
 
             enemyBattle = new TextBlock
             {
-                Text = "",
+                Text = "\n\n",
                 Foreground = Brushes.Red,
                 FontSize = 15
             };
@@ -56,6 +56,13 @@ namespace Wanderer_Game.Model
                 Foreground = Brushes.Red,
                 FontSize = 50,
             };
+        }
+
+        public void ResetBattleLog()
+        {
+            playerBattle.Text = "\n\n";
+            enemyBattle.Text = "\n\n";
+            enemyStatus.Text = "";
         }
     }
 }

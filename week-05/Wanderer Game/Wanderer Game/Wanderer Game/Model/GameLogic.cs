@@ -8,5 +8,6 @@ namespace Wanderer_Game.Model
 {
     class GameLogic
     {
+
     }
 }
