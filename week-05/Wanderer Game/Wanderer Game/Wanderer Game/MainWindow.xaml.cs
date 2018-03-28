@@ -50,6 +50,7 @@ namespace Wanderer_Game
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
             graphics.Refresh();
+            Sound.PlayMusic();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -92,7 +93,7 @@ namespace Wanderer_Game
                 if (e.Key == Key.Q)
                 {
                     player.PerformBasicAttack();
-
+                    Sound.PlaySoundEffect();
                     if (player.targetEnemy.currentHP < 1)
                     {   
                         graphics.RefreshWithDelay(2000);
