@@ -13,24 +13,26 @@ using Wanderer_Game.Model;
 
 namespace Wanderer_Game.View
 {
-    public class Graphics
+    public class Draw
     {
         FoxDraw foxDraw;
         Canvas canvas;
         Enemies enemies;
-        Status Stats;
+        HUD hud;
         Player player;
+        double tileSize;
 
-        public Graphics(Canvas canvas, FoxDraw foxDraw, Enemies enemies, Status Stats, Player player)
+        public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HUD hud, Player player)
         {
             this.canvas = canvas;
             this.foxDraw = foxDraw;
             this.enemies = enemies;
-            this.Stats = Stats;
+            this.hud = hud;
             this.player = player;
+            tileSize = canvas.Width / 10;
         }
 
-        public void DrawLevel(string level)
+        public void Level(string level)
         {
             double xOffset = 0;
             double yOffset = 0;
@@ -39,7 +41,7 @@ namespace Wanderer_Game.View
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    DrawTile(new Point(0 + xOffset, 0 + yOffset), Tile.GetTileType(Levels.level1, y, x));
+                    Tile(new Point(0 + xOffset, 0 + yOffset), View.Tile.GetTileType(Levels.level1, y, x));
                     xOffset += canvas.Width / 10;
                 }
                 xOffset = 0;
@@ -53,22 +55,49 @@ namespace Wanderer_Game.View
 
             if (!player.isDead)
             {
-                DrawLevel(Levels.level1);
+                Level(Levels.level1);
 
-                foreach (var character in Characters.GetList())
+                if (player.isInBattle)
                 {
-                    DrawCharacter(character);
+                    canvas.Children.Clear();
+                    BattleScreen();
                 }
+                else
+                {
+                    foreach (var character in Characters.GetList())
+                    {
+                        Character(character);
+                    }
 
-                foreach (var enemy in enemies.GetList())
-                {
-                    DrawCharacter(enemy);
+                    foreach (var enemy in enemies.GetList())
+                    {
+                        Character(enemy);
+                    }
                 }
+                DisplayStatus();
+                DisplayBattleLog();
             }
-                DrawStats();
+            else
+            {
+                GameOverScreen();
+            }
         }
 
-        public void DrawCharacter(Character character)
+        public void GameOverScreen()
+        {
+            canvas.Children.Clear();
+            DisplayGameOverScreen();
+        }
+
+        private void DisplayGameOverScreen()
+        {
+            canvas.Children.Add(hud.gameOver);
+            Canvas.SetTop(hud.gameOver, canvas.Width / 2);
+            Canvas.SetLeft(hud.gameOver, canvas.Width / 2 - canvas.Width / 4);
+
+        }
+
+        public void Character(Character character)
         {
             Image characterImage = new Image();
             characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
@@ -77,7 +106,7 @@ namespace Wanderer_Game.View
             foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y);
         }
 
-        public void DrawTile(Point startPoint, char tileType)
+        public void Tile(Point startPoint, char tileType)
         {
             Image tileImage = new Image();
 
@@ -95,12 +124,48 @@ namespace Wanderer_Game.View
             foxDraw.AddImage(tileImage, startPoint.X, startPoint.Y);
         }
 
-        public void DrawStats()
+        public void DrawImage(string image, double x, double y, double width, double height)
         {
-            canvas.Children.Add(Stats.content);
-            Canvas.SetTop(Stats.content, canvas.Width);
+            Image myImage = new Image();
+
+            myImage.Source = new BitmapImage(new Uri(image, UriKind.RelativeOrAbsolute));
+
+            myImage.Width = width;
+            myImage.Height = height;
+            foxDraw.AddImage(myImage, x, y);
         }
 
+        public void DisplayStatus()
+        {
+            canvas.Children.Add(hud.playerStatus);
+            canvas.Children.Add(hud.enemyStatus);
+
+            Canvas.SetTop(hud.playerStatus, canvas.Width);
+            Canvas.SetTop(hud.enemyStatus, canvas.Width);
+            Canvas.SetLeft(hud.enemyStatus, canvas.Width / 2);
+        }
+
+
+
+        public void DisplayBattleLog()
+        {
+            double fontSize = hud.enemyBattle.FontSize;
+
+            canvas.Children.Add(hud.playerBattle);
+            canvas.Children.Add(hud.enemyBattle);
+
+            Canvas.SetTop(hud.playerBattle, canvas.Width + fontSize*2);
+
+            Canvas.SetTop(hud.enemyBattle, canvas.Width + fontSize*3);
+            Canvas.SetLeft(hud.enemyBattle, canvas.Width/2);
+        }
+
+        public void BattleScreen()
+        {
+            canvas.Children.Clear();
+            DrawImage(Images.battleScreen, 0, -canvas.Width / 6, canvas.Width, canvas.Width);
+            DrawImage(Images.heroRight, canvas.Width / 2 - (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
+            DrawImage(player.targetEnemy.GetImage(), canvas.Width / 2 + (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
+        }
     }
 }
-

@@ -32,6 +32,7 @@ namespace Wanderer_Game
         public Character(string name, Canvas canvas, string image, int gridPositionX, int gridPositionY, int currentHP, int maximumHP, int attack, int defense)
         {
             this.name = name;
+            this.canvas = canvas;
 
             this.positionX = gridPositionX * (canvas.Width / 10);
             this.positionY = gridPositionY * (canvas.Width / 10);
@@ -39,7 +40,7 @@ namespace Wanderer_Game
             this.gridPositionX = gridPositionX;
             this.gridPositionY = gridPositionY;
 
-            this.canvas = canvas;
+           
             this.image = image;
 
             this.attack = attack;

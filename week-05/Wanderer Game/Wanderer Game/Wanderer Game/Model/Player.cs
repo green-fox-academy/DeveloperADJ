@@ -17,85 +17,133 @@ namespace Wanderer_Game.Controller
 
         public int level;
         public bool isDead;
-        public bool inBattle;
-        Status status;
+        public bool isInBattle;
         public bool spaceIsPressed;
+        public Enemy targetEnemy;
+        public HUD hud;
+        public int CurrentHP
+        {
+            get
+            {
+                return currentHP;
+            }
+            set
+            {
+                currentHP = value;
+                if (currentHP < 1)
+                {
+                    isDead = true;
+                }
+            }
+        }
 
-        public Player(string name, Status status, Enemies enemies, Canvas canvas, string image, int currentHP = 20, int maxHP = 20, int level = 1, int gridPositionX = 0, int gridPositionY = 0, int attack = 5, int defense = 2, bool isDead = false) : base(name, canvas, image, gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
+        public Player(string name, HUD hud, Enemies enemies, Canvas canvas, string image, int currentHP = 20, int maxHP = 20, int level = 1, int gridPositionX = 0, int gridPositionY = 0, int attack = 50, int defense = 2, bool isDead = false) : base(name, canvas, image, gridPositionX, gridPositionY, currentHP = 20, maxHP = 20, attack, defense)
         {
             this.name = name;
-            this.status = status;
             this.enemies = enemies;
             this.canvas = canvas;
             this.image = image;
             this.currentHP = currentHP;
             this.maxHP = maxHP;
             this.level = level;
-            this.gridPositionX = gridPositionX;
-            this.gridPositionY = gridPositionY;
-            this.attack = attack;
-            this.defense = defense;
             this.isDead = isDead;
-            this.inBattle = false;
-            this.spaceIsPressed = false;
+            this.hud = hud;
+            isInBattle = false;
+            spaceIsPressed = false;
 
-            status.content.Text = $"Hero (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}";
+            hud.playerStatus.Text = $"{name} (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}\n";
         }
 
         public void CheckForEnemy()
         {
             if (EnemyPresent())
             {
-                status.content.Text = "";
-                Fight();
+                hud.playerStatus.Text = "";
+                EnterBattle();
             }
         }
 
-        public void Fight()
+        public void EnterBattle()
         {
-            inBattle = true;
+            isInBattle = true;
+            TargetTheEnemy();
+        }
 
+        
+
+        private void TargetTheEnemy()
+        {
             for (int i = 0; i < enemies.GetList().Count; i++)
             {
                 if (enemies.GetList()[i].GetPosition() == this.GetPosition())
                 {
-                    var targetEnemy = enemies.GetList()[i];
-
-                    while (currentHP > 0 && targetEnemy.currentHP > 0)
-                    {
-                        targetEnemy.currentHP -= attack;
-                        status.content.Text += $"{name} attacks {targetEnemy.name} [{targetEnemy.currentHP}/{targetEnemy.maxHP}]!\n";
-
-                        if (targetEnemy.currentHP > 0)
-                        {
-                            currentHP -= targetEnemy.attack;
-                            status.content.Text += $"{targetEnemy.name} attacks {name} [{currentHP}/{maxHP}]!!\n";
-                        }
-                    }
-
-                    if (currentHP < 0)
-                    {
-                        isDead = true;
-                        status.content.Text += "You Died!";
-                    }
-                    else
-                    {
-                        status.content.Text += "You won!\n\nPress spacebar to continue..";
-                        enemies.GetList().RemoveAt(i);
-                        LevelUp();
-                    }
+                    targetEnemy = enemies.GetList()[i];
                 }
             }
         }
 
-        public string GetStatus()
+        public void PerformAttackRound()
         {
-            return $"Hero (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}";
+            PlayerTurn();
+
+            if (targetEnemy.currentHP > 0)
+            {
+                EnemyTurn();
+            }
+
+            if (currentHP < 1)
+            {
+                GameOver();
+                isInBattle = false;
+            }
+            else if (targetEnemy.currentHP < 1)
+            {
+                Kill(targetEnemy);
+                LevelUp();
+                isInBattle = false;
+                hud.playerStatus.Text += "\nYou won!\n\nPress spacebar to continue..";
+            }
         }
 
-        public bool FightWon()
+        internal void Spacebar()
         {
-            return true;
+            if (!isDead && isInBattle)
+            {
+                hud.playerStatus.Text = GetStatus();
+                PerformAttackRound();
+            }
+            else
+            {
+                hud.playerStatus.Text = "GAME OVER\nStats:\n " + GetStatus();
+            }
+        }
+
+        private void Kill(Enemy targetEnemy)
+        {
+            int index = enemies.GetList().IndexOf(targetEnemy);
+            enemies.GetList().RemoveAt(index);
+        }
+
+        private void GameOver()
+        {
+            hud.playerStatus.Text += "\nYou Died!";
+        }
+
+        private void EnemyTurn()
+        {
+            currentHP -= targetEnemy.attack;
+            hud.enemyBattle.Text += $"\n{targetEnemy.name} deals {targetEnemy.attack} DMG!\n";
+        }
+
+        private void PlayerTurn()
+        {
+            targetEnemy.currentHP -= attack;
+            hud.playerBattle.Text += $"\n{name} deals {attack} DMG!\n";
+        }
+
+        public string GetStatus()
+        {
+            return $"\nHero (Level {level}) HP: {currentHP}/{maxHP} | DP: {defense} | SP: {attack}\n";
         }
 
         public bool EnemyPresent()
@@ -113,7 +161,7 @@ namespace Wanderer_Game.Controller
         public void Move(string direction)
         {
             CheckForEnemy();
-            status.content.Text = GetStatus();
+            hud.playerStatus.Text = GetStatus();
             if (direction.Equals("up"))
             {
                 MoveUp();

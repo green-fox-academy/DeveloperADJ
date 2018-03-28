@@ -24,11 +24,11 @@ namespace Wanderer_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        Graphics graphics;
+        Draw graphics;
         public Player player;
         Enemies enemies;
         GameSetup gameSetup;
-        Status status;
+        HUD HUD;
 
         int turnCount = 0;
 
@@ -37,11 +37,11 @@ namespace Wanderer_Game
             InitializeComponent();
             FoxDraw foxDraw = new FoxDraw(canvas);
 
-            gameSetup = new GameSetup(canvas, 300);
+            gameSetup = new GameSetup(canvas, 500);
             enemies = new Enemies();
-            status = new Status(canvas);
-            player = new Player("Hero", status, enemies, canvas, Images.heroDown);
-            graphics = new Graphics(canvas, foxDraw, enemies, status, player);
+            HUD = new HUD(canvas);
+            player = new Player("Hero", HUD, enemies, canvas, Images.heroDown);
+            graphics = new Draw(canvas, foxDraw, enemies, HUD, player);
 
             Characters.AddToList(player);
 
@@ -55,7 +55,7 @@ namespace Wanderer_Game
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
-            if (!player.inBattle)
+            if (!player.isInBattle)
             {
                 turnCount++;
 
@@ -92,14 +92,20 @@ namespace Wanderer_Game
             {
                 if (e.Key == Key.Space)
                 {
-                    if (!player.isDead && player.inBattle)
+                    player.Spacebar();
+
+                    if (player.targetEnemy.currentHP < 1)
                     {
-                        player.inBattle = false;
-                        status.content.Text = player.GetStatus();
+                        graphics.Refresh();
+                        HUD.playerStatus.Text = player.GetStatus();
+                        HUD.playerBattle.Text = "";
+                        HUD.enemyBattle.Text = "";
+                        HUD.enemyStatus.Text = "";
                     }
-                    else
+
+                    if (player.CurrentHP < 1)
                     {
-                        status.content.Text = "GAME OVER\nStats:\n " + player.GetStatus();
+                        graphics.GameOverScreen();
                     }
                 }
             }
