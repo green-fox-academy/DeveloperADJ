@@ -90,6 +90,11 @@ namespace Wanderer_Game.Controller
             }
         }
 
+        public void SetImage(string file)
+        {
+            image = file;
+        }
+
         public async void EnemyTurn(int milliSeconds)
         {
             waitingForEnemy = true;

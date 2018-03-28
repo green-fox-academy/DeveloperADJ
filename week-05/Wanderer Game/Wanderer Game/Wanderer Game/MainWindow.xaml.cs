@@ -52,6 +52,27 @@ namespace Wanderer_Game
 
             graphics.Refresh();
             Sound.PlayMusic(Sounds.mapMusic);
+            SpriteAnimation();
+        }
+        bool turner = true;
+        public async void SpriteAnimation()
+        {
+            
+
+            await Task.Delay(500);
+            if (turner)
+            {
+                player.SetImage(Images.heroLeft);
+                turner = false;
+                graphics.Refresh();
+            }
+            else
+            {
+                player.SetImage(Images.heroRight);
+                turner = true;
+                graphics.Refresh();
+            }
+            SpriteAnimation();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
