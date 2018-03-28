@@ -147,7 +147,7 @@ namespace Wanderer_Game.Controller
             {
                 headsUpDisplay.playerStatus.Text = GetStats();
                 PerformAttackRound(skill);
-                Sound.PlaySoundEffect(Sounds.attack);
+                //Sound.PlaySoundEffect(Sounds.attack);
             }
             else
             {
@@ -161,7 +161,6 @@ namespace Wanderer_Game.Controller
             {
                 headsUpDisplay.playerStatus.Text = GetStats();
                 PerformAttackRound("Heal");
-                Sound.PlaySoundEffect(Sounds.attack);
             }
             else
             {
@@ -192,10 +191,12 @@ namespace Wanderer_Game.Controller
             {
                 BasicAttack();
                 headsUpDisplay.enemyStatus.Text = targetEnemy.GetStats();
+                Sound.PlaySoundEffect(Sounds.attack);
             }
             else if (skill == "Heal")
             {
                 Heal();
+                Sound.PlaySoundEffect(Sounds.heal);
             }
         }
 

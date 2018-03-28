@@ -10,6 +10,7 @@ namespace Wanderer_Game.Model
     public class GameSetup
     {
         Canvas canvas;
+
         double MapSize {
             get {
                 return MapSize;
@@ -18,6 +19,7 @@ namespace Wanderer_Game.Model
                 canvas.Height = value + value;
             }
         }
+
         int tileSize;
 
         public GameSetup(Canvas canvas, double MapSize)

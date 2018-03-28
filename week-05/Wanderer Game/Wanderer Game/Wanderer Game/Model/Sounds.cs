@@ -13,7 +13,6 @@ namespace Wanderer_Game.Model
         public static string mapMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\273539__tristan-lohengrin__8bit-introduction.wav";
         public static string battleMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\Battle-Music.wav";
         public static string bossBattleMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\Boss-music.wav";
-
-
+        public static string heal = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\Heal.wav";
     }
 }
