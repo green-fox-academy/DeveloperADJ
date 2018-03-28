@@ -55,7 +55,7 @@ namespace Wanderer_Game
 
             graphics.Refresh();
             Sound.PlayMusic(Sounds.mapMusic);
-            animator.SpriteAnimation();
+            animator.AnimatePlayer();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -64,6 +64,7 @@ namespace Wanderer_Game
             {
                 turnCount++;
 
+                player.wasMoving = true;
                 if (e.Key == Key.Left)
                 {
                     player.Move("left");

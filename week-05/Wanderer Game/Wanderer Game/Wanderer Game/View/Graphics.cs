@@ -171,8 +171,15 @@ namespace Wanderer_Game.View
             canvas.Children.Clear();
             headsUpDisplay.playerStatus.Text = player.GetStats();
             DrawImage(Images.battleScreen, 0, -canvas.Width / 6, canvas.Width, canvas.Width);
-            DrawImage(Images.heroRight, canvas.Width / 2 - (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
-            DrawImage(player.targetEnemy.GetImage(), canvas.Width / 2 + (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
+            DrawImage(Images.playerBattle[0], canvas.Width / 2 - (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
+            if (player.targetEnemy.isBoss)
+            {
+                DrawImage(player.targetEnemy.GetImage(), canvas.Width / 2 + tileSize, canvas.Width / 2 - tileSize, tileSize * 2, tileSize * 2);
+            }
+            else
+            {
+                DrawImage(player.targetEnemy.GetImage(), canvas.Width / 2 + (canvas.Width / 5), canvas.Width / 2, tileSize, tileSize);
+            }
         }
     }
 }

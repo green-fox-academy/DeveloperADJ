@@ -12,7 +12,6 @@ namespace Wanderer_Game.Model
     {
         Player player;
         Draw graphics;
-        bool shouldTurnOver = true;
 
         public Animator(Player player, Draw graphics)
         {
@@ -20,22 +19,37 @@ namespace Wanderer_Game.Model
             this.graphics = graphics;
         }
 
-        public async void SpriteAnimation()
+        public async void AnimatePlayer()
         {
-            await Task.Delay(500);
-            if (shouldTurnOver)
-            {
-                player.SetImage(Images.heroLeft);
-                shouldTurnOver = false;
-                graphics.Refresh();
-            }
-            else
-            {
-                player.SetImage(Images.heroRight);
-                shouldTurnOver = true;
-                graphics.Refresh();
-            }
-            SpriteAnimation();
+            int timeBetweenFrames = 150;
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[0]);
+            graphics.Refresh();
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[1]);
+            graphics.Refresh();
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[2]);
+            graphics.Refresh();
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[3]);
+            graphics.Refresh();
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[4]);
+            graphics.Refresh();
+
+            await Task.Delay(timeBetweenFrames);
+            player.SetImage(player.facing[5]);
+            graphics.Refresh();
+
+            AnimatePlayer();
         }
     }
 }
+
+

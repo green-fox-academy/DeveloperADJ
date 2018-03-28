@@ -19,10 +19,13 @@ namespace Wanderer_Game.Controller
         public int level;
         public bool isDead;
         public bool isInBattle = false;
+        public bool wasMoving = false;
         public bool spaceIsPressed;
         public Enemy targetEnemy;
         public HeadsUpDisplay headsUpDisplay;
         private bool waitingForEnemy;
+        public string[] facing = Images.playerDown;
+
 
         public int CurrentHealth
         {
@@ -40,7 +43,7 @@ namespace Wanderer_Game.Controller
             }
         }
 
-        public Player(HeadsUpDisplay hud, Enemies enemies, Canvas canvas, int level = 1, bool isDead = false) : base("Hero", canvas, Images.heroDown, 0, 0, 20 + Dice.HealthRoll(), 20 + Dice.HealthRoll(), 5 + Dice.AttackPowerRoll(), 2 + Dice.DefensePowerRoll())
+        public Player(HeadsUpDisplay hud, Enemies enemies, Canvas canvas, int level = 1, bool isDead = false) : base("Hero", canvas, Images.heroDown, 0, 0, 20 + Dice.HealthRoll(), 20 + Dice.HealthRoll(), 1 + Dice.AttackPowerRoll(), 2 + Dice.DefensePowerRoll())
         {
             this.enemies = enemies;
             this.canvas = canvas;
@@ -102,7 +105,14 @@ namespace Wanderer_Game.Controller
             if (targetEnemy.currentHealth > 0)
             {
                 TakeDamageFrom(targetEnemy);
-                Sound.PlaySoundEffect(Sounds.attack);
+                if (targetEnemy.isBoss)
+                {
+                    Sound.PlaySoundEffect(Sounds.bossAttack);
+                }
+                else
+                {
+                    Sound.PlaySoundEffect(Sounds.enemyAttack);
+                }
                 headsUpDisplay.enemyBattle.Text += $"\n{targetEnemy.name} deals {targetEnemy.attack} DMG!\n";
             }
             waitingForEnemy = false;
@@ -250,6 +260,7 @@ namespace Wanderer_Game.Controller
 
         public void Move(string direction)
         {
+            wasMoving = true;
             CheckForEnemy();
 
             SetStatusTextTo(GetStats());
@@ -257,24 +268,23 @@ namespace Wanderer_Game.Controller
             if (direction.Equals("up"))
             {
                 MoveUp();
-                SetPlayerImageTo(Images.heroUp);
+                facing = Images.playerUp;
             }
             else if (direction.Equals("right"))
             {
                 MoveRight();
-                SetPlayerImageTo(Images.heroRight);
+                facing = Images.playerRight;
             }
             else if (direction.Equals("down"))
             {
                 MoveDown();
+                facing = Images.playerDown;
 
-                SetPlayerImageTo(Images.heroDown);
             }
             else if (direction.Equals("left"))
             {
                 MoveLeft();
-
-                SetPlayerImageTo(Images.heroLeft);
+                facing = Images.playerLeft;
             }
             CheckForEnemy();
         }
