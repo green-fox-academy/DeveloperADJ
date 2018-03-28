@@ -49,6 +49,12 @@ namespace Wanderer_Game.View
             }
         }
 
+        public async void RefreshWithDelay(int milliSeconds)
+        {
+            await Task.Delay(milliSeconds);
+            Refresh();
+        }
+
         public void Refresh()
         {
             canvas.Children.Clear();
@@ -64,10 +70,8 @@ namespace Wanderer_Game.View
                 }
                 else
                 {
-                    foreach (var character in Characters.GetList())
-                    {
-                        Character(character);
-                    }
+
+                    Character(player);
 
                     foreach (var enemy in enemies.GetList())
                     {
@@ -154,10 +158,10 @@ namespace Wanderer_Game.View
             canvas.Children.Add(headsUpDisplay.playerBattle);
             canvas.Children.Add(headsUpDisplay.enemyBattle);
 
-            Canvas.SetTop(headsUpDisplay.playerBattle, canvas.Width + fontSize*2);
+            Canvas.SetTop(headsUpDisplay.playerBattle, canvas.Width + fontSize * 2);
 
-            Canvas.SetTop(headsUpDisplay.enemyBattle, canvas.Width + fontSize*3);
-            Canvas.SetLeft(headsUpDisplay.enemyBattle, canvas.Width/2);
+            Canvas.SetTop(headsUpDisplay.enemyBattle, canvas.Width + fontSize * 3);
+            Canvas.SetLeft(headsUpDisplay.enemyBattle, canvas.Width / 2);
         }
 
         public void BattleScreen()

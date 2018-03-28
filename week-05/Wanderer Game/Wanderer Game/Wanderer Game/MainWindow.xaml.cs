@@ -28,7 +28,7 @@ namespace Wanderer_Game
         public Player player;
         Enemies enemies;
         GameSetup gameSetup;
-        HeadsUpDisplay HUD;
+        HeadsUpDisplay headsUpDisplay;
 
         int turnCount = 0;
 
@@ -39,17 +39,16 @@ namespace Wanderer_Game
 
             gameSetup = new GameSetup(canvas, 500);
             enemies = new Enemies();
-            HUD = new HeadsUpDisplay(canvas);
-            player = new Player("Hero", HUD, enemies, canvas, Images.heroDown);
-            graphics = new Draw(canvas, foxDraw, enemies, HUD, player);
+            headsUpDisplay = new HeadsUpDisplay(canvas);
+            player = new Player("Hero", headsUpDisplay, enemies, canvas, Images.heroDown);
+            graphics = new Draw(canvas, foxDraw, enemies, headsUpDisplay, player);
 
             Characters.AddToList(player);
 
-            enemies.Add(new Enemy("Boss", player, canvas, Images.boss, 9, 9, true, 100, 100, 10));
+            enemies.Add(new Enemy("Boss", player, canvas, Images.boss, 9, 9, true, 50, 2, 10));
             enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
-
             graphics.Refresh();
         }
 
@@ -95,12 +94,13 @@ namespace Wanderer_Game
                     player.PerformBasicAttack();
 
                     if (player.targetEnemy.currentHP < 1)
-                    {
-                        graphics.Refresh();
-                        HUD.playerStatus.Text = player.GetStatus();
-                        HUD.playerBattle.Text = "";
-                        HUD.enemyBattle.Text = "";
-                        HUD.enemyStatus.Text = "";
+                    {   
+                        graphics.RefreshWithDelay(2000);
+
+                        headsUpDisplay.playerStatus.Text = player.GetPlayerStats();
+                        headsUpDisplay.playerBattle.Text = "";
+                        headsUpDisplay.enemyBattle.Text = "";
+                        headsUpDisplay.enemyStatus.Text = "";
                     }
 
                     if (player.CurrentHealth < 1)
@@ -116,10 +116,10 @@ namespace Wanderer_Game
                     if (player.targetEnemy.currentHP < 1)
                     {
                         graphics.Refresh();
-                        HUD.playerStatus.Text = player.GetStatus();
-                        HUD.playerBattle.Text = "";
-                        HUD.enemyBattle.Text = "";
-                        HUD.enemyStatus.Text = "";
+                        headsUpDisplay.playerStatus.Text = player.GetPlayerStats();
+                        headsUpDisplay.playerBattle.Text = "";
+                        headsUpDisplay.enemyBattle.Text = "";
+                        headsUpDisplay.enemyStatus.Text = "";
                     }
 
                     if (player.CurrentHealth < 1)
