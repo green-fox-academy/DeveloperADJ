@@ -64,14 +64,15 @@ namespace Wanderer_Game.Model
                     {
                         try
                         {
-
                             for (int j = 0; j < 3; j++)
                             {
                                 await Task.Delay(timeBetweenFrames);
-                                Enemies.enemies[i].SetImage(Images.enemy[j]);
+                                if (!Enemies.enemies[i].isBoss)
+                                {
+                                    Enemies.enemies[i].SetImage(Images.enemy[j]);
+                                }
                                 graphics.Refresh();
                             }
-
                         }
                         catch { }
                     }
@@ -80,15 +81,21 @@ namespace Wanderer_Game.Model
                         await Task.Delay(timeBetweenFrames);
                         if (Enemies.enemies.Count > 0)
                         {
-                            Enemies.enemies[i].SetImage(Images.boss[0]);
-                            graphics.Refresh();
+                            try
+                            {
+                                Enemies.enemies[i].SetImage(Images.boss[0]);
+                                graphics.Refresh();
+                            }
+                            catch
+                            {
+                            }
                         }
                     }
                 }
                 if (Enemies.enemies.Count > 0)
                 {
                     AnimateEnemy();
-                } 
+                }
             }
         }
     }
