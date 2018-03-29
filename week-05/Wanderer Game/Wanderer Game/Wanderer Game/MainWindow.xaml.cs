@@ -55,14 +55,9 @@ namespace Wanderer_Game
 
             Characters.AddToList(player);
 
-            enemySpawner = new EnemySpawner(player, canvas);
+            enemySpawner = new EnemySpawner(player, canvas, graphics);
 
             enemySpawner.AddEnemiesToMap();
-
-            enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
-            //enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
-            //enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
-            //enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
 
             animator = new Animator(player, graphics, Levels.stageCounter);
 
@@ -82,16 +77,19 @@ namespace Wanderer_Game
             player = player1;
             graphics = graphics1;
             player.SetPositon(0,0);
-            enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
 
-            for (int i = 0; i < 4; i++)
-            {
-                enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
-            }
+            enemySpawner.AddEnemiesToMap();
 
-            enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
-            enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
-            enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
+            //enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
+
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
+            //}
+
+            //enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
+            //enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
+            //enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
 
             animator = animator1;
 

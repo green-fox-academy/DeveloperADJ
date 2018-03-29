@@ -25,6 +25,5 @@ namespace Wanderer_Game.Model
             effectsPlayer.Open(new Uri(soundFile));
             effectsPlayer.Play();
         }
-
     }
 }

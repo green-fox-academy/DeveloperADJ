@@ -162,6 +162,7 @@
     <Resource Include="Assets\Levels\level2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Levels\level3.txt" />
     <Content Include="Assets\Sound\01 - Ruined World.wav" />
     <Content Include="Assets\Sound\05 - Zeal Palace.wav" />
     <Content Include="Assets\Sound\11 - Black Omen.mp3" />

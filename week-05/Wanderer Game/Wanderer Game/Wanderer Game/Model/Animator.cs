@@ -58,28 +58,20 @@ namespace Wanderer_Game.Model
 
             if (Enemies.enemies.Count > 0)
             {
-
                 for (int i = 0; i < Enemies.enemies.Count; i++)
                 {
                     if (!Enemies.enemies[i].isBoss)
                     {
                         try
                         {
-                            await Task.Delay(timeBetweenFrames);
-                            Enemies.enemies[i].SetImage(Images.enemy[0]);
-                            graphics.Refresh();
 
-                            await Task.Delay(timeBetweenFrames);
-                            Enemies.enemies[i].SetImage(Images.enemy[1]);
-                            graphics.Refresh();
+                            for (int j = 0; j < 3; j++)
+                            {
+                                await Task.Delay(timeBetweenFrames);
+                                Enemies.enemies[i].SetImage(Images.enemy[j]);
+                                graphics.Refresh();
+                            }
 
-                            await Task.Delay(timeBetweenFrames);
-                            Enemies.enemies[i].SetImage(Images.enemy[2]);
-                            graphics.Refresh();
-
-                            await Task.Delay(timeBetweenFrames);
-                            Enemies.enemies[i].SetImage(Images.enemy[3]);
-                            graphics.Refresh();
                         }
                         catch { }
                     }

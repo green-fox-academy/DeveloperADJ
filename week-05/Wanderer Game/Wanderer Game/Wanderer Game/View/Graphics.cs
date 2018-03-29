@@ -64,7 +64,6 @@ namespace Wanderer_Game.View
 
             if (!player.isDead)
             {
-
                 Level(Levels.maps[Levels.stageCounter]);
 
                 if (player.isInBattle)
@@ -111,7 +110,7 @@ namespace Wanderer_Game.View
             characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
             characterImage.Width = canvas.Width / 10;
             characterImage.Height = canvas.Width / 10;
-            foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y - tileSize/2);
+            foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y - tileSize/3);
         }
 
         public void Enemy(Enemy enemy)
@@ -121,20 +120,20 @@ namespace Wanderer_Game.View
 
             characterImage.Width = canvas.Width / 10;
             characterImage.Height = canvas.Width / 10;
-            foxDraw.AddImage(characterImage, enemy.GetPosition().X, enemy.GetPosition().Y);
+            foxDraw.AddImage(characterImage, enemy.GetPosition().X - tileSize/10, enemy.GetPosition().Y - tileSize / 4);
         }
 
         public void Tile(Point startPoint, char tileType)
         {
             Image tileImage = new Image();
 
-            if (tileType == '0')
+            if (tileType == '1')
             {
-                tileImage.Source = new BitmapImage(new Uri(Images.floor, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Images.wall, UriKind.RelativeOrAbsolute));
             }
             else
             {
-                tileImage.Source = new BitmapImage(new Uri(Images.wall, UriKind.RelativeOrAbsolute));
+                tileImage.Source = new BitmapImage(new Uri(Images.floor, UriKind.RelativeOrAbsolute));
             }
 
             tileImage.Width = canvas.Width / 10;
