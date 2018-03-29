@@ -14,7 +14,7 @@ namespace Wanderer_Game.Model
         public static string gameOver = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\Evil Laugh.wav";
         public static string gameOverMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\05 - Zeal Palace.wav";
 
-        public static string mapMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\01 - Ruined World.wav";
+        public static string mapMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\21 - The Trial.wav";
         public static string battleMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\12 - Battle.wav";
         public static string bossBattleMusic = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\17 - Boss Battle 2.wav";
         public static string heal = @"C:\Users\Arno\Desktop\DeveloperADJ\week-05\Wanderer Game\Wanderer Game\Wanderer Game\Assets\Sound\Ayla Kiss.wav";

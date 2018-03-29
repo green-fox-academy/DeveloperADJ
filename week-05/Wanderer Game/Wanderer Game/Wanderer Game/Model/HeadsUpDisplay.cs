@@ -52,7 +52,7 @@ namespace Wanderer_Game.Model
 
             gameOver = new TextBlock
             {
-                Text = "YOU ARE DEAD.",
+                Text = "GAME OVER",
                 Foreground = Brushes.Red,
                 FontSize = 50,
             };

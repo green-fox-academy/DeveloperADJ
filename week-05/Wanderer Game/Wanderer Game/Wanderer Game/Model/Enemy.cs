@@ -14,7 +14,7 @@ namespace Wanderer_Game.Controller
         Draw graphics;
         Player player;
         public bool isBoss = false;
-        public Enemy(Draw graphics, string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 10, int maxHP = 10, int attack = 2, int defense = 0) : base(name, canvas, isBoss ? Images.boss[0] : Images.enemy[0], gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
+        public Enemy(Draw graphics, string name, Player player, Canvas canvas, string image, int gridPositionX, int gridPositionY, bool isBoss = false, int currentHP = 15, int maxHP = 15, int attack = 2, int defense = 0) : base(name, canvas, isBoss ? Images.boss[0] : Images.enemy[0], gridPositionX, gridPositionY, currentHP, maxHP, attack, defense)
         {
             this.graphics = graphics;
             this.name = name;

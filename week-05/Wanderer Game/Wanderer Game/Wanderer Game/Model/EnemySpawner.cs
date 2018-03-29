@@ -24,7 +24,7 @@ namespace Wanderer_Game.Model
         }
 
         public void AddEnemiesToMap()
-        {
+        { 
             string[] level = File.ReadAllLines(Levels.maps[Levels.stageCounter]);
 
             for (int i = 0; i < level.Length; i++)
@@ -37,7 +37,7 @@ namespace Wanderer_Game.Model
 
                     if (level[i][j] == 'B')
                     {
-                        Enemies.enemies.Add(new Enemy(graphics, "Boss", player, canvas, Images.boss[0], j, i, true, 20, 20, 10));
+                        Enemies.enemies.Add(new Enemy(graphics, "Boss", player, canvas, Images.boss[0], j, i, true, 50, 50, 10));
                     }
                 }
             }

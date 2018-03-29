@@ -43,7 +43,7 @@ namespace Wanderer_Game.Controller
             }
         }
 
-        public Player(HeadsUpDisplay hud, Enemies enemies, Canvas canvas, int level = 1, bool isDead = false) : base("Hero", canvas, Images.heroDown, 0, 0, 20 + Dice.HealthRoll(), 20 + Dice.HealthRoll(), 100 + Dice.AttackPowerRoll(), 2 + Dice.DefensePowerRoll())
+        public Player(HeadsUpDisplay hud, Enemies enemies, Canvas canvas, int level = 1, bool isDead = false) : base("Hero", canvas, Images.heroDown, 0, 0, 30 + Dice.HealthRoll(), 30 + Dice.HealthRoll(), 5 + Dice.AttackPowerRoll(), 2 + Dice.DefensePowerRoll())
         {
             this.enemies = enemies;
             this.canvas = canvas;

@@ -143,11 +143,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Levels\level1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Images\battle-screen.png" />
   </ItemGroup>
   <ItemGroup>
@@ -163,15 +158,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Levels\level3.txt" />
+    <Resource Include="Assets\Levels\test.txt" />
+    <Resource Include="Assets\Levels\level1.txt" />
     <Content Include="Assets\Sound\01 - Ruined World.wav" />
     <Content Include="Assets\Sound\05 - Zeal Palace.wav" />
     <Content Include="Assets\Sound\11 - Black Omen.mp3" />
     <Content Include="Assets\Sound\17 - Boss Battle 2.wav" />
+    <Content Include="Assets\Sound\19 - Frog%27s Theme.mp3" />
+    <Content Include="Assets\Sound\21 - The Trial.wav" />
     <Content Include="Assets\Sound\Ayla Kiss.wav" />
     <Content Include="Assets\Sound\Collision.wav" />
     <Content Include="Assets\Sound\Crono Attack 1.wav" />
     <Content Include="Assets\Sound\Enemy Hit [High quality].wav" />
     <Content Include="Assets\Sound\Evil Laugh.wav" />
+    <Content Include="Assets\Sound\music.wav" />
     <Content Include="Assets\Sound\X Strike.wav" />
     <Resource Include="Assets\Images\PlayerDown\frame_0_delay-0.16s.gif" />
     <Resource Include="Assets\Images\PlayerDown\frame_1_delay-0.16s.gif" />
