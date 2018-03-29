@@ -66,7 +66,7 @@ namespace Wanderer_Game
 
         public void MoveUp()
         {
-            if (!((positionY - canvas.Width / 10) < 0) && Tile.GetTileType(Levels.level1, gridPositionY - 1, gridPositionX) == '0')
+            if (!((positionY - canvas.Width / 10) < 0) && Tile.GetTileType(Levels.maps[Levels.stageCounter], gridPositionY - 1, gridPositionX) == '0')
             {
                 gridPositionY--;
                 positionY -= canvas.Width / 10;
@@ -75,7 +75,7 @@ namespace Wanderer_Game
 
         public void MoveLeft()
         {
-            if (!(positionX - canvas.Width / 10 < 0) && Tile.GetTileType(Levels.level1, gridPositionY, gridPositionX - 1) == '0')
+            if (!(positionX - canvas.Width / 10 < 0) && Tile.GetTileType(Levels.maps[Levels.stageCounter], gridPositionY, gridPositionX - 1) == '0')
             {
                 gridPositionX--;
                 positionX -= canvas.Width / 10;
@@ -84,7 +84,7 @@ namespace Wanderer_Game
 
         public void MoveDown()
         {
-            if (!(positionY + canvas.Width / 10 >= canvas.Width) && Tile.GetTileType(Levels.level1, gridPositionY + 1, gridPositionX) == '0')
+            if (!(positionY + canvas.Width / 10 >= canvas.Width) && Tile.GetTileType(Levels.maps[Levels.stageCounter], gridPositionY + 1, gridPositionX) == '0')
             {
                 gridPositionY++;
                 positionY += canvas.Width / 10;
@@ -93,7 +93,7 @@ namespace Wanderer_Game
 
         public void MoveRight()
         {
-            if (!(positionX + (canvas.Width / 10) >= canvas.Width) && Tile.GetTileType(Levels.level1, gridPositionY, gridPositionX + 1) == '0')
+            if (!(positionX + (canvas.Width / 10) >= canvas.Width) && Tile.GetTileType(Levels.maps[Levels.stageCounter], gridPositionY, gridPositionX + 1) == '0')
             {
                 gridPositionX++;
                 positionX += canvas.Width / 10;

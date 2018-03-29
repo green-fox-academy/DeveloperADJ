@@ -12,11 +12,13 @@ namespace Wanderer_Game.Model
     {
         Player player;
         Draw graphics;
+        int stageCounter;
 
-        public Animator(Player player, Draw graphics)
+        public Animator(Player player, Draw graphics, int stageCounter)
         {
             this.player = player;
             this.graphics = graphics;
+            this.stageCounter = stageCounter;
         }
 
         public async void AnimatePlayer()
@@ -54,41 +56,48 @@ namespace Wanderer_Game.Model
         {
             int timeBetweenFrames = 150;
 
-
-            for (int i = 0; i < Enemies.enemies.Count; i++)
+            if (Enemies.enemies.Count > 0)
             {
-                if (!Enemies.enemies[i].isBoss)
+
+                for (int i = 0; i < Enemies.enemies.Count; i++)
                 {
-                    try
+                    if (!Enemies.enemies[i].isBoss)
+                    {
+                        try
+                        {
+                            await Task.Delay(timeBetweenFrames);
+                            Enemies.enemies[i].SetImage(Images.enemy[0]);
+                            graphics.Refresh();
+
+                            await Task.Delay(timeBetweenFrames);
+                            Enemies.enemies[i].SetImage(Images.enemy[1]);
+                            graphics.Refresh();
+
+                            await Task.Delay(timeBetweenFrames);
+                            Enemies.enemies[i].SetImage(Images.enemy[2]);
+                            graphics.Refresh();
+
+                            await Task.Delay(timeBetweenFrames);
+                            Enemies.enemies[i].SetImage(Images.enemy[3]);
+                            graphics.Refresh();
+                        }
+                        catch { }
+                    }
+                    else
                     {
                         await Task.Delay(timeBetweenFrames);
-                        Enemies.enemies[i].SetImage(Images.enemy[0]);
-                        graphics.Refresh();
-
-                        await Task.Delay(timeBetweenFrames);
-                        Enemies.enemies[i].SetImage(Images.enemy[1]);
-                        graphics.Refresh();
-
-                        await Task.Delay(timeBetweenFrames);
-                        Enemies.enemies[i].SetImage(Images.enemy[2]);
-                        graphics.Refresh();
-
-                        await Task.Delay(timeBetweenFrames);
-                        Enemies.enemies[i].SetImage(Images.enemy[3]);
-                        graphics.Refresh();
+                        if (Enemies.enemies.Count > 0)
+                        {
+                            Enemies.enemies[i].SetImage(Images.boss[0]);
+                            graphics.Refresh();
+                        }
                     }
-                    catch { }
-
                 }
-                else
+                if (Enemies.enemies.Count > 0)
                 {
-                    await Task.Delay(timeBetweenFrames);
-                    Enemies.enemies[i].SetImage(Images.boss[0]);
-                    graphics.Refresh();
-                }
+                    AnimateEnemy();
+                } 
             }
-
-            AnimateEnemy();
         }
     }
 }

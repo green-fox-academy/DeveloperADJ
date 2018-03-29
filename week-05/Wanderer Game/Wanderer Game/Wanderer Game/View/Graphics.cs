@@ -21,9 +21,9 @@ namespace Wanderer_Game.View
         HeadsUpDisplay headsUpDisplay;
         Player player;
         double tileSize;
+        int stageCounter;
 
-
-        public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HeadsUpDisplay hud, Player player)
+        public Draw(Canvas canvas, FoxDraw foxDraw, Enemies enemies, HeadsUpDisplay hud, Player player, int stageCounter)
         {
             this.canvas = canvas;
             this.foxDraw = foxDraw;
@@ -31,6 +31,7 @@ namespace Wanderer_Game.View
             this.headsUpDisplay = hud;
             this.player = player;
             tileSize = canvas.Width / 10;
+            this.stageCounter = stageCounter;
         }
 
         public void Level(string level)
@@ -42,7 +43,7 @@ namespace Wanderer_Game.View
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    Tile(new Point(0 + xOffset, 0 + yOffset), View.Tile.GetTileType(Levels.level1, y, x));
+                    Tile(new Point(0 + xOffset, 0 + yOffset), View.Tile.GetTileType(Levels.maps[Levels.stageCounter], y, x));
                     xOffset += canvas.Width / 10;
                 }
                 xOffset = 0;
@@ -63,7 +64,8 @@ namespace Wanderer_Game.View
 
             if (!player.isDead)
             {
-                Level(Levels.level1);
+
+                Level(Levels.maps[Levels.stageCounter]);
 
                 if (player.isInBattle)
                 {
@@ -109,7 +111,7 @@ namespace Wanderer_Game.View
             characterImage.Source = new BitmapImage(new Uri(character.GetImage(), UriKind.RelativeOrAbsolute));
             characterImage.Width = canvas.Width / 10;
             characterImage.Height = canvas.Width / 10;
-            foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y);
+            foxDraw.AddImage(characterImage, character.GetPosition().X, character.GetPosition().Y - tileSize/2);
         }
 
         public void Enemy(Enemy enemy)

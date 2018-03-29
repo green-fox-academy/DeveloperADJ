@@ -56,6 +56,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Animator.cs" />
     <Compile Include="Model\Enemies.cs" />
+    <Compile Include="Model\EnemySpawner.cs" />
     <Compile Include="Model\GameSetup.cs" />
     <Compile Include="Model\Images.cs" />
     <Compile Include="Model\Characters.cs" />
@@ -158,6 +159,9 @@
     <Resource Include="Assets\Images\Skeleton\frame_1_delay-0.17s.gif" />
     <Resource Include="Assets\Images\Skeleton\frame_2_delay-0.17s.gif" />
     <Resource Include="Assets\Images\Skeleton\frame_3_delay-0.17s.gif" />
+    <Resource Include="Assets\Levels\level2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Assets\Sound\01 - Ruined World.wav" />
     <Content Include="Assets\Sound\05 - Zeal Palace.wav" />
     <Content Include="Assets\Sound\11 - Black Omen.mp3" />

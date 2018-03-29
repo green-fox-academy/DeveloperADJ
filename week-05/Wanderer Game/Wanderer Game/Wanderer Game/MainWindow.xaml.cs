@@ -30,28 +30,70 @@ namespace Wanderer_Game
         GameSetup gameSetup;
         HeadsUpDisplay headsUpDisplay;
         Animator animator;
+        FoxDraw foxDraw;
+
+        EnemySpawner enemySpawner;
 
         int turnCount = 0;
 
         public MainWindow()
         {
             InitializeComponent();
-            FoxDraw foxDraw = new FoxDraw(canvas);
+            StartGame();
+        }
+
+        private void StartGame()
+        {
+
+            foxDraw = new FoxDraw(canvas);
 
             gameSetup = new GameSetup(canvas, 500);
             enemies = new Enemies();
             headsUpDisplay = new HeadsUpDisplay(canvas);
             player = new Player(headsUpDisplay, enemies, canvas);
-            graphics = new Draw(canvas, foxDraw, enemies, headsUpDisplay, player);
+            graphics = new Draw(canvas, foxDraw, enemies, headsUpDisplay, player, Levels.stageCounter);
 
             Characters.AddToList(player);
 
+            enemySpawner = new EnemySpawner(player, canvas);
+
+            enemySpawner.AddEnemiesToMap();
+
             enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
+            //enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
+            //enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
+            //enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
+
+            animator = new Animator(player, graphics, Levels.stageCounter);
+
+            graphics.Refresh();
+            Sound.PlayMusic(Sounds.mapMusic);
+            animator.AnimatePlayer();
+            animator.AnimateEnemy();
+        }
+
+        private void NextLevel(FoxDraw foxdraw1, GameSetup gameSetup1, HeadsUpDisplay hud, Player player1, Draw graphics1, Animator animator1)
+        {
+            Levels.stageCounter++;
+            FoxDraw foxDraw = foxdraw1;
+            gameSetup = gameSetup1;
+            enemies = new Enemies();
+            headsUpDisplay = hud;
+            player = player1;
+            graphics = graphics1;
+            player.SetPositon(0,0);
+            enemies.Add(new Enemy("Boss", player, canvas, Images.boss[0], 9, 9, true, 20, 20, 10));
+
+            for (int i = 0; i < 4; i++)
+            {
+                enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
+            }
+
             enemies.Add(new Enemy("SkeletonA", player, canvas, Images.skeleton, 0, 5));
             enemies.Add(new Enemy("SkeletonB", player, canvas, Images.skeleton, 4, 3));
             enemies.Add(new Enemy("SkeletonC", player, canvas, Images.skeleton, 7, 8));
 
-            animator = new Animator(player, graphics);
+            animator = animator1;
 
             graphics.Refresh();
             Sound.PlayMusic(Sounds.mapMusic);
@@ -61,6 +103,13 @@ namespace Wanderer_Game
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
+            if (Enemies.enemies.Count < 1)
+            {
+                canvas.Children.Clear();
+                NextLevel(foxDraw, gameSetup, headsUpDisplay, player, graphics, animator);
+            }
+
+
             if (!player.isInBattle)
             {
                 turnCount++;
