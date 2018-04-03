@@ -1,0 +1,55 @@
+﻿@model BankOfSimba.Models.BankAccounts
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to Simba's bank!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        @*Hello, @Model.Name the mighty @Model.AnimalType!
+            Your balance is @Double.Parse(Model.Balance).ToString("0.00") Zebra.*@
+
+
+
+        @for (int i = 0; i < Model.animals.Count; i++)
+        {
+            var animal = Model.animals[i];
+
+            <table>
+                <tr>
+                    <th>Id:</th>
+                    <th>Name:</th>
+                    <th>Balance in Zebra's:</th>
+                    <th>AnimalType: </th>
+                </tr>
+
+                <tr>
+
+                    @if (animal.IsKing)
+                    {
+                        <td style="border: 2px dotted gold">@i</td>
+                        <td style="border: 2px dotted gold">@animal.Name</td>
+                        <td style="border: 2px dotted gold">@Double.Parse(animal.Balance).ToString("0.00")</td>
+                        <td style="border: 2px dotted gold">@animal.AnimalType</td>
+                    }
+                    else
+                    {
+                        <td>@i</td>
+                        <td>@animal.Name</td>
+                        <td>@Double.Parse(animal.Balance).ToString("0.00")</td>
+                        <td>@animal.AnimalType</td>
+                    }
+
+                </tr>
+            </table>
+        }
+
+    </p>
+</body>
+</html>
