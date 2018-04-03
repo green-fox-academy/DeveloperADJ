@@ -7,49 +7,61 @@
     <style>
         table, th, td {
             border: 1px solid black;
+            text-align: center;
+            color: darkorange;
+        }
+
+        td, img {
+            height: 100px;
+            width: 100px;
+        }
+
+        html {
+            background: url('http://4.bp.blogspot.com/_QdHn8FT7SdY/S-FZOJh0E5I/AAAAAAAAI1Y/gXm85yHPkhk/s1600/lionking1005sm.jpgno-repeat') no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+        }
+
+        table {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: darkorange;
         }
     </style>
 </head>
 <body>
+    <h1 align="center">Welcome to Simba's bank!</h1>
     <p>
-        @*Hello, @Model.Name the mighty @Model.AnimalType!
-            Your balance is @Double.Parse(Model.Balance).ToString("0.00") Zebra.*@
+        <table align="center">
+            <tr>
+                <th>Id:</th>
+                <th>Name:</th>
+                <th>Balance:</th>
+                <th>AnimalType: </th>
+                <th>Badguy: </th>
+                <th>King: </th>
+                <th>Photo: </th>
+            </tr>
+            @for (int i = 0; i < Model.animals.Count; i++)
+            {
+                var animal = Model.animals[i];
+                string borderStyle = animal.IsKing ? "4px darkorange dotted" : "2px black solid";
+                string textColor = animal.IsBadGuy ? "red" : "darkorange";
 
-
-
-        @for (int i = 0; i < Model.animals.Count; i++)
-        {
-            var animal = Model.animals[i];
-
-            <table>
-                <tr>
-                    <th>Id:</th>
-                    <th>Name:</th>
-                    <th>Balance in Zebra's:</th>
-                    <th>AnimalType: </th>
-                </tr>
-
-                <tr>
-
-                    @if (animal.IsKing)
-                    {
-                        <td style="border: 2px dotted gold">@i</td>
-                        <td style="border: 2px dotted gold">@animal.Name</td>
-                        <td style="border: 2px dotted gold">@Double.Parse(animal.Balance).ToString("0.00")</td>
-                        <td style="border: 2px dotted gold">@animal.AnimalType</td>
-                    }
-                    else
-                    {
-                        <td>@i</td>
-                        <td>@animal.Name</td>
-                        <td>@Double.Parse(animal.Balance).ToString("0.00")</td>
-                        <td>@animal.AnimalType</td>
-                    }
-
-                </tr>
-            </table>
-        }
-
+            <tr>
+                <td style="border: @borderStyle; color: @textColor">@i</td>
+                <td style="border: @borderStyle; color: @textColor">@animal.Name</td>
+                <td style="border: @borderStyle; color: @textColor">@Double.Parse(animal.Balance).ToString("0.00")</td>
+                <td style="border: @borderStyle; color: @textColor">@animal.AnimalType</td>
+                <td style="border: @borderStyle; color: @textColor">@Convert.ToString(animal.IsBadGuy)</td>
+                <td style="border: @borderStyle; color: @textColor">@Convert.ToString(animal.IsKing)</td>
+                <td style="border: @borderStyle; color: @textColor"><img src="@animal.ImageURL" /></td>
+                <td><button >Press me!</button></td>
+            </tr>
+            }
+        </table>
     </p>
 </body>
 </html>
