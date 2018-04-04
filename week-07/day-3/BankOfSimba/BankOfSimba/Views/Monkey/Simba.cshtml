@@ -33,22 +33,22 @@
 </head>
 <body>
     <h1 align="center">Welcome to Simba's bank!</h1>
-    <p>
-        <table align="center">
-            <tr>
-                <th>Id:</th>
-                <th>Name:</th>
-                <th>Balance:</th>
-                <th>AnimalType: </th>
-                <th>Badguy: </th>
-                <th>King: </th>
-                <th>Photo: </th>
-            </tr>
-            @for (int i = 0; i < Model.animals.Count; i++)
-            {
-                var animal = Model.animals[i];
-                string borderStyle = animal.IsKing ? "4px darkorange dotted" : "2px black solid";
-                string textColor = animal.IsBadGuy ? "red" : "darkorange";
+    <table align="center">
+        <tr>
+            <th>Id:</th>
+            <th>Name:</th>
+            <th>Balance:</th>
+            <th>AnimalType: </th>
+            <th>Badguy: </th>
+            <th>King: </th>
+            <th>Photo: </th>
+        </tr>
+
+        @for (int i = 0; i < Model.animals.Count; i++)
+        {
+            var animal = Model.animals[i];
+            string borderStyle = animal.IsKing ? "4px darkorange dotted" : "2px black solid";
+            string textColor = animal.IsBadGuy ? "red" : "darkorange";
 
             <tr>
                 <td style="border: @borderStyle; color: @textColor">@i</td>
@@ -58,10 +58,22 @@
                 <td style="border: @borderStyle; color: @textColor">@Convert.ToString(animal.IsBadGuy)</td>
                 <td style="border: @borderStyle; color: @textColor">@Convert.ToString(animal.IsKing)</td>
                 <td style="border: @borderStyle; color: @textColor"><img src="@animal.ImageURL" /></td>
-                <td><button >Press me!</button></td>
+                <td>
+                    <form action="Simba?index=@i" method="post">
+                        <input type="submit" value="Add funds!" />
+                    </form>
+                </td>
             </tr>
-            }
-        </table>
-    </p>
+        }
+    </table>
+    <form action="add" method="post">
+        <input type="text" name="name" value="Arno" /><br />
+        <input type="text" name="balance" value="2000" /><br />
+        <input type="text" name="animalType" value="Animal Type" /><br />
+        <input type="text" name="imageURL" value="https://i.pinimg.com/originals/e7/fa/fb/e7fafb0b1581a411b56d9edd2e4a6734.png" /><br />
+        <input type="text" name="isKing" value="true" /><br />
+        <input type="text" name="isBadGuy" value="true" /><br />
+        <input type="submit" value="Add Animal!" />
+    </form>
 </body>
 </html>

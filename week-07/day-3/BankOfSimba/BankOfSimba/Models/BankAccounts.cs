@@ -14,9 +14,5 @@ namespace BankOfSimba.Models
             new BankAccount("Ed", "5", "Hyena", "http://www.fordesigner.com/imguploads/Image/cjbc/zcool/png20080526/1211808789.png", false, true),
             new BankAccount("Zazu", "1500", "Bird", "http://www.fordesigner.com/imguploads/Image/cjbc/zcool/png20080526/1211808830.png", false, true)
         };
-
-        public BankAccounts()
-        {
-        }
     }
 }
