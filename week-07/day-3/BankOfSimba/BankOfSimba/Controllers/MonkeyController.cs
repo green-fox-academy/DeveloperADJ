@@ -33,13 +33,10 @@ namespace BankOfSimba.Controllers
         [HttpPost]
         public IActionResult Simba(string name, string balance, string animalType, string imageURL, string isKing, string isBadGuy)
         {
-            //bankAccounts.animals.Add(new BankAccount("Miki", "10000000", "Lone Wolf", "https://i.pinimg.com/originals/e7/fa/fb/e7fafb0b1581a411b56d9edd2e4a6734.png", true, true));
             bool isKingConverted = Convert.ToBoolean(isKing);
             bool isBadGuyConverted = Convert.ToBoolean(isBadGuy);
 
             bankAccounts.animals.Add(new BankAccount(name, balance, animalType, imageURL, isKingConverted, isBadGuyConverted));
-            //bankAccounts.animals.Add(new BankAccount("Arno", "300", "Monkey", "www.google.com", true, true));
-            //bankAccounts.animals[0].Name = name;
             return View(bankAccounts);
         }
     }
