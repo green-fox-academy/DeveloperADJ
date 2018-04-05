@@ -3,25 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Anagram.Models;
+using Anagram.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anagram.Controllers
 {
     public class HomeController : Controller
     {
-        AnagramChecker anagramChecker = new AnagramChecker();
+        IAnagramCheckable anagramChecker;
 
-        [Route("Index")]
-        public IActionResult Index()
+        public HomeController(IAnagramCheckable anagramChecker)
+        {
+            this.anagramChecker = anagramChecker;
+        }
+
+        [Route("AskForAnagram")]
+        public IActionResult AskForAnagram()
         {
             return View();
         }
 
-        [Route("Index")]
-        public IActionResult Index()
+        [Route("CheckAnagram")]
+        public IActionResult CheckAnagram(string firstWord, string secondWord)
         {
-
-            return View();
+            return View((object)anagramChecker.CheckWordForAnagram(firstWord, secondWord));
         }
     }
 }
