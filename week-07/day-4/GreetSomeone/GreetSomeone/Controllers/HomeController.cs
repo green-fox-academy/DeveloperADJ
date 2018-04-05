@@ -3,28 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GreetSomeone.Models;
+using GreetSomeone.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GreetSomeone.Controllers
 {
     public class HomeController : Controller
     {
-        static GreetingRobot greetingRobot = new GreetingRobot();
+        IGreetable greetingRobot;
 
-        [Route("Index")]
-        [HttpGet]
-        public IActionResult Index()
+        public HomeController(IGreetable greetable)
         {
-            return View(greetingRobot);
+            greetingRobot = greetable;
+        }
+
+        [Route("AskName")]
+        [HttpGet]
+        public IActionResult AskName()
+        {
+            return View();
         }
 
         [Route("Greet")]
         [HttpPost]
-        public IActionResult Greeter(string name)
+        public IActionResult Greet(string name)
         {
-            greetingRobot.Message = "Welcome ";
-            greetingRobot.Name = name;
-            return View(greetingRobot);
+            return View((object)greetingRobot.Greet(name));
         }
     }
 }

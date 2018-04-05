@@ -1,19 +1,16 @@
-﻿using System;
+﻿using GreetSomeone.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GreetSomeone.Models
 {
-    public class GreetingRobot
+    public class GreetingRobot : IGreetable
     {
-        public string Name { get; set; }
-        public string Message { get; set; }
-
-        public GreetingRobot(string Name = "", string Message = "What is your name?")
+        public string Greet(string name)
         {
-            this.Name = Name;
-            this.Message = Message;
+            return "Hello " + name;
         }
     }
 }
