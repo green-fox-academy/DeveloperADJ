@@ -1,0 +1,50 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Todo List</title>
+    <style>
+        td {
+            border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Todo list!</h1>
+    <table>
+        <tr>
+            <td>Number</td>
+            <td>Task</td>
+            <td>Completed</td>
+            <td>Urgent</td>
+        </tr>
+        @for (int i = 0; i < Model.todos.Count; i++)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>@Model.todos[i].Name</td>
+                <td>
+                    <form>
+                        <input type="checkbox" name="isComplete" value="false" />
+                    </form>
+                </td>
+                <td>
+                    <form action="Todo" method="post">
+                        <input type="checkbox" name="isUrgent" value="true" />
+                    </form>
+                </td>
+                <td>
+                    <form action="Delete?taskIndex=@i" method="post">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    <form action="Add" method="post">
+        <p>Add new task: </p>
+        <input type="text" name="taskName" value="" />
+        <input type="submit" value="Add" />
+    </form>
+</body>
+</html>
