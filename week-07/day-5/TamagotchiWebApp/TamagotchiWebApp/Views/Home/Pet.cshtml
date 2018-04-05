@@ -1,0 +1,53 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Press+Start+2P" rel="stylesheet">
+    <title>Tamagotchi</title>
+    <style>
+        body {
+            background-color: #ACD473;
+        }
+
+        * {
+            font-family: 'Press Start 2P', cursive;
+            color: #363636;
+            text-align: center;
+            list-style-position: inside;
+            -webkit-font-smoothing: never;
+            font-size: 15px;
+            line-height: 2em;
+        }
+
+        img {
+            align-content: center;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 50%;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1em;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="#">Information</a>
+        </li>
+    </ul>
+    <h1>@Model.Name</h1>
+    <img src="@Model.ImageURL" alt="Your Tamagotchi" />
+    <p>This is @Model.Name. Currently living on pizza and lemonade. <br />He knows @Model.Tricks.Count tricks.</p>
+    <p>Known tricks</p>
+    <ul>
+        @foreach (var trick in Model.Tricks)
+        {
+            <li>@trick</li>
+        }
+    </ul>
+</body>
+</html>

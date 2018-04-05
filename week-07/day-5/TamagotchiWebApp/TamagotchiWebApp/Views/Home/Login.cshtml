@@ -1,0 +1,56 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Press+Start+2P" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ACD473;
+        }
+
+        input {
+            background-color: #ACD473;
+        }
+
+        * {
+            font-family: 'Press Start 2P', cursive;
+            color: #363636;
+            text-align: center;
+            list-style-position: inside;
+            -webkit-font-smoothing: never;
+            font-size: 15px;
+            line-height: 2em;
+        }
+
+        img {
+            align-content: center;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 50%;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to programmer Fox Club!</h1>
+    <p>Please provide a name, so that you can associate it with your pet!</p>
+    <form action="Pet" method="get">
+        Name: <input type="text" name="chosenName" />
+        <input type="submit" value="GO" />
+    </form>
+    <p>List of existing pets;</p>
+    <ul>
+        @foreach (var pet in Model.GetList())
+        {
+            <li>@pet.Name</li>
+        }
+    </ul>
+</body>
+</html>
