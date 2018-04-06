@@ -9,5 +9,8 @@ namespace TamagotchiWebApp.Services
     public interface IPettable
     {
         double Purchase();
+        void AddToInventory(string foodAndDrink);
+
+        List<string> GetInventory();
     }
 }

@@ -12,17 +12,6 @@ namespace TamagotchiWebApp.Models
             new FoodAndDrink("Langos", "salty", "", 700)
         };
 
-        public List<string> Inventory = new List<string>();
-
-         public void AddToInventory(string foodAndDrink)
-        {
-            Inventory.Add(foodAndDrink);
-        }
-
-        public List<string> GetInventory()
-        {
-            return Inventory;
-        }
 
         public void AddToList(FoodAndDrink foodAndDrink)
         {

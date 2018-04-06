@@ -37,7 +37,7 @@ namespace TamagotchiWebApp.Controllers
         public IActionResult Buy([FromForm]string foodName, [FromForm]string drinkName)
         {
             PetEnvironmentViewModel vm = new PetEnvironmentViewModel(pets, foodAndDrinks);
-            vm.FoodAndDrinks.AddToInventory(foodName);
+            vm.Pets.GetSelectedPet().AddToInventory(foodName);
             if (vm.Pets.GetSelectedPet().Purchase() > 0)
             {
                 vm.Pets.GetSelectedPet().Purchase();
@@ -56,7 +56,7 @@ namespace TamagotchiWebApp.Controllers
             
             chosenPet = pets.GetList().Find(p => p.Name == chosenName);
 
-            if (chosenPet == null)
+            if (chosenPet == null && chosenName != null)
             { 
                 chosenPet = new Pet(chosenName);
                 pets.AddToList(chosenPet);

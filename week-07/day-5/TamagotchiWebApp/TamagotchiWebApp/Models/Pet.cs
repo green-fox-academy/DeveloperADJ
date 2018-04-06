@@ -12,6 +12,19 @@ namespace TamagotchiWebApp.Models
         public List<string> Tricks { get; set; }
         public double Money { get; set; } = 10000;
 
+        public List<string> Inventory = new List<string>();
+
+
+        public void AddToInventory(string foodAndDrink)
+        {
+            Inventory.Add(foodAndDrink);
+        }
+
+        public List<string> GetInventory()
+        {
+            return Inventory;
+        }
+
         public Pet(string name)
         {
             Tricks = new List<string>

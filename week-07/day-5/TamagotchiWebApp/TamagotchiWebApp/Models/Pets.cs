@@ -7,7 +7,25 @@ namespace TamagotchiWebApp.Models
     public class Pets : IPets
     {
         public List<Pet> List = new List<Pet> {
-            new Pet("Pet", new List<string>
+            new Pet("Danino", new List<string>
+        {
+            "something",
+            "something",
+            "something",
+        }),
+            new Pet("Pedroino", new List<string>
+        {
+            "something",
+            "something",
+            "something",
+        }),
+            new Pet("Norbino", new List<string>
+        {
+            "something",
+            "something",
+            "something",
+        }),
+            new Pet("Matebooboo", new List<string>
         {
             "something",
             "something",
