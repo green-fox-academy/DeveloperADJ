@@ -7,5 +7,7 @@ namespace TamagotchiWebApp.Controllers
     {
         void AddToList(Pet name);
         List<Pet> GetList();
+        Pet GetSelectedPet();
+        void SetSelectedPet(Pet chosenPet);
     }
 }

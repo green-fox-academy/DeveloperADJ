@@ -5,11 +5,11 @@
 
     <style>
         body {
-            background-color: #ACD473;
+            background-color: #ffffff;
         }
 
         input {
-            background-color: #ACD473;
+            background-color: #ffffff;
         }
 
         * {
@@ -47,7 +47,7 @@
     </form>
     <p>List of existing pets;</p>
     <ul>
-        @foreach (var pet in Model.GetList())
+        @foreach (var pet in Model.Pets.GetList())
         {
             <li>@pet.Name</li>
         }

@@ -1,9 +1,14 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="https://fonts.googleapis.com/css?family=Monoton|Press+Start+2P" rel="stylesheet">
-    <title>Tamagotchi</title>
+    <title>Nutrition Store</title>
     <style>
         body {
+            background-color: #ffffff;
+        }
+
+        input, select {
+            height: 3em;
             background-color: #ffffff;
         }
 
@@ -35,29 +40,16 @@
     </style>
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="#">Information</a>
-        </li>
-        <li>
-            <a href="/NutritionStore">Nutrition Store</a>
-        </li>
-    </ul>
-    <h1>@Model.Pets.GetSelectedPet().Name</h1>
-    <img src="@Model.Pets.GetSelectedPet().ImageURL" alt="Your Tamagotchi" />
-    <p>Known tricks:</p>
-    <ul>
-        @foreach (var trick in Model.Pets.GetSelectedPet().Tricks)
-        {
-            <li>@trick</li>
-        }
-    </ul>
-    <p>Food/Drinks owned:</p>
-    <ul>
-        @foreach (var food in Model.FoodAndDrinks.GetInventory())
-        {
-            <li>@food</li>
-        }
-    </ul>
+    <h1>Welcome to the nutrition store!</h1>
+    <form action="Buy" method="post">
+        <select name="foodName">
+            @foreach (var foodOrDrink in Model.FoodAndDrinks.GetList())
+            {
+                <option value="@foodOrDrink.Name">@foodOrDrink.Price ft @foodOrDrink.Name</option>
+            }
+        </select>
+        <input type="submit" value="BUY" />
+        <img src="@Model.Pets.GetSelectedPet().ImageURL" alt="Alternate Text" />
+    </form>
 </body>
 </html>

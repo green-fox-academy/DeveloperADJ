@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using TamagotchiWebApp.Controllers;
 using TamagotchiWebApp.Models;
+using TamagotchiWebApp.Services;
 
 namespace TamagotchiWebApp
 {
@@ -15,6 +16,7 @@ namespace TamagotchiWebApp
         {
             services.AddMvc();
             services.AddSingleton<IPets, Pets>();
+            services.AddSingleton<IFoodAndDrinks, FoodAndDrinks>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
