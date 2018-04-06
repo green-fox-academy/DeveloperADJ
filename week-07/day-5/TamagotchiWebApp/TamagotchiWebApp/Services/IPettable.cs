@@ -8,5 +8,6 @@ namespace TamagotchiWebApp.Services
 {
     public interface IPettable
     {
+        double Purchase();
     }
 }

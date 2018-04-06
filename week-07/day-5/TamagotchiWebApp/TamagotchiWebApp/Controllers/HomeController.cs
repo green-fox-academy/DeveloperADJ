@@ -38,7 +38,15 @@ namespace TamagotchiWebApp.Controllers
         {
             PetEnvironmentViewModel vm = new PetEnvironmentViewModel(pets, foodAndDrinks);
             vm.FoodAndDrinks.AddToInventory(foodName);
-            return RedirectToAction("Pet", new { chosenName = pets.GetSelectedPet().Name});
+            if (vm.Pets.GetSelectedPet().Purchase() > 0)
+            {
+                vm.Pets.GetSelectedPet().Purchase();
+                return RedirectToAction("Pet", new { chosenName = pets.GetSelectedPet().Name });
+            }
+           else
+            {
+                return RedirectToAction("NutritionStore");
+            }
         }
 
         [HttpGet("Pet")]

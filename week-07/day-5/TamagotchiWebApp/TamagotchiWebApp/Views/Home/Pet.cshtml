@@ -7,6 +7,11 @@
             background-color: #ffffff;
         }
 
+        a {
+            align-content: inherit;
+            display: inline;
+        }
+
         * {
             font-family: 'Press Start 2P', cursive;
             color: #363636;
@@ -35,23 +40,18 @@
     </style>
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="#">Information</a>
-        </li>
-        <li>
-            <a href="/NutritionStore">Nutrition Store</a>
-        </li>
-    </ul>
+
+            <a href="/NutritionStore">Food Store</a>
+
     <h1>@Model.Pets.GetSelectedPet().Name</h1>
     <img src="@Model.Pets.GetSelectedPet().ImageURL" alt="Your Tamagotchi" />
-    <p>Known tricks:</p>
+    @*<p>Known tricks:</p>
     <ul>
         @foreach (var trick in Model.Pets.GetSelectedPet().Tricks)
         {
             <li>@trick</li>
         }
-    </ul>
+    </ul>*@
     <p>Food/Drinks owned:</p>
     <ul>
         @foreach (var food in Model.FoodAndDrinks.GetInventory())

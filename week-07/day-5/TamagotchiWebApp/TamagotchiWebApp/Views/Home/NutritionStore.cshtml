@@ -40,12 +40,13 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the nutrition store!</h1>
+    <h1>Welcome to the Food Store!</h1>
+    <p>Your funds: @Model.Pets.GetSelectedPet().Money ft</p>
     <form action="Buy" method="post">
         <select name="foodName">
             @foreach (var foodOrDrink in Model.FoodAndDrinks.GetList())
             {
-                <option value="@foodOrDrink.Name">@foodOrDrink.Price ft @foodOrDrink.Name</option>
+                <option value="@foodOrDrink.Name">100 ft @foodOrDrink.Name</option>
             }
         </select>
         <input type="submit" value="BUY" />

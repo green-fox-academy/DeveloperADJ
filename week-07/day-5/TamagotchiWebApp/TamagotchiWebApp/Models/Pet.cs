@@ -10,8 +10,7 @@ namespace TamagotchiWebApp.Models
         public string Name { get; set; } = "Mr. Fox";
         public string ImageURL { get; set; } = "http://www.videogamesprites.net/FinalFantasy6/Party/Mog/Mog%20-%20Walk%20(Front).gif";
         public List<string> Tricks { get; set; }
-        //public string SelectedFood = "Pizza";
-        //public string SelectedDrink = "Lemonade";
+        public double Money { get; set; } = 10000;
 
         public Pet(string name)
         {
@@ -33,6 +32,11 @@ namespace TamagotchiWebApp.Models
         public bool Equals(Pet other)
         {
             return Name == other.Name;
+        }
+
+        public double Purchase()
+        {
+            return Money -= 100;
         }
     }
 }
