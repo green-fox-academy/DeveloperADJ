@@ -43,7 +43,7 @@
     <a href="/NutritionStore">Food Store</a>
     <br />
     <h1>@Model.Pets.GetSelectedPet().Name</h1>
-    <img src="@Model.Pets.GetSelectedPet().ImageURL" alt="Your Tamagotchi" />
+    <img id="image" src="@Model.Pets.GetSelectedPet().ImageURL" alt="Your Tamagotchi" />
     @*<p>Known tricks:</p>
         <ul>
             @foreach (var trick in Model.Pets.GetSelectedPet().Tricks)
@@ -51,7 +51,6 @@
                 <li>@trick</li>
             }
         </ul>*@
-
     @*<form action="PerformTrick" method="get"></form>
         <input type="button" name="trick" value="fly" />*@
     <p>Food/Drinks owned:</p>
