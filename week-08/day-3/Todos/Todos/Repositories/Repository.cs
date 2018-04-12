@@ -22,13 +22,6 @@ namespace Todos.Models
             context.SaveChanges();
         }
 
-        public List<Todo> Search(string word)
-        {
-            var filteredTodos = context.Todos.Where(x => x.Title.Contains(word)).ToList();
-            context.SaveChanges();
-            return filteredTodos;
-        }
-
         public void Delete(int id)
         {
             Todo todo = context.Todos.FirstOrDefault(x => x.Id == id);

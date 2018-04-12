@@ -1,40 +1,46 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title></title>
-    <style>
-        table, tr, td {
-            border: 1px solid black;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <a href="Add">Add new todo</a>
-    <h1>Todos for today:</h1>
-    <table>
+    <h1 class="text-center">Todos for today:</h1>
+    
+    <nav class="navbar navbar-light bg-light">
+    <a href="Add" class="btn btn-outline-warning">Add new todo</a>
+    <form class="form-inline" action="List" method="post">
+        <input class="form-control mr-sm-2" name="searchWord" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+    <table class="table table-bordered">
         <tr>
-            <td>ID</td>
-            <td>ACTION</td>
-            <td>DONE</td>
-            <td>URGENT</td>
+            <th scope="col">ID</th>
+            <th scope="col">Action</th>
+            <th scope="col">Done</th>
+            <th scope="col">Urgent</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         @foreach (var todo in @Model)
         {
-        <tr>
-            <td>@todo.Id</td>
-            <td>@todo.Title</td>
-            <td>@todo.IsDone</td>
-            <td>@todo.IsUrgent</td>
-            <td>
-                <a href="Delete?id=@todo.Id">delete</a>
-            </td>
-            <td>
-                <a href="Edit">edit</a>
-            </td>
-        </tr>
+            <tr class="text-left">
+                <th scope="row">@todo.Id</th>
+                <td>@todo.Title</td>
+                <td>@todo.IsDone</td>
+                <td>@todo.IsUrgent</td>
+                <td>
+                    <a class="btn btn-danger" href="Delete?id=@todo.Id">delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="Edit">edit</a>
+                </td>
+            </tr>
         }
     </table>
-
-
 </body>
 </html>
 

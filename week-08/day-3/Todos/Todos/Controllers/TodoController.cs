@@ -25,12 +25,6 @@ namespace Todos.Controllers
             return View(repository.Read());
         }
 
-        [HttpPost("List")]
-        public IActionResult List(string searchWord)
-        {
-            return View(repository.Search(searchWord));
-        }
-
         [HttpGet("Add")]
         public IActionResult Add()
         {
@@ -44,6 +38,7 @@ namespace Todos.Controllers
             {
                 Title = title
             });
+
             return RedirectToAction("List");
         }
 

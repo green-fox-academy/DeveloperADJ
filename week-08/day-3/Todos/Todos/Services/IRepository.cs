@@ -13,6 +13,5 @@ namespace Todos.Services
         List<Todo> Read();
         void Update();
         void Delete(int id);
-        List<Todo> Search(string word);
     }
 }
