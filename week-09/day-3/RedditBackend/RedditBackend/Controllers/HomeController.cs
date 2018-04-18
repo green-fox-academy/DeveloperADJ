@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ArrayHandler.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ArrayHandler.Controllers.Home
+namespace RedditBackend.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpPost("arrays")]
-        public IActionResult Index([FromBody]Handler handler)
+
+        public IActionResult Index()
         {
-            return handler.ProcessArray();
+            return View();
+        }
+
+        [HttpGet("posts")]
+        public IActionResult Posts()
+        {
         }
     }
 }

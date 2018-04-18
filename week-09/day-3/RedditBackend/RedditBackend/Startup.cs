@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ArrayHandler
+namespace RedditBackend
 {
     public class Startup
     {
@@ -26,10 +26,12 @@ namespace ArrayHandler
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-            app.UseStaticFiles();
-            app.UseDefaultFiles();
             app.UseMvcWithDefaultRoute();
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello World!");
+            });
         }
     }
 }
