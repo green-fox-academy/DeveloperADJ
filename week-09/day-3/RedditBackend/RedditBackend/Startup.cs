@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using RedditBackend.Entities;
+using RedditBackend.Models;
+using RedditBackend.Repository;
+using RedditBackend.Services;
 
 namespace RedditBackend
 {
@@ -16,6 +21,12 @@ namespace RedditBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddScoped<ICRUDRepository<Post>, PostRepository>();
+            services.AddScoped<ICRUDRepository<User>, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+
+            services.AddDbContext<RedditContext>(options =>
+   options.UseSqlServer(Environment.GetEnvironmentVariable("CONNECTIONSTRING")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
