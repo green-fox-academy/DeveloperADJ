@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace RedditBackend.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,27 +28,28 @@ namespace RedditBackend.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    OwnerId = table.Column<int>(nullable: true),
                     Score = table.Column<int>(nullable: false),
                     TimeStamp = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true)
+                    Url = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: true),
+                    Vote = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_Users_OwnerId",
-                        column: x => x.OwnerId,
+                        name: "FK_Posts_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_OwnerId",
+                name: "IX_Posts_UserId",
                 table: "Posts",
-                column: "OwnerId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

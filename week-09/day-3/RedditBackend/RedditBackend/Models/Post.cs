@@ -12,7 +12,7 @@ namespace RedditBackend.Models
         public string Url { get; set; }
         public DateTime TimeStamp { get; set; }
         public int Score { get; set; }
-        public User Owner { get; set; }
+        public User User { get; set; }
         public int? Vote { get; set; }
 
         public Post()

@@ -16,7 +16,7 @@ namespace RedditBackend.Entities
         {
             modelBuilder.Entity<User>()
                 .HasMany(x=>x.Posts)
-                .WithOne(x=>x.Owner);
+                .WithOne(x=>x.User);
         }
     }
 }

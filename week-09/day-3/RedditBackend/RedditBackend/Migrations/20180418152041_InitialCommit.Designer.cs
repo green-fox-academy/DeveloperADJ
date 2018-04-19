@@ -11,9 +11,10 @@ using System;
 namespace RedditBackend.Migrations
 {
     [DbContext(typeof(RedditContext))]
-    partial class PostContextModelSnapshot : ModelSnapshot
+    [Migration("20180418152041_InitialCommit")]
+    partial class InitialCommit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,8 +26,6 @@ namespace RedditBackend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("OwnerId");
-
                     b.Property<int>("Score");
 
                     b.Property<DateTime>("TimeStamp");
@@ -35,9 +34,13 @@ namespace RedditBackend.Migrations
 
                     b.Property<string>("Url");
 
+                    b.Property<int?>("UserId");
+
+                    b.Property<int?>("Vote");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -56,9 +59,9 @@ namespace RedditBackend.Migrations
 
             modelBuilder.Entity("RedditBackend.Models.Post", b =>
                 {
-                    b.HasOne("RedditBackend.Models.User", "Owner")
+                    b.HasOne("RedditBackend.Models.User", "User")
                         .WithMany("Posts")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
