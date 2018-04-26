@@ -5,33 +5,53 @@
 </head>
 <body>
 
-<%= render 'shared/navbar'%>
 <%= render 'admin_navbar'%>
 
-<h1 id="projects">Projects</h1>
 
-<% @projects.each do |project| %>
+
 <div class="pad">
-	<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
-	<h4><%= project.title %></h4>
-	<%= button_to 'Remove', 
-					project_path(project), 
-					method: :delete, 
-					data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
-					class: 'btn-danger' %>
-</div>
-<% end %>
+	<h1 id="projects">Projects</h1>
+	<%= link_to 'Add New Project', :addproject, class: "btn btn-success btn-lg"%>
+	<br/>
+	<br/>
+	<% @projects.each do |project| %>
+		<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
+		<h4><%= project.title %></h4>
+		<%= button_to "Remove", 
+						project_path(project), 
+						method: :delete, 
+						data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
+						class: 'btn btn-outline-danger btn-sm' %>
+	<% end %>
+	
+	<br/>
+	<br/>
+	<h1 id="teams">Teams</h1>
+	<%= link_to 'Add New Team', :addteam, class: "btn btn-success btn-lg"%>
+	<br/>
+	<br/>
 
-<h1 id="teams">Teams</h1>
-<% @teams.each do |team| %>
-<br/>
-  <h4><%= team.name %></h4>
-<br/>
-<%= button_to 'Remove', 
-					team_path(team), 
-					method: :delete, 
-					data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
-					class: 'btn-danger' %>
-<% end %>
+	<% @teams.each do |team| %>
+	    <h4><%= team.name %></h4>
+		<%= button_to "Remove", team_path(team), method: :delete, 
+		data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
+		class: 'btn btn-outline-danger btn-sm' %>
+	<% end %>
+
+	<br/>
+	<br/>
+	<h1 id="teams">Apprentices</h1>
+    <%= link_to 'Add New Apprentice', :addapprentice, class: "btn btn-success btn-lg"%>
+	<br/>
+	<br/>
+
+	<% @apprentices.each do |apprentice| %>
+		<h4><%= apprentice.name %></h4>
+		<%= button_to "Remove",apprentice_path(apprentice), 
+		method: :delete, data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
+		class: 'btn btn-outline-danger btn-sm' %>
+	<% end %>
+</div>
+
 </body>
 </html>

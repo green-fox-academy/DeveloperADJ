@@ -15,7 +15,15 @@
  */
 
 .pad {
-	padding: 15px;
+	padding: 0% 25%;
+}
+
+#jumbo{
+	padding: 3% 10%;
+}
+
+p {
+	color: grey;
 }
 
 #thumbnail{

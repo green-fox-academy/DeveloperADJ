@@ -4,25 +4,43 @@
   <title>Huli Landing Page</title>
 </head>
 <body>
-
+<div id="jumbo">
 <%= render 'shared/navbar'%>
 
+	<div class="jumbotron jumbotron-fluid">
+	  <div class="container">
+	    <h1 class="display-4">Welcome to the Huli landing page!</h1>
+	    <p class="lead">Here you can find an overview of the projects and teams at Huli.</p>
+	  </div>
+	</div>
+</div>
+
+<div class="pad">
 <h1 id="projects">Projects</h1>
+
 <% @projects.each do |project| %>
-    <br/>
-    <%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
-      <h4><%= project.title %></h4>
-    <br/>
-      <%= project.description %>  
-    <br/>
+<div>
+	<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
+	<h4><%= project.title %></h4>
+	<p><%= project.description %></p>
+</div>
 <% end %>
-<br/>
 
 <h1 id="teams">Teams</h1>
 <% @teams.each do |team| %>
 <br/>
+<div>
   <h4><%= team.name %></h4>
+</div>
 <br/>
 <% end %>
+
+<h1 id="teams">Apprentices</h1>
+<% @apprentices.each do |apprentice| %>
+	<div>
+		<h4><%= apprentice.name %></h4>
+	</div>
+<% end %>
+</div>
 </body>
 </html>

@@ -1,15 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to 'Add Project', :addproject, class: "nav-link"%>
+        <%= link_to 'home', home_index_path, class: "nav-link"%>
       </li>
       <li class="nav-item">
-        <%= link_to 'Add Team', :addteam, class: "nav-link"%>
+        <%= link_to 'projects', '#projects', class: "nav-link"%>
       </li>
       <li class="nav-item">
-        <%= link_to 'Add Apprentice', '#teams', class: "nav-link"%>
+        <%= link_to 'teams', '#teams', class: "nav-link"%>
       </li>
     </ul>
   </div>
+      <div class="mx-auto order-0">
+        <%= link_to 'Admin', :admin, class: "btn btn-outline-dark"%>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 </nav>
+
