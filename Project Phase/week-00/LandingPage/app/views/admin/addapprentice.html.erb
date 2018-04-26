@@ -1,0 +1,14 @@
+<%= render 'shared/navbar'%>
+<%= render 'admin_navbar'%>
+
+<h4>Add New Apprentice:</h4>
+
+<%= form_with scope: :apprentice, url: apprentice_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

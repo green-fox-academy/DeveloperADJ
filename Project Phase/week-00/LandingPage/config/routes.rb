@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'admin/addproject', as: :addproject
   get 'admin/addteam', as: :addteam
+  get 'admin/addapprentice', as: :addapprentice
   get 'admin/index', as: :admin
   get 'teams/show'
+
   resources :projects
   resources :teams
   resources :admin
+  resources :apprentices
+
   root :to => "home#index"
 end
