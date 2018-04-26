@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
 	
 	before_action :authenticate_admin!
-
+	before_filter :authenticate_user!
 	def create
 		@team = Team.new(team_params)
 

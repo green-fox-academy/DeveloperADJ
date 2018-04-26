@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
 	before_action :authenticate_admin!
-
+	
 	def create
 		@project = Project.new(project_params)
 

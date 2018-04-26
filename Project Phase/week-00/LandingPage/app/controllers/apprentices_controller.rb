@@ -1,5 +1,7 @@
 class ApprenticesController < ApplicationController
 
+	before_action :authenticate_admin!
+
 	def create
 		@apprentice = Apprentice.new(apprentice_params)
 
