@@ -21,8 +21,8 @@
 <h1 id="projects">Projects</h1>
 
 <% @projects.each do |project| %>
-<div>
-	<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
+<div class="container">
+	<%= image_tag project.thumbnail_url.to_s, id: "thumbnail", class: "center" %>
 	<h4><%= project.title %></h4>
 	<p><%= project.description %></p>
 </div>
@@ -31,10 +31,10 @@
 <h1 id="teams">Teams</h1>
 <% @teams.each do |team| %>
 <br/>
-<div>
+<div class="team">
   <h2><%= team.name %></h2>
-  <%= image_tag team.image.url, id: "teamimg"%>
-  <p>Team Members:</p>
+  <%= image_tag team.image.url, id: "teamimg", class: "teamphoto"%>
+  <p id="members">Team Members:</p>
   <ul>
   <% team.apprentices.each do |apprentice| %>
   	<li><div><%= link_to apprentice.name, apprentice.github, id: "github", target: "_blank" %></div></li>

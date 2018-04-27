@@ -28,6 +28,8 @@
 									data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
 									class: 'btn btn-outline-danger btn-sm' %>
 		</div>
+			<br/>
+	<br/>
 	<% end %>
 	
 	<br/>
@@ -39,8 +41,9 @@
 	<% @teams.each do |team| %>
 			<div>
 			<%= image_tag team.image.url, id: "teamimg-sm"%>
-			</div>
+			
 			<h2><%= team.name %></h2>
+			</div>
 	    <%= link_to 'Edit', edit_team_path(team), class: "btn btn-outline-info btn-sm" %>
 	    <%= button_to "Remove", team_path(team), 
 	    												method: :delete, 

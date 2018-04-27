@@ -2,13 +2,6 @@ class TeamsController < ApplicationController
 	
 	before_action :authenticate_admin!
 
-	def create
-		@team = Team.new(team_params)
-
-		@team.save
-		redirect_to @team
-	end
-
 	def edit
   		@team = Team.find(params[:id])
 	end

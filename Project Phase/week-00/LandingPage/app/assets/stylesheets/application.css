@@ -14,16 +14,40 @@
  *= require_self
  */
 
+ h4, h2, h1, p {
+ 	text-align: center;
+ }
+
+ #members {
+ 	text-align: left;
+ }
+
+.team {
+	display: inline;
+}
+
 img {
     filter: grayscale(80%) contrast(80%);
+    align-content: center;
 }
+
 
 #github {
 	color: rgb(80,80,80);
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
 #teamimg{
 	width: 100%;
+	height: auto;
+	background-color: grey;
+	border-radius: 50%;
 }
 
 #teamimg-sm{
@@ -43,7 +67,8 @@ p {
 }
 
 #thumbnail{
-	height: 50px;
+	height: 10em;
+	align-content: center;
 }
 
  #projects{
