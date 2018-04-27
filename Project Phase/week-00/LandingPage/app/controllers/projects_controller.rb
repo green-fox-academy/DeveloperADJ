@@ -1,12 +1,26 @@
 class ProjectsController < ApplicationController
 
 	before_action :authenticate_admin!
-	
+
 	def create
 		@project = Project.new(project_params)
 
 		@project.save
 		redirect_to @project
+	end
+
+	def edit
+  		@project = Project.find(params[:id])
+	end
+
+	def update
+	  @project = Project.find(params[:id])
+	 
+	  if @project.update(project_params)
+	    redirect_to @project
+	  else
+	    render 'edit'
+	  end
 	end
 
 	def show

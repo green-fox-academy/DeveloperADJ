@@ -9,6 +9,20 @@ class ApprenticesController < ApplicationController
 		redirect_to @apprentice
 	end
 
+	def edit
+  		@apprentice = Apprentice.find(params[:id])
+	end
+
+	def update
+	  @apprentice = Apprentice.find(params[:id])
+	 
+	  if @apprentice.update(apprentice_params)
+	    redirect_to @apprentice
+	  else
+	    render 'edit'
+	  end
+	end
+
 	def show
 		@apprentice = Apprentice.find(params[:id])
 				redirect_to :admin

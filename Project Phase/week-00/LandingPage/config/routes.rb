@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'admin/addapprentice', as: :addapprentice
   get 'admin/index', as: :admin
   get 'teams/show'
-
+  get 'admin/editproject'
   resources :projects
   resources :teams
   resources :admin
