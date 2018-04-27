@@ -32,7 +32,8 @@
 <% @teams.each do |team| %>
 <br/>
 <div>
-  <h4><%= team.name %></h4>
+  <h2><%= team.name %></h2>
+  <%= image_tag team.image.url, id: "teamimg"%>
   <ul>
   <% team.apprentices.each do |apprentice| %>
   	<li><%= apprentice.name %></li>

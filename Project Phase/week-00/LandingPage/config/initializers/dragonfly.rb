@@ -21,6 +21,8 @@ Rails.application.middleware.use Dragonfly::Middleware
 
 # Add model functionality
 ActiveSupport.on_load(:active_record) do
+
   extend Dragonfly::Model
   extend Dragonfly::Model::Validations
+  
 end
