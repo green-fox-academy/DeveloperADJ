@@ -14,8 +14,20 @@
  *= require_self
  */
 
+img {
+    filter: grayscale(80%) contrast(80%);
+}
+
+#github {
+	color: rgb(80,80,80);
+}
+
 #teamimg{
 	width: 100%;
+}
+
+#teamimg-sm{
+	width: 30%;
 }
 
 .pad {

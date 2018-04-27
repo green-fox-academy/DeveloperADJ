@@ -34,9 +34,10 @@
 <div>
   <h2><%= team.name %></h2>
   <%= image_tag team.image.url, id: "teamimg"%>
+  <p>Team Members:</p>
   <ul>
   <% team.apprentices.each do |apprentice| %>
-  	<li><%= apprentice.name %></li>
+  	<li><div><%= link_to apprentice.name, apprentice.github, id: "github", target: "_blank" %></div></li>
   <% end %>
   </ul>
 </div>

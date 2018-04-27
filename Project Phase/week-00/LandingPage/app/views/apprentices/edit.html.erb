@@ -20,6 +20,10 @@
     <%= form.label :name %><br>
     <%= form.text_field :name %>
   </p>
+  <p>
+    <%= form.label :github %><br>
+    <%= form.text_field :github %>
+  </p>
     <%= form.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
   <p>
     <%= form.submit %>

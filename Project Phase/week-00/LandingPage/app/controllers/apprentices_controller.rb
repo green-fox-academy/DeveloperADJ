@@ -37,7 +37,7 @@ class ApprenticesController < ApplicationController
 	private
 
 	def apprentice_params
-		params.require(:apprentice).permit(:name, :team_id)
+		params.require(:apprentice).permit(:name, :github, :team_id)
 	end
 
 end
