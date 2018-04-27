@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
 	
 	before_action :authenticate_admin!
-	
+
 	def create
 		@team = Team.new(team_params)
 
@@ -37,7 +37,7 @@ class TeamsController < ApplicationController
 	private
 
 	def team_params
-		params.require(:team).permit(:name)
+		params.require(:team).permit(:name, :image)
 	end
 
 end

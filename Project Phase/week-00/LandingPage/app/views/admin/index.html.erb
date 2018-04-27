@@ -14,7 +14,7 @@
 	<br/>
 	<% @projects.each do |project| %>
 		<div>
-			<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
+			<%= image_tag project.thumbnail_url, id: "thumbnail" %>
 			<h4><%= project.title %></h4>
 			<%= button_to "Remove", project_path(project), 
 									method: :delete, 
@@ -32,10 +32,14 @@
 	<br/>
 
 	<% @teams.each do |team| %>
+			<p><%= team.image_uid %></p>
+			<%= image_tag team.image.url%>
+			
 	    <h4><%= team.name %></h4>
-	    		<%= button_to "Remove", team_path(team), method: :delete, 
-		data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
-		class: 'btn btn-outline-danger btn-sm' %>
+	    <%= button_to "Remove", team_path(team), 
+	    												method: :delete, 
+															data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
+															class: 'btn btn-outline-danger btn-sm' %>
 		<%= link_to 'Edit', edit_team_path(team), class: "btn btn-outline-info btn-sm" %>
 	    <ul>
 	    <% team.apprentices.each do |apprentice| %>
