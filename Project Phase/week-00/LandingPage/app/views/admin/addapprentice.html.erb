@@ -7,6 +7,7 @@
     <%= form.label :name %><br>
     <%= form.text_field :name %>
   </p>
+  <%= form.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
   <p>
     <%= form.submit %>
   </p>

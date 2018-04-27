@@ -16,11 +16,10 @@
 		<div>
 			<%= image_tag project.thumbnail_url.to_s, id: "thumbnail" %>
 			<h4><%= project.title %></h4>
-			<%= button_to "Remove", 
-							project_path(project), 
-							method: :delete, 
-							data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
-							class: 'btn btn-outline-danger btn-sm' %>
+			<%= button_to "Remove", project_path(project), 
+									method: :delete, 
+									data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
+									class: 'btn btn-outline-danger btn-sm' %>
 			<%= link_to 'Edit', edit_project_path(project), class: "btn btn-outline-info btn-sm" %>
 		</div>
 	<% end %>
@@ -34,10 +33,20 @@
 
 	<% @teams.each do |team| %>
 	    <h4><%= team.name %></h4>
-		<%= button_to "Remove", team_path(team), method: :delete, 
+	    		<%= button_to "Remove", team_path(team), method: :delete, 
 		data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
 		class: 'btn btn-outline-danger btn-sm' %>
 		<%= link_to 'Edit', edit_team_path(team), class: "btn btn-outline-info btn-sm" %>
+	    <ul>
+	    <% team.apprentices.each do |apprentice| %>
+	    	<li><%= apprentice.name %></li>
+	    	<%= link_to 'Edit', edit_apprentice_path(apprentice), class: "btn btn-outline-info btn-sm" %>
+	    	<%= button_to "Remove",apprentice_path(apprentice), 
+		method: :delete, data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
+		class: 'btn btn-outline-danger btn-sm' %>
+	    <% end %>
+	    </ul>
+
 	<% end %>
 
 	<br/>
@@ -47,8 +56,9 @@
 	<br/>
 	<br/>
 
-	<% @apprentices.each do |apprentice| %>
-		<h4><%= apprentice.name %></h4>
+	<% @apprentices.order(:name).each do |apprentice| %>
+		<h4>Name: <%= apprentice.name %></h4>
+		<h4>Team: <%= Team.find(apprentice.team_id).name  %></h4>
 		<%= button_to "Remove",apprentice_path(apprentice), 
 		method: :delete, data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
 		class: 'btn btn-outline-danger btn-sm' %>

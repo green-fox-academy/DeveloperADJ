@@ -14,7 +14,7 @@
 	    <p class="lead">Here you can find an overview of the projects and teams at Huli.</p>
 	  </div>
 	</div>
-	
+
 </div>
 
 <div class="pad">
@@ -33,16 +33,15 @@
 <br/>
 <div>
   <h4><%= team.name %></h4>
+  <ul>
+  <% team.apprentices.each do |apprentice| %>
+  	<li><%= apprentice.name %></li>
+  <% end %>
+  </ul>
 </div>
 <br/>
 <% end %>
 
-<h1 id="teams">Apprentices</h1>
-<% @apprentices.each do |apprentice| %>
-	<div>
-		<h4><%= apprentice.name %></h4>
-	</div>
-<% end %>
 </div>
 </body>
 </html>
