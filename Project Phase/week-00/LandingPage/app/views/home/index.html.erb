@@ -32,7 +32,7 @@
 <% @teams.each do |team| %>
 <br/>
 <div class="team">
-  <h2><%= team.name %></h2>
+  <h2>Team <%= team.name %></h2>
   <%= image_tag team.image.url, id: "teamimg", class: "teamphoto"%>
   <p id="members">Team Members:</p>
   <ul>
