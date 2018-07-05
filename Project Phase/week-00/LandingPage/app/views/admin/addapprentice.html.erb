@@ -1,7 +1,7 @@
 <%= render 'admin_navbar'%>
 
 <h4>Add New Apprentice:</h4>
-
+<div>
 <%= form_with scope: :apprentice, url: apprentices_path, local: true do |form| %>
   <p>
     <%= form.label :name %><br>
@@ -11,8 +11,11 @@
     <%= form.label :github %><br>
     <%= form.text_field :github %>
   </p>
+  <p>
   <%= form.collection_select :team_id, Team.order(:name),:id,:name, include_blank: true %>
+  </p>
   <p>
     <%= form.submit %>
   </p>
+</div>
 <% end %>

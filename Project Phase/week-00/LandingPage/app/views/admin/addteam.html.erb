@@ -1,16 +1,17 @@
 <%= render 'admin_navbar'%>
 
 <h4>Add New Team:</h4>
-
-<%= form_with scope: :team, url: teams_path, local: true do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.file_field :image %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div>
+  <%= form_with scope: :team, url: teams_path, local: true do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.file_field :image %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+</div>

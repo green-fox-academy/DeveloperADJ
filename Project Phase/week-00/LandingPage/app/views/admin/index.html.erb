@@ -6,7 +6,6 @@
 <body>
 
 <%= render 'admin_navbar'%>
-
 <div class="pad">
 	
 	<%= link_to 'Add New Project', :addproject, class: "btn btn-success btn-lg"%> <br><br>
@@ -28,16 +27,14 @@
 									data: { confirm: "Are you sure you want to remove #{project.title}?" }, 
 									class: 'btn btn-outline-danger btn-sm' %>
 		</div>
-			<br/>
+	<br/>
 	<br/>
 	<% end %>
-	
 	<br/>
 	<br/>
 	<h1 id="teams">Teams</h1>
 	<br/>
 	<br/>
-
 	<% @teams.each do |team| %>
 			<div>
 			<%= image_tag team.image.url, id: "teamimg-sm"%>
@@ -46,28 +43,26 @@
 			</div>
 	    <%= link_to 'Edit', edit_team_path(team), class: "btn btn-outline-info btn-sm" %>
 	    <%= button_to "Remove", team_path(team), 
-	    												method: :delete, 
-															data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
-															class: 'btn btn-outline-danger btn-sm' %>
-			<p>Team Members:</p>
+	    						method: :delete, 
+								data: { confirm: "Are you sure you want to remove #{team.name}?" }, 
+								class: 'btn btn-outline-danger btn-sm' %>
+		<p>Team Members:</p>
 	    <ul>
 	    <% team.apprentices.each do |apprentice| %>
 	    	<li><%= apprentice.name %></li>
 	    	<%= link_to 'Edit', edit_apprentice_path(apprentice), class: "btn btn-outline-info btn-sm" %>
-	    	<%= button_to "Remove",apprentice_path(apprentice), 
-																method: :delete, 
-																data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
-																class: 'btn btn-outline-danger btn-sm' %>
+	    	<%= button_to "Remove", apprentice_path(apprentice), 
+									method: :delete, 
+									data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
+									class: 'btn btn-outline-danger btn-sm' %>
 	    <% end %>
 	    </ul>
 	<% end %>
-
 	<br/>
 	<br/>
 	<h1 id="teams">Apprentices</h1>
 	<br/>
 	<br/>
-
 	<% @apprentices.order(:name).each do |apprentice| %>
 	<ul>
 		<li>
@@ -81,13 +76,12 @@
 				Team: <%= Team.find(apprentice.team_id).name  %>
 			</div>
 		<%= link_to 'Edit', edit_apprentice_path(apprentice), class: "btn btn-outline-info btn-sm" %>
-		<%= button_to "Remove",apprentice_path(apprentice), 
-		method: :delete, data: { confirm: "Are you sure you want to remove #{apprentice.name}?" }, 
-		class: 'btn btn-outline-danger btn-sm' %>
+		<%= button_to "Remove", apprentice_path(apprentice), 
+								method: :delete, data: { confirm: "Are you sure you want to remove #{apprentice.name}?"}, 
+								class: 'btn btn-outline-danger btn-sm' %>
 		</li>
 	</ul>
 	<% end %>
 </div>
-
 </body>
 </html>
